@@ -1,0 +1,43 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '2.7.17'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'dev.mvc'
+version = '1.0'
+
+java {
+	sourceCompatibility = '1.8'
+}
+
+repositories {
+	mavenCentral()
+}
+
+//gradle 추가 후 주석 꼭 달기 ! 
+dependencies {
+	//springframework 
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
+  	
+  	//spring-boot , dev and server 
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
+	implementation 'com.oracle.database.jdbc:ojdbc8:18.15.0.0' // JDBC 오라클 
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.65' // tomcat 내장 서버
+	
+	//library
+  	implementation 'commons-io:commons-io:2.7' //파일 및 스트림 조작 
+  	implementation 'commons-fileupload:commons-fileupload:1.3.3' //파일 업로드
+  	implementation 'org.json:json:20190722' //json 데이터 교환
+  	implementation 'javax.mail:javax.mail-api:1.6.2' //이메일 전송 , 수신 
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
