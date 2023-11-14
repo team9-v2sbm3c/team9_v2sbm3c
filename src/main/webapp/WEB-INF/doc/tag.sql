@@ -1,6 +1,9 @@
 /**********************************/
 /* Table Name: Tag  */
 /**********************************/
+
+DROP TABLE TAG;
+
 CREATE TABLE TAG(
 		tagID INT NOT NULL,
 		tname VARCHAR(50),
@@ -19,3 +22,29 @@ CREATE SEQUENCE TAG_SEQ
   MAXVALUE 99999            -- 최대값: 99999 --> NUMBER(5) 대응
   CACHE 2                   -- 2번은 메모리에서만 계산
   NOCYCLE;                  -- 다시 1부터 생성되는 것을 방지
+  
+1) 등록
+--샘플 데이터 
+INSERT INTO TAG(tagID,tname) VALUES (TAG_SEQ.NEXTVAL,'전통 체험');
+INSERT INTO TAG(tagID, tname) VALUES (TAG_SEQ.NEXTVAL,'푸드 투어');
+INSERT INTO TAG(tagID, tname) VALUES (TAG_SEQ.NEXTVAL,'미술관');
+INSERT INTO TAG(tagID, tname) VALUES (TAG_SEQ.NEXTVAL,'테마파크');
+INSERT INTO TAG(tagID, tname) VALUES (TAG_SEQ.NEXTVAL,'등산로');
+INSERT INTO TAG(tagID, tname) VALUES (TAG_SEQ.NEXTVAL,'스포츠');
+INSERT INTO TAG(tagID, tname) VALUES (TAG_SEQ.NEXTVAL,'자전거 여행');
+INSERT INTO TAG(tagID, tname) VALUES (TAG_SEQ.NEXTVAL,'시골 체험');
+INSERT INTO TAG(tagID, tname) VALUES (TAG_SEQ.NEXTVAL,'연극 감상');
+INSERT INTO TAG(tagID, tname) VALUES (TAG_SEQ.NEXTVAL,'음악 감상');
+
+2)조회
+SELECT * FROM TAG;
+
+3)수정 
+X
+
+4)삭제
+DELETE FROM TAG;
+
+
+5)TCL
+COMMIT;
