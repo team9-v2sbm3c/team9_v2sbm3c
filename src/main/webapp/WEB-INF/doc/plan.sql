@@ -46,8 +46,15 @@ VALUES (PLAN_SEQ.NEXTVAL, '설악산 등산', '설악산 근처 맛집, 주차�
 
 
 2) 조회
-SELECT * FROM PLAN;
+--조회 
+SELECT planID, pname, pdescription, longitude, latitude, heart
+FROM Plan
+WHERE planID=2;
 
+--전체 조회
+SELECT planID, pname, pdescription, longitude, latitude, heart
+FROM Plan
+ORDER BY planID DESC
 
 3)수정
 --여행지 수정 

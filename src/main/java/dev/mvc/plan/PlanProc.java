@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component("dev.mvc.plan.PlanProc")
 public class PlanProc implements PlanProcInter{
-
 	@Autowired
 	private PlanDAOInter planDAO;
 	

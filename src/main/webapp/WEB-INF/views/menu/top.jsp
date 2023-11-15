@@ -16,9 +16,9 @@
         <h1>로고 넣을 자리!</h1>
         <nav>
             <ul>
-                <li><a href="#">자유게시판</a></li>
+                <li><a href="#">테스트 버튼</a></li>
                 <li><a href="#">로그인</a></li>
-                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>	
             </ul>
         </nav>
     </header>
