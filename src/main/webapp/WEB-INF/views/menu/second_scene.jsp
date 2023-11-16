@@ -18,7 +18,23 @@
 </head>
 <body>
 	<div class=second_scene_container>
-		추천 시스템
+		<p class="ssc_title">최근 여행지 </p>
+		<div class=image-grid>
+			<!-- 최근 3개 이내 이미지가 나오도록 출력 -->
+			<c:forEach var="plan" items="${list}" varStatus="loop">
+				<c:if test="${loop.index < 3}">
+					<a href="?id=${plan.planID}"> <!-- 추후에 관련 사이트로 접속 가능하도록 만드는 코드  -->
+					<div>
+						<div class="image-container">
+							<img class="image-item" src="main/images/maintest.jpg"
+								alt="Image 1">
+							<div class="image-text">${plan.pname }</div>
+						</div>
+						<p class="description">${plan.pdescription }</p>
+					</div>
+				</c:if>
+			</c:forEach>
+		</div>
 	</div>
 </body>
 </html>

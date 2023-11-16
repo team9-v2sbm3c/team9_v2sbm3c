@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class=first_scene_container>
-	<img src="main/images/maintest.jpg" alt="main_test_image" class="image">
+	<img src="main/images/maintest.png" alt="main_test_image" class="image">
 	<div class=text-overlay>
 		<h2>새로운 웹사이트에 오신걸 환영합니다.</h2>
 		<p>새로운 발자취를 남겨보세요.</p>

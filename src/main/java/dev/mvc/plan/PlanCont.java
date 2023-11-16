@@ -25,7 +25,7 @@ public class PlanCont {
 	 * @return
 	 */
 	@RequestMapping(value="/index.do",method = RequestMethod.GET)
-	public ModelAndView list_all(int planID) {
+	public ModelAndView list_all() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/index");
 		
