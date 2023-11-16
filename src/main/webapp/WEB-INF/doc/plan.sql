@@ -65,7 +65,7 @@ WHERE planID=1;
 4)삭제 
 --여행지 삭제 
 DELETE FROM PLAN
-WHERE planID=1;
+WHERE planID=;
 
 5)TCL
 COMMIT;

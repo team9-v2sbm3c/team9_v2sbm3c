@@ -17,6 +17,8 @@
 
 </head>
 <body>
-	
+	<div class=second_scene_container>
+		추천 시스템
+	</div>
 </body>
 </html>
