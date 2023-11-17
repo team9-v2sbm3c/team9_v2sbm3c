@@ -18,19 +18,21 @@
 </head>
 <body>
 	<div class=second_scene_container>
-		<p class="ssc_title">최근 여행지 </p>
-		<div class=image-grid>
-			<!-- 최근 3개 이내 이미지가 나오도록 출력 -->
+		<p class="ssc_title">최근 여행지</p>
+		<div class="container">
 			<c:forEach var="plan" items="${list}" varStatus="loop">
 				<c:if test="${loop.index < 3}">
-					<a href="?id=${plan.planID}"> <!-- 추후에 관련 사이트로 접속 가능하도록 만드는 코드  -->
-					<div>
-						<div class="image-container">
-							<img class="image-item" src="main/images/maintest.jpg"
-								alt="Image 1">
-							<div class="image-text">${plan.pname }</div>
+					<div class="item">
+						<div class="card">
+							<a href="${plan.planID}">
+								<div class="image-container">
+									<img src="main/images/maintest.png" alt="Card Image">
+									<div class="overlay">
+										<p class="description">${plan.pname}</p>
+									</div>
+								</div>
+							</a>
 						</div>
-						<p class="description">${plan.pdescription }</p>
 					</div>
 				</c:if>
 			</c:forEach>

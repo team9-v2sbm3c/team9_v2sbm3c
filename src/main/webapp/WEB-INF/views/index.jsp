@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
-<title>http://localhost:9093/index.do?planID=1</title>
+<title>http://localhost:9093/index.do?</title>
 
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 
@@ -17,7 +17,7 @@
 	<c:import url="./menu/top.jsp" />
 	<c:import url="./menu/first_scene.jsp"/>
 	<c:import url="./menu/second_scene.jsp"/>
-	<c:import url="./menu/third_scene.jsp"/>
+	<c:import url="./menu/third_scene.jsp"/> 
 	<c:import url="./menu/bottom.jsp" />
 </body>
 </html>
