@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div class=second_scene_container>
-		<p class="ssc_title">최근 여행지</p>
+		<p class="ssc_title">추천 여행지</p>
 		<div class="container">
 			<c:forEach var="plan" items="${list}" varStatus="loop">
 				<c:if test="${loop.index < 3}">
