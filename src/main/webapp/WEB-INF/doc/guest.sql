@@ -28,13 +28,13 @@ CREATE SEQUENCE GUEST_SEQ
 1. 등록
 
 1) id 중복 확인(null 값을 가지고 있으면 count에서 제외됨)
-SELECT COUNT(id)
+SELECT COUNT(guestID)
 FROM guest
-WHERE id='user1';
+WHERE guestID='user1';
 
-SELECT COUNT(id) as cnt
+SELECT COUNT(guestID) as cnt
 FROM guest
-WHERE id='user1';
+WHERE guestID='user1';
 
  cnt
  ---
@@ -76,6 +76,11 @@ DELETE FROM guest;
 2) 특정 회원 삭제
 DELETE FROM guest
 WHERE guestno=1;
+
+-- 로그인
+SELECT COUNT(*) as cnt
+FROM guest
+WHERE id='kd123' AND passwd='1234';
 
 COMMIT;
 
