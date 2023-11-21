@@ -17,80 +17,97 @@
 <body>
 	<div class=third_scene_container>
 		<div class='container'>
-			<div class='ssc_title'>여행지</div>
+			<div class='title'>여행지</div>
 		</div>
 		<div class=container>
 			<div class='item'>
-				<div class='card'>
-					<div class="image-container">
-						<img src="main/images/maintest.png" alt="Card Image">
-					</div>
+				<div class='tsc_card'>
+					<a href="#"> <img src="main/images/Seoul.png" alt="Card Image">
+						<div class="image-text">
+							<h3>서울</h3>
+						</div>
+					</a>
 				</div>
 			</div>
 			<div class='item'>
-				<div class='card'>
-					<div class="image-container">
-						<img src="main/images/maintest.png" alt="Card Image">
-					</div>
+				<div class=tsc_card>
+					<a href="#"> <img src="main/images/gyeonggi-do.png" alt="Card Image">
+						<div class="image-text">
+							<h3>경기도</h3>
+						</div>
+					</a>
 				</div>
 			</div>
 			<div class='item'>
-				<div class='card'>
-					<div class="image-container">
-						<img src="main/images/maintest.png" alt="Card Image">
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class=container>
-		<div class='item'>
-				<div class='card'>
-					<div class="image-container">
-						<img src="main/images/maintest.png" alt="Card Image">
-					</div>
-				</div>
-			</div>
-			<div class='item'>
-				<div class='card'>
-					<div class="image-container">
-						<img src="main/images/maintest.png" alt="Card Image">
-					</div>
-				</div>
-			</div>
-			<div class='item'>
-				<div class='card'>
-					<div class="image-container">
-						<img src="main/images/maintest.png" alt="Card Image">
-					</div>
+				<div class=tsc_card>
+					<a href="#"> <img src="main/images/Jeju-do.png" alt="Card Image">
+						<div class="image-text">
+							<h3>제주도</h3>
+						</div>
+					</a>
 				</div>
 			</div>
 		</div>
 		<div class=container>
-		<div class='item'>
-				<div class='card'>
-					<div class="image-container">
-						<img src="main/images/maintest.png" alt="Card Image">
-					</div>
+			<div class='item'>
+				<div class=tsc_card>
+					<a href="#"> <img src="main/images/Chung-cheong bukdo.png" alt="Card Image">
+						<div class="image-text">
+							<h3>충청북도</h3>
+						</div>
+					</a>
 				</div>
 			</div>
 			<div class='item'>
-				<div class='card'>
-					<div class="image-container">
-						<img src="main/images/maintest.png" alt="Card Image">
-					</div>
+				<div class=tsc_card>
+					<a href="#"> <img src="main/images/Chungcheongnam-do.png" alt="Card Image">
+						<div class="image-text">
+							<h3>충청남도</h3>
+						</div>
+					</a>
 				</div>
 			</div>
 			<div class='item'>
-				<div class='card'>
-					<div class="image-container">
-						<img src="main/images/maintest.png" alt="Card Image">
-					</div>
+				<div class=tsc_card>
+					<a href="#"> <img src="main/images/Jeollabuk do.png" alt="Card Image">
+						<div class="image-text">
+							<h3>전라북도</h3>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class=container>
+			<div class='item'>
+				<div class=tsc_card>
+					<a href="#"> <img src="main/images/Jeollanam-do.png" alt="Card Image">
+						<div class="image-text">
+							<h3>전라남도</h3>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class='item'>
+				<div class=tsc_card>
+					<a href="#"> <img src="main/images/Gyeongsangbuk-do.png" alt="Card Image">
+						<div class="image-text">
+							<h3>경상북도</h3>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class='item'>
+				<div class=tsc_card>
+					<a href="#"><img src="main/images/Gyeongsangnam-do.png" alt="Card Image">
+						<div class="image-text">
+							<h3>경상남도</h3>
+						</div> </a>
 				</div>
 			</div>
 		</div>
 	</div>
 	</div>
 	</div>
-	
+
 </body>
 </html>
