@@ -1,28 +1,37 @@
 package dev.mvc.guest;
 
+import java.sql.SQLException;
+
 /*
-    guestID INT NOT NULL,
-    gpassword INT,
-    gname VARCHAR(25),
-    gemail VARCHAR(10),
-        PRIMARY KEY(guestID)
+    guestno NUMERIC(10) NOT NULL,
+    guestID VARCHAR(30),
+    gpassword VARCHAR(60),
+    gname VARCHAR(40),
+    gemail VARCHAR(100),
+     PRIMARY KEY(guestno)
   */
 public class GuestVO {
-  private int guestID;
-  private int gpassword;
-  private String gname;
-  private String gmail;
-  
-  public int getGuestID() {
+  private int guestno;
+  private String guestID = "";
+  private String gpassword= "";
+  private String gname = "";
+  private String gemail= "";
+  public int getGuestno() {
+    return guestno;
+  }
+  public void setGuestno(int guestno) {
+    this.guestno = guestno;
+  }
+  public String getGuestID() {
     return guestID;
   }
-  public void setGuestID(int guestID) {
+  public void setGuestID(String guestID) {
     this.guestID = guestID;
   }
-  public int getGpassword() {
+  public String getGpassword() {
     return gpassword;
   }
-  public void setGpassword(int gpassword) {
+  public void setGpassword(String gpassword) {
     this.gpassword = gpassword;
   }
   public String getGname() {
@@ -31,16 +40,17 @@ public class GuestVO {
   public void setGname(String gname) {
     this.gname = gname;
   }
-  public String getGmail() {
-    return gmail;
+  public String getGemail() {
+    return gemail;
   }
-  public void setGmail(String gmail) {
-    this.gmail = gmail;
-  }
-  @Override
-  public String toString() {
-    return "GuestVO [guestID=" + guestID + ", gpassword=" + gpassword + ", gname=" + gname + ", gmail=" + gmail + "]";
+  public void setGemail(String gemail) {
+    this.gemail = gemail;
   }
   
+  @Override
+  public String toString() {
+    return "GuestVO [guestno=" + guestno + ", guestID=" + guestID + ", gpassword=" + gpassword + ", gname=" + gname
+        + ", gemail=" + gemail + "]";
+  }
   
 }

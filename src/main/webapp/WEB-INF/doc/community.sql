@@ -3,7 +3,7 @@
 /**********************************/
 CREATE TABLE COMMUNITY(
 		communityID INT NOT NULL,
-		guestID INT NOT NULL,
+		guestno NUMERIC(10) NOT NULL,
 		contents VARCHAR(1000),
 		mainImage VARCHAR(100),
 		mainImagePreview VARCHAR(500),

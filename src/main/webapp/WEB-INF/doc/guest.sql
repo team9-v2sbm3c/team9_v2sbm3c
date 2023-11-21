@@ -1,16 +1,20 @@
 /**********************************/
 /* Table Name: Guest */
 /**********************************/
+DROP TABLE GUEST;
+
 CREATE TABLE GUEST(
-		guestID INT NOT NULL,
-		gpassword INT,
-		gname VARCHAR(25),
-		gemail VARCHAR(10),
-        PRIMARY KEY(guestID)
+        guestno NUMERIC(10) NOT NULL,
+		guestID VARCHAR(30) UNIQUE,
+		gpassword VARCHAR(60),
+		gname VARCHAR(40),
+		gemail VARCHAR(100),
+        PRIMARY KEY(guestno)
 );
 
 COMMENT ON TABLE GUEST is '사용자';
-COMMENT ON COLUMN GUEST.guestID is '사용자 번호';
+COMMENT ON COLUMN GUEST.guestno is '사용자번호';
+COMMENT ON COLUMN GUEST.guestID is '아이디';
 COMMENT ON COLUMN GUEST.gpassword is '비밀번호';
 COMMENT ON COLUMN GUEST.gname is '이름';
 COMMENT ON COLUMN GUEST.gemail is '이메일';
@@ -30,11 +34,11 @@ CREATE SEQUENCE GUEST_SEQ
 1) id 중복 확인(null 값을 가지고 있으면 count에서 제외됨)
 SELECT COUNT(guestID)
 FROM guest
-WHERE guestID='user1';
+WHERE guestID='kd123';
 
 SELECT COUNT(guestID) as cnt
 FROM guest
-WHERE guestID='user1';
+WHERE guestID='kd123';
 
  cnt
  ---
@@ -51,6 +55,11 @@ VALUES (guest_seq.nextval, 'kd123', '1234', '민철', 'kd@gmail.com');
 
 COMMIT;
 
+-- 목록 
+
+SELECT guestno, guestID, gpassword, gname, gemail
+FROM guest
+ORDER BY guestID ASC;
 2. 조회
  
 1) 정보 조회
@@ -60,7 +69,7 @@ WHERE guestno = 1;
 
 SELECT guestno, guestID, gpassword, gname, gemail
 FROM guest
-WHERE id = 'kd@gmail.com';
+WHERE guestID = 'kd@gmail.com';
 
 3. 수정
 UPDATE guest 
@@ -80,7 +89,7 @@ WHERE guestno=1;
 -- 로그인
 SELECT COUNT(*) as cnt
 FROM guest
-WHERE id='kd123' AND passwd='1234';
+WHERE guestID='kd123' AND gpassword='1234';
 
 COMMIT;
 

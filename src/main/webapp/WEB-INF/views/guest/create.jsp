@@ -11,34 +11,29 @@
 
 <script type="text/javascript">
   window.onload = function() {
-    document.querySelector('#guestID').addEventListener('keypress', (event) => {
-    // document.getElementById('passwd').addEventListener('keypress', (event) => {
+    document.querySelector('#id').addEventListener('keypress', (event) => {
       if(event.key === 'Enter') {
         document.getElementById('btn_checkID').focus();
       }
     }); 
 
-    document.querySelector('#gpassword').addEventListener('keypress', (event) => {
-    // document.getElementById('passwd').addEventListener('keypress', (event) => {
+    document.querySelector('#passwd').addEventListener('keypress', (event) => {
       if(event.key === 'Enter') {
-        document.getElementById('gpasswd2').focus();
+        document.getElementById('passwd2').focus();
       }
     }); 
 
     document.querySelector('#passwd2').addEventListener('keypress', (event) => {
-    // document.getElementById('passwd').addEventListener('keypress', (event) => {
       if(event.key === 'Enter') {
         document.getElementById('gname').focus();
       }
     }); 
 
     document.querySelector('#gname').addEventListener('keypress', (event) => {
-    // document.getElementById('passwd').addEventListener('keypress', (event) => {
       if(event.key === 'Enter') {
         document.getElementById('gemail').focus();
       }
     });
-    
   }
 
   // jQuery ajax 요청
@@ -47,23 +42,16 @@
     let id_msg = document.getElementById('id_msg');
 
     if (id.value.trim().length == 0) {
-      id_msg.innerHTML= 'ID가 누락됬습니다. ID 입력은 필수 입니다. ID(이메일)는 3자이상 권장합니다.';
+      id_msg.innerHTML= 'ID 입력은 필수 입니다.';
       id_msg.classList.add('span_warning');    // class 적용
       id.focus();
 
       return false;  // 회원 가입 진행 중지
-      
     } else {  // when ID is entered
       id_msg.classList.remove('span_warning'); // class 삭제
 
-      // let formData = 'id=' + id.value;
-      // var params = $('#frm').serialize(); // 직렬화, 폼의 데이터를 키와 값의 구조로 조합
-      // alert('params: ' + params);
-      
-      let id = document.getElementById('id');
       let url = './checkID.do?id=' + id.value;
-  
-      // fetch를 사용하여 데이터를 서버에 GET 요청합니다.
+
       fetch(url, {
           method: 'GET'
       })
@@ -73,21 +61,18 @@
           id_msg.innerHTML= '이미 사용중인 ID 입니다. 다른 ID을 지정해주세요.';
           id_msg.classList.add('span_warning');
           id.focus();
-            
         } else { // 아이디 중복 안됨.
           id_msg.innerHTML= '사용 가능한 ID 입니다.';
           id_msg.classList.add('span_info');
           document.getElementById('passwd').focus(); 
-          // $.cookie('checkId', 'TRUE'); // Cookie 기록
         }
       })
       .catch(error => { // 서버 다운등 통신 에러
           console.error('Error:', error);
       });      
-          
+
       // 처리중 출력
       id_msg.innerHTML="<img src='/member/images/ani04.gif' style='width: 5%;'>"; // static 기준
-      
     }
   }
 
@@ -96,12 +81,11 @@
     let id_msg = document.getElementById('id_msg');
 
     if (id.value.trim().length == 0) {
-      id_msg.innerHTML= 'ID가 누락됬습니다. ID 입력은 필수 입니다. ID(이메일)는 3자이상 권장합니다.';
+      id_msg.innerHTML= 'ID 입력은 필수 입니다.';
       id_msg.classList.add('span_warning');    // class 적용
       id.focus();
 
       return false;  // 회원 가입 진행 중지
-      
     }
 
     // 패스워드를 정상적으로 2번 입력했는지 확인
@@ -132,7 +116,6 @@
   }  
 </script>
 </head> 
-
 
 <body>
 <c:import url="/menu/top.do" />

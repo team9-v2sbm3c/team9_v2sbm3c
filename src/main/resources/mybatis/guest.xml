@@ -7,10 +7,11 @@
     FROM guest
     WHERE guestID=#{guestID}
   </select>
+  
 	<!-- 조회 -->
 	<insert id="create" parameterType="dev.mvc.guest.GuestVO" >
     INSERT INTO GUEST(guestno, guestID, gpassword, gname, gemail)
-    VALUES (guest_seq.nextval, #{guestID}, #{gpassword}, #{gname}, #{gemail});
+    VALUES (guest_seq.nextval, #{guestID}, #{gpassword}, #{gname}, #{gemail})
 	</insert>
   
 </mapper>

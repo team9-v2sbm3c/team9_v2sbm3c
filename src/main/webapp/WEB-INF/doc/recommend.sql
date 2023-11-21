@@ -3,7 +3,7 @@
 /**********************************/
 CREATE TABLE RECOMMEND(
 		recommendID INT NOT NULL,
-		guestID INT NOT NULL,
+		guestno NUMERIC(10) NOT NULL,
 		planID INT,
         PRIMARY KEY(recommendID),
         FOREIGN KEY (guestID) REFERENCES GUEST(guestID),

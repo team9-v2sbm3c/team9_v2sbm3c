@@ -3,7 +3,7 @@
 /**********************************/
 CREATE TABLE CHATBOT(
 		chatbotID INT NOT NULL,
-		guestID INT,
+		guestno NUMERIC(10) NOT NULL,
 		question VARCHAR(300) NOT NULL,
 		answer VARCHAR(300) NOT NULL,
 		talk VARCHAR(5000),
