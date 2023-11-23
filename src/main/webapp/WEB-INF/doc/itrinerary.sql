@@ -8,6 +8,8 @@ CREATE TABLE ITRINERARY(
 		iname VARCHAR(50) NOT NULL,
 		idate DATE NOT NULL,
 		memo VARCHAR(100),
+        longitude INT NOT NULL,
+        latitude INT NOT NULL,
         PRIMARY KEY (itineraryID),
         FOREIGN KEY (planID) REFERENCES PLAN(planID),
         FOREIGN KEY (activityID) REFERENCES ACTIVITY(activityID)
@@ -20,6 +22,8 @@ COMMENT ON COLUMN ITRINERARY.activityID is '활동 번호';
 COMMENT ON COLUMN ITRINERARY.iname is '일정 이름';
 COMMENT ON COLUMN ITRINERARY.idate is '일자';
 COMMENT ON COLUMN ITRINERARY.memo is '메모';
+COMMENT ON COLUMN ITRINERARY.longitude is '경도';
+COMMENT ON COLUMN ITRINERARY.latitude is '위도';
 
 DROP SEQUENCE ITRINERARY_SEQ;
 

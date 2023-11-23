@@ -4,13 +4,13 @@
 <mapper namespace="dev.mvc.plan.PlanDAOInter">	
 	<!-- 전체 목록 -->
 	<select id="list_all" resultType="dev.mvc.plan.PlanVO">
-		SELECT planID, pname, pdescription, longitude, latitude, heart
+		SELECT planID, pname, pdescription, heart
 		FROM Plan
 		ORDER BY planID DESC
 	</select>
 	<!-- 조회 -->
 	<select id="read" resultType="dev.mvc.plan.PlanVO" parameterType="int">
-		SELECT planID, pname, pdescription, longitude, latitude, heart
+		SELECT planID, pname, pdescription, heart
 		FROM Plan
 		WHERE planID=#{planID}
 	</select>
