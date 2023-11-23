@@ -6,7 +6,7 @@ CREATE TABLE ACTIVITY(
 		planID INT,
 		aname VARCHAR(50) NOT NULL,
 		adescription VARCHAR(300) NOT NULL,
-		adte DATE NOT NULL,
+		adate DATE NOT NULL,
         PRIMARY KEY (activityID),
         FOREIGN KEY (planID) REFERENCES PLAN(planID)
 );
@@ -16,7 +16,7 @@ COMMENT ON COLUMN ACTIVITY.activityID is '활동 번호';
 COMMENT ON COLUMN ACTIVITY.planID is '여행 번호';
 COMMENT ON COLUMN ACTIVITY.aname is '활동 이름';
 COMMENT ON COLUMN ACTIVITY.adescription is '활동 설명';
-COMMENT ON COLUMN ACTIVITY.adte is '활동 기간';
+COMMENT ON COLUMN ACTIVITY.adate is '활동 기간';
 
 DROP SEQUENCE ACTIVITY_SEQ;
 
@@ -28,8 +28,8 @@ CREATE SEQUENCE ACTIVITY_SEQ
   NOCYCLE;                  -- 다시 1부터 생성되는 것을 방지
   
 1) 삽입
-INSERT INTO ACTIVITY(activityID, planID, aname, adescription, adte)
-VALUES (ACTIVITY_SEQ.NEXTVAL, 1, '해변에서 휴식', '해변에서 휴식을 즐기는 계획입니다.', SYSDATE);
+INSERT INTO ACTIVITY(activityID, planID, aname, adescription, adate)
+VALUES (ACTIVITY_SEQ.NEXTVAL, 1, '스포츠', '해변에서 휴식을 즐기는 계획입니다.', SYSDATE);
 
 
 2) 조회
