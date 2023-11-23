@@ -13,8 +13,6 @@ public class PlanVO {
 	private int planID;
 	private String pname;
 	private String pdescription;
-	private int longitude;
-	private int latitude;
 	private int heart;
 	
 	public int getPlanID() {
@@ -35,18 +33,6 @@ public class PlanVO {
 	public void setPdescription(String pdescription) {
 		this.pdescription = pdescription;
 	}
-	public int getLongitude() {
-		return longitude;
-	}
-	public void setLongitude(int longitude) {
-		this.longitude = longitude;
-	}
-	public int getLatitude() {
-		return latitude;
-	}
-	public void setLatitude(int latitude) {
-		this.latitude = latitude;
-	}
 	public int getHeart() {
 		return heart;
 	}
@@ -57,6 +43,6 @@ public class PlanVO {
 	@Override
 	public String toString() {
 		return "PlanVO [planID=" + planID + ", pname=" + pname + ", pdescription=" + pdescription + ", longitude="
-				+ longitude + ", latitude=" + latitude + ", heart=" + heart + "]";
+				+ ", latitude=" + ", heart=" + heart + "]";
 	}
 }
