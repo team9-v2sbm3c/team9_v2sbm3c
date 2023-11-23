@@ -1,19 +1,18 @@
 package dev.mvc.tag;
 
 /**
-	tagID INT NOT NULL,
+	planID INT NOT NULL,
 	tname VARCHAR(50),
-    PRIMARY KEY(tagID)
 **/
 public class TagVO {
-	private int tagID;
+	private int planID;
 	private String tname;
 	
 	public int getTagID() {
-		return tagID;
+		return planID;
 	}
 	public void setTagID(int tagID) {
-		this.tagID = tagID;
+		this.planID = tagID;
 	}
 	public String getTname() {
 		return tname;
@@ -24,6 +23,6 @@ public class TagVO {
 	
 	@Override
 	public String toString() {
-		return "TagVO [tagID=" + tagID + ", tname=" + tname + "]";
+		return "TagVO [tagID=" + planID + ", tname=" + tname + "]";
 	}
 }
