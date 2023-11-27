@@ -4,17 +4,24 @@ import java.util.ArrayList;
 
 public interface PlanProcInter {
 	/**
+	 * 여행 등록 
+	 * @param planVO
+	 * @return
+	 */
+	public int create_plan(PlanVO planVO);
+	
+	/**
 	 * 여행 전체 리스트 
 	 * @return
 	 */
-	public ArrayList<PlanVO> list_all();
+	public ArrayList<PlanVO> list_all_plan();
 	
 	/**
 	 * 여행 조회
 	 * @param planID
 	 * @return
 	 */
-	public PlanVO read(int planID);
+	public PlanVO read_plan(int planID);
 	
 	/**
 	 * 여행 수정

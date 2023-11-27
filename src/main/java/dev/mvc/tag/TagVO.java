@@ -8,10 +8,10 @@ public class TagVO {
 	private int planID;
 	private String tname;
 	
-	public int getTagID() {
+	public int getplanID() {
 		return planID;
 	}
-	public void setTagID(int tagID) {
+	public void setplanID(int tagID) {
 		this.planID = tagID;
 	}
 	public String getTname() {

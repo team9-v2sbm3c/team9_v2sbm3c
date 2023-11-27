@@ -26,8 +26,8 @@ CREATE SEQUENCE PLAN_SEQ
   MAXVALUE 99999            -- 최대값: 99999 --> NUMBER(5) 대  CACHE 2                   -- 2번은 메모리에서만 계산
   NOCYCLE;                  -- 다시 1부터 생성되는 것을 방지
 
-1) 등록
---sample
+1) 삽입
+--CREATE
 INSERT INTO PLAN(planID, pname, pdescription, heart)
 VALUES (PLAN_SEQ.NEXTVAL, '여름 휴가', '여름 휴가를 즐기는 계획입니다.', 10);
 
@@ -42,24 +42,24 @@ VALUES (PLAN_SEQ.NEXTVAL, '설악산 등산', '설악산 근처 맛집, 주차�
 
 
 2) 조회
---조회 
+--READ
 SELECT planID, pname, pdescription, heart
 FROM Plan
 WHERE planID=2;
 
---전체 조회
+--READ:ALL
 SELECT planID, pname, pdescription, heart
 FROM Plan
 ORDER BY planID DESC
 
 3)수정
---여행지 수정 
+--UPDATE
 UPDATE PLAN
 SET pname='놀러가자고!',pdescription='오늘은 어디로 가야할까 ?'
 WHERE planID=1;
 
 4)삭제 
---여행지 삭제 
+--DELETE
 DELETE FROM PLAN
 WHERE planID=;
 

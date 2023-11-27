@@ -2,16 +2,36 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dev.mvc.plan.PlanDAOInter">	
+
+	<!-- 삽입 -->
+	<select id="create_plan" parameterType="dev.mvc.plan.PlanVO">
+		INSERT INTO PLAN(planID, pname, pdescription, heart)
+		VALUES (PLAN_SEQ.NEXTVAL, #{pnam}, #{pdescription}, #{heart});
+	</select>
+	
 	<!-- 전체 목록 -->
-	<select id="list_all" resultType="dev.mvc.plan.PlanVO">
+	<select id="list_all_plan" resultType="dev.mvc.plan.PlanVO">
 		SELECT planID, pname, pdescription, heart
 		FROM Plan
 		ORDER BY planID DESC
 	</select>
 	<!-- 조회 -->
-	<select id="read" resultType="dev.mvc.plan.PlanVO" parameterType="int">
+	<select id="read_plan" resultType="dev.mvc.plan.PlanVO" parameterType="int">
 		SELECT planID, pname, pdescription, heart
 		FROM Plan
 		WHERE planID=#{planID}
+	</select>
+	
+	<!-- 수정 -->
+	<select id="update_plan" parameterType="dev.mvc.plan.PlanVO">
+		UPDATE PLAN
+		SET pname=#{pname},pdescription=#{pdescription}
+		WHERE planID=#{planID};
+	</select>
+	
+	<!-- 삭제 -->
+	<select id="delete_plan" parameterType="int">
+		DELETE FROM PLAN
+		WHERE planID=#{planID};
 	</select>
 </mapper>

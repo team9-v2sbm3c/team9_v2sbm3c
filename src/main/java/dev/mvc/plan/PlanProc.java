@@ -11,14 +11,20 @@ public class PlanProc implements PlanProcInter{
 	private PlanDAOInter planDAO;
 	
 	@Override
-	public ArrayList<PlanVO> list_all() {
-		ArrayList<PlanVO> list = this.planDAO.list_all();
+	public int create_plan(PlanVO planVO) {
+		int cnt = this.planDAO.create_plan(planVO);
+		return cnt;
+	}
+
+	@Override
+	public ArrayList<PlanVO> list_all_plan() {
+		ArrayList<PlanVO> list = this.planDAO.list_all_plan();
 		return list;
 	}
 
 	@Override
-	public PlanVO read(int planID) {
-		PlanVO planVO= this.planDAO.read(planID);
+	public PlanVO read_plan(int planID) {
+		PlanVO planVO= this.planDAO.read_plan(planID);
 		return planVO;
 	}
 
@@ -33,5 +39,4 @@ public class PlanProc implements PlanProcInter{
 		int cnt=this.planDAO.delete_plan(planID);
 		return cnt;
 	}
-	
 }
