@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.mvc.plan.PlanDAOInter">	
+	<!-- 생성 -->
+	<insert id="create_plan" parameterType="dev.mvc.plan.PlanVO" >
+    	INSERT INTO plan(planID, pname) 
+    	VALUES(plan_seq.nextval, #{pname})
+	</insert>
+  	
+  	<!-- 여행지 하나 조회 -->
+  	<select id="read_plan" resultType="dev.mvc.plan.PlanVO" parameterType="int" >
+    	SELECT planID, pname FROM plan WHERE planID=#{planID}
+	</select>
+	
+	<!-- 여행지 전체 조회-->
+	<select id="list_all_plan" resultType="dev.mvc.plan.PlanVO" >
+    	SELECT planID, pname FROM plan ORDER BY planID ASC
+	</select>
+	
+	<!-- 수정 -->
+	<update id="update_plan" parameterType="dev.mvc.plan.PlanVO" >
+    	UPDATE plan SET pname=#{pname} WHERE planID=#{planID}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="delete_plan" parameterType="int">
+    	DELETE FROM plan WHERE planID=#{planID}
+  	</delete>
+</mapper>
