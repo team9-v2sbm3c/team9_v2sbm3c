@@ -16,10 +16,70 @@
   
 </head>
 <body>
-<c:import url="/menu/top.do" />
+	<jsp:include page="../menu/top.jsp" flush='false' />
+	<br>
+	<br>
+	<div class='title_line'>카테고리</div>
+
+	<aside class="aside_right">
+		<a href="#">등록</a> <span class='menu_divide'>│</span> <a href="javascript:location.reload();">새로고침</a>
+	</aside>
+	<div class="menu_line">
+		<div id='panel_delete' style='padding: 10px 0px 10px 0px; background-color: #F9F9F9; width: 100%; text-align: center;'>
+    <form name='frm_delete' id='frm_delete' method='post' action='./delete.do'>
+      <input type="hidden" name="planID" value="${param.planID }"> <%-- 삭제할 카테고리 번호 --%>
+			<div class="msg_warning">카테고리를 삭제하면 복구 할 수 없습니다.</div>
+      		<label>관련 카테고리 이름</label>:  ${planVO.pname } 
+		<button type="submit" id='submit' class='btn btn-info btn-sm' style='height: 28px; margin-bottom: 5px;'>삭제</button>
+      <button type="button" onclick="location.href='/plan/list_all.do'" class='btn btn-info btn-sm' style='height: 28px; margin-bottom: 5px;'>취소</button>
+    </form>
+  </div>
+	</div>
+
+	<form name='frm' method='post' action='/plan/create.do'>
+		<div style="text-align: center;">
+			<label>카테고리 이름</label> 
+			<input type="text" name="pname" value="" required="required" autofocus="autofocus" class=""style="width: 50%">
+			<button type="submit" class="btn btn-secondary btn-sm" style="height: 28px; margin-bottom: 5px;">등록</button>
+			<button type="button" onclick="location.href='./list_all.do'" class="btn btn-secondary btn-sm" style="height: 28px; margin-bottom: 5px;">목록</button>
+		</div>
+	</form>
+
+	<table class="table table-hover">
+		<colgroup>
+			<col style='width: 10%;' />
+			<col style='width: 40%;' />
+			<col style='width: 10%;' />
+			<col style='width: 20%;' />
+			<col style='width: 20%;' />
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="th_bs">순서</th>
+				<th class="th_bs">카테고리 이름</th>
+				<th class="th_bs">자료수</th>
+				<th class="th_bs">등록일</th>
+				<th class="th_bs">기타</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="planVO" items="${list }" varStatus="info">
+				<c:set var="planID" value="${planVO.planID }" />
+
+				<tr>
+					<td class="td_bs">${planVO.planID }</td>
+					<td class="td_bs"><a href="#" style="display: block;">${planVO.pname }</a></td>
+					<td class="td_bs">${planVO.planCnt }</td>
+					<td class="td_bs">${planVO.pdate.substring(0,10) }</td>
+					<td class="td_bs"><a href="./delete.do?planID=${planID }" title="삭제">삭제</a></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+
+	</table>
 
 
- 
-<jsp:include page="../menu/bottom.jsp" flush='false' /> 
+	<jsp:include page="../menu/bottom.jsp" flush='false' />
+</body> 
 </body>
 </html>

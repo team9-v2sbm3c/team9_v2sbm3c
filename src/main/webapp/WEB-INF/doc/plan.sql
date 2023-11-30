@@ -1,18 +1,25 @@
 /**********************************/
 /* Table Name: 여행지 */
 /**********************************/
-DROP TABLE plan CASCADE CONSTRAINTS;
+drop table plan CASCADE CONSTRAINTS;
 
 CREATE TABLE plan(
 		planID                        		NUMBER(10)		 NOT NULL,
-		pname                         		VARCHAR2(50)		 NULL 
+		pname                         		VARCHAR2(50)		 NULL ,
+		planCnt                       		NUMBER(10)		 NULL ,
+		pdate                         		DATE		 NULL 
 );
 
 COMMENT ON TABLE plan is '여행지';
 COMMENT ON COLUMN plan.planID is '여행지 번호';
 COMMENT ON COLUMN plan.pname is '여행지 이름';
+COMMENT ON COLUMN plan.planCnt is '여행지 자료수';
+COMMENT ON COLUMN plan.pdate is '여행지 등록일';
+
 
 ALTER TABLE plan ADD CONSTRAINT IDX_plan_PK PRIMARY KEY (planID);
+
+
 
 DROP SEQUENCE plan_seq;
 
@@ -24,9 +31,9 @@ CREATE SEQUENCE plan_seq
   NOCYCLE;             -- 다시 1부터 생성되는 것을 방지
 
 --Create
-INSERT INTO plan(planID, pname) VALUES(plan_seq.nextval, '서울'); 
-INSERT INTO plan(planID, pname) VALUES(plan_seq.nextval, '경기도'); 
-INSERT INTO plan(planID, pname) VALUES(plan_seq.nextval, '부산');
+INSERT INTO plan(planID, pname, planCnt, pdate) VALUES(plan_seq.nextval, '서울',0,sysdate); 
+INSERT INTO plan(planID, pname, planCnt, pdate) VALUES(plan_seq.nextval, '경기도',0,sysdate); 
+INSERT INTO plan(planID, pname, planCnt, pdate) VALUES(plan_seq.nextval, '부산',0,sysdate);
 
 --Read
 SELECT planID, pname FROM plan WHERE planID=1;

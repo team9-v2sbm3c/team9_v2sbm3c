@@ -45,7 +45,7 @@ public class PlanCont {
 		int cnt = this.planProc.create_plan(planVO);
 		
 		if(cnt==1) {
-			mav.setViewName("redirect:/plan/index.do");
+			mav.setViewName("redirect:/plan/list_all.do");
 		}else {
 			mav.addObject("code", "create_fail");
 			mav.setViewName("/plan/msg");
@@ -62,7 +62,7 @@ public class PlanCont {
 	 * @return
 	 */
 	@RequestMapping(value="/plan/list_all.do", method = RequestMethod.GET)
-	  public ModelAndView list_all(HttpSession session) {
+	  public ModelAndView list_all_plan(HttpSession session) {
 	    ModelAndView mav = new ModelAndView();
 	    
 	    /*
@@ -76,7 +76,8 @@ public class PlanCont {
 	    	mav.setViewName("#");
 	    }
 	    */
-	 
+	    ArrayList<PlanVO> list = this.planProc.list_all_plan();
+    	mav.addObject("list",list);
 	    return mav;
 	  }
 	
@@ -88,7 +89,7 @@ public class PlanCont {
 	@RequestMapping(value="/plan/read.do", method = RequestMethod.GET)
 	  public ModelAndView read_plan(int planID) { 
 	    ModelAndView mav = new ModelAndView();
-	    mav.setViewName("/plan/read"); 
+	    mav.setViewName("/plan/read.do"); 
 	    
 	    PlanVO planVO = this.planProc.read_plan(planID);
 	    mav.addObject("planVO", planVO);
@@ -157,8 +158,13 @@ public class PlanCont {
 	@RequestMapping(value="/plan/delete.do", method = RequestMethod.GET)
 	  public ModelAndView delete_plan(HttpSession session, int planID) { 
 	    ModelAndView mav = new ModelAndView();
+	    mav.setViewName("/plan/delete");
 	    
+	    PlanVO planVO = this.planProc.read_plan(planID);
+	    mav.addObject("planVO",planVO);
 	    
+	    ArrayList<PlanVO> list = this.planProc.list_all_plan();
+    	mav.addObject("list",list);
 	    
 	    /*
 	     * 관리자일 경우 여행지를 삭제할 수 있도록 함 , 자식 테이블 삭제 여부에 대해서 물어보는 코드 작성 
@@ -209,8 +215,12 @@ public class PlanCont {
 			mav.setViewName("#");
 		}
 		*/
+		int cnt = this.planProc.delete_plan(planID);
 		
-		
+		if(cnt ==1) {
+			mav.setViewName("redirect:/plan/list_all.do");
+		}
+		mav.addObject("cnt", cnt);
 		
 		return mav;
 	}

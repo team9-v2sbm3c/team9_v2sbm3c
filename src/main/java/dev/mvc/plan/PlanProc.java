@@ -2,10 +2,12 @@ package dev.mvc.plan;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component("dev.mvc.plan.PlanProc")
 public class PlanProc implements PlanProcInter {
+	@Autowired
 	private PlanDAOInter planDAO;
 	
 	@Override

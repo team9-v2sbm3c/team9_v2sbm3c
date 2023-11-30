@@ -1,13 +1,17 @@
 package dev.mvc.plan;
 /**
  * planID                        		NUMBER(10)		 NOT NULL,
- * pname                         		VARCHAR2(50)		 NULL 
- * @author blenbre777
+	pname                         		VARCHAR2(50)		 NULL ,
+	planCnt                       		NUMBER(10)		 NULL ,
+	pdate                         		DATE		 NULL 
+ * @author soldesk
  *
  */
 public class PlanVO {
 	private int planID;
 	private String pname;
+	private int planCnt;
+	private String pdate;
 	
 	public int getPlanID() {
 		return planID;
@@ -21,11 +25,16 @@ public class PlanVO {
 	public void setPname(String pname) {
 		this.pname = pname;
 	}
-	
-	@Override
-	public String toString() {
-		return "PlanVO [planID=" + planID + ", pname=" + pname + "]";
+	public int getPlanCnt() {
+		return planCnt;
 	}
-	
-	
+	public void setPlanCnt(int planCnt) {
+		this.planCnt = planCnt;
+	}
+	public String getPdate() {
+		return pdate;
+	}
+	public void setPdate(String pdate) {
+		this.pdate = pdate;
+	}
 }
