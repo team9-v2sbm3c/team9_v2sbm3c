@@ -19,16 +19,16 @@
 	<jsp:include page="../menu/top.jsp" flush='false' />
 	<br>
 	<br>
-	<div class='title_line'>카테고리</div>
+	<div class='title_line'>활동명</div>
 
 	<aside class="aside_right">
 		<a href="#">등록</a> <span class='menu_divide'>│</span> <a href="javascript:location.reload();">새로고침</a>
 	</aside>
 	<div class="menu_line"></div>
 
-	<form name='frm' method='post' action='/plan/create.do'>
+	<form name='frm' method='post' action='/activity/create.do'>
 		<div style="text-align: center;">
-			<label>여행지 이름</label> 
+			<label>활동 이름</label> 
 			<input type="text" name="pname" value="" required="required" autofocus="autofocus" class=""style="width: 50%">
 			<button type="submit" class="btn btn-secondary btn-sm"
 				style="height: 28px; margin-bottom: 5px;">등록</button>
@@ -42,29 +42,28 @@
 		<colgroup>
 			<col style='width: 10%;' />
 			<col style='width: 40%;' />
-			<col style='width: 10%;' />
+			
 			<col style='width: 20%;' />
 			<col style='width: 20%;' />
 		</colgroup>
 		<thead>
 			<tr>
 				<th class="th_bs">순서</th>
-				<th class="th_bs">카테고리 이름</th>
-				<th class="th_bs">자료수</th>
+				<th class="th_bs">활동명</th>
+				
 				<th class="th_bs">등록일</th>
 				<th class="th_bs">기타</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="planVO" items="${list }" varStatus="info">
-				<c:set var="planID" value="${planVO.planID }" />
+			<c:forEach var="activityVO" items="${list }" varStatus="info">
+				<c:set var="activityID" value="${activityVO.activityID }" />
 
 				<tr>
-					<td class="td_bs">${planVO.planID }</td>
-					<td class="td_bs"><a href="../activity/list_all.do?planID=${planVO.planID }" style="display: block;">${planVO.pname }</a></td>
-					<td class="td_bs">${planVO.planCnt }</td>
-					<td class="td_bs">${planVO.pdate.substring(0,10) }</td>
-					<td class="td_bs"><a href="./delete.do?planID=${planID }" title="삭제">삭제</a></td>
+					<td class="td_bs">${activityVO.activityID }</td>
+					<td class="td_bs"><a href="#" style="display: block;">${activityVO.aname }</a></td>
+					<td class="td_bs">${activityVO.aDate.substring(0,10) }</td>
+					<td class="td_bs"><a href="./delete.do?activityID=${activityID }" title="삭제">삭제</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

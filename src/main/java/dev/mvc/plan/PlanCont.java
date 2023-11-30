@@ -11,11 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import dev.mvc.activity.ActivityProcInter;
+
 @Controller
 public class PlanCont {
 	@Autowired
 	@Qualifier("dev.mvc.plan.PlanProc")
 	private PlanProcInter planProc;
+	
+	@Autowired
+	@Qualifier("dev.mvc.activity.ActivityProc")
+	private ActivityProcInter activityProc;
 	
 	public PlanCont() {
 		System.out.println("여행지(Plan) Cont 실행");
@@ -62,7 +68,7 @@ public class PlanCont {
 	 * @return
 	 */
 	@RequestMapping(value="/plan/list_all.do", method = RequestMethod.GET)
-	  public ModelAndView list_all_plan(HttpSession session) {
+	  public ModelAndView list_all_plan() {
 	    ModelAndView mav = new ModelAndView();
 	    
 	    /*
@@ -156,7 +162,7 @@ public class PlanCont {
 	 * @return
 	 */
 	@RequestMapping(value="/plan/delete.do", method = RequestMethod.GET)
-	  public ModelAndView delete_plan(HttpSession session, int planID) { 
+	  public ModelAndView delete_plan(int planID) { 
 	    ModelAndView mav = new ModelAndView();
 	    mav.setViewName("/plan/delete");
 	    
@@ -166,19 +172,8 @@ public class PlanCont {
 	    ArrayList<PlanVO> list = this.planProc.list_all_plan();
     	mav.addObject("list",list);
 	    
-	    /*
-	     * 관리자일 경우 여행지를 삭제할 수 있도록 함 , 자식 테이블 삭제 여부에 대해서 물어보는 코드 작성 
-	    if() {
-	    	PlanVO planVO = this.planProc.read_plan(planID); 
-		    mav.addObject("palnVO", planVO);
-		    
-		    ArrayList<PlanVO> list = this.planProc.list_all_plan();
-		    mav.addObject("list",list);
-	    }else {
-	    	mav.setViewName("#"); // 관리자가 아닐경우 
-	    }
-	    */
-	    
+    	int count_by_planID = this.activityProc.count_by_planID(planID);
+    	mav.addObject("count_by_planID", count_by_planID);
 	     
 	    return mav;
 	  }
@@ -190,37 +185,19 @@ public class PlanCont {
 	 * @return
 	 */
 	@RequestMapping(value="/plan/delete.do" , method = RequestMethod.POST)
-	public ModelAndView delete_plan_proc(HttpSession session, int planID) {
+	public ModelAndView delete_plan_proc(int planID) {
 		ModelAndView mav = new ModelAndView();
 		
- 
+		this.activityProc.delete_by_planID(planID);
 		
-		/*
-		 * 여행지 삭제는 관리자만 할 수 있어야 함으로 만들면 추가적으로 수정 들어감 
-		if() {
-			
-//			this.planProc.delete_by_planId(planId); // 자식 레코드 삭제 (activity) 삭제 
-//			추후 자식 테이블 Contents 삭제 예정 코드 추가 요망 . 선생님께 질문 해봐야 할거 같음 .
-			
-			int cnt = this.planProc.delete_plan(planID);
-			
-			if(cnt == 1) {
-				mav.setViewName("redirect:/");
-			}else {
-				mav.addObject("code", "delete_fail");
-				mav.setViewName("/plan/msg");
-			}
-			mav.addObject("cnt", cnt);
-		}else {
-			mav.setViewName("#");
-		}
-		*/
 		int cnt = this.planProc.delete_plan(planID);
 		
 		if(cnt ==1) {
 			mav.setViewName("redirect:/plan/list_all.do");
 		}
 		mav.addObject("cnt", cnt);
+		
+		
 		
 		return mav;
 	}
