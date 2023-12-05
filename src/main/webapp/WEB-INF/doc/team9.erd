@@ -499,7 +499,7 @@
                                     <description></description>
                                     <columns>
                                       <net.java.amateras.db.visual.model.ColumnModel>
-                                        <columnName>contentsID</columnName>
+                                        <columnName>commentsID</columnName>
                                         <logicalName>댓글 번호</logicalName>
                                         <columnType class="net.java.amateras.db.dialect.ColumnType">
                                           <name>NUMBER</name>
@@ -517,7 +517,7 @@
                                       <net.java.amateras.db.visual.model.ColumnModel>
                                         <columnName>communityID</columnName>
                                         <logicalName>게시글번호</logicalName>
-                                        <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../../../../../../../../../../../../../../../../net.java.amateras.db.visual.model.TableModel/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+                                        <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel/columnType"/>
                                         <size>10</size>
                                         <notNull>false</notNull>
                                         <primaryKey>false</primaryKey>
@@ -801,8 +801,8 @@
                               </targetConnections>
                               <error></error>
                               <linkedPath></linkedPath>
-                              <tableName>contents</tableName>
-                              <logicalName>컨텐츠</logicalName>
+                              <tableName>community</tableName>
+                              <logicalName>커뮤니티</logicalName>
                               <description></description>
                               <columns>
                                 <net.java.amateras.db.visual.model.ColumnModel>
