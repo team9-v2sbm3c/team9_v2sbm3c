@@ -788,9 +788,9 @@
                                     </columns>
                                     <indices/>
                                     <backgroundColor>
-                                      <red>255</red>
-                                      <green>255</green>
-                                      <blue>206</blue>
+                                      <red>128</red>
+                                      <green>128</green>
+                                      <blue>255</blue>
                                     </backgroundColor>
                                     <sql></sql>
                                   </source>
