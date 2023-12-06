@@ -77,7 +77,7 @@
   }
 
   function send() { // 회원 가입 처리
-    let id = document.getElementById('id');
+    let id = document.getElementById('guestID');
     let id_msg = document.getElementById('id_msg');
 
     if (id.value.trim().length == 0) {
@@ -89,14 +89,14 @@
     }
 
     // 패스워드를 정상적으로 2번 입력했는지 확인
-    let gpassword = document.getElementById('passwd');
-    let gpassword2 = document.getElementById('passwd2');
-    let gpassword2_msg = document.getElementById('passwd2_msg');
+    let passwd = document.getElementById('passwd');
+    let passwd2 = document.getElementById('passwd2');
+    let passwd2_msg = document.getElementById('passwd2_msg');
 
-    if (gpassword.value != gpassword2.value) {
-      gpassword2_msg.innerHTML= '입력된 패스워드가 일치하지 않습니다.';
-      gpassword2_msg.classList.add('span_warning');    // class 적용
-      gpassword.focus();  // 첫번째 패스워드로 focus 설정
+    if (passwd.value != passwd2.value) {
+      passwd2_msg.innerHTML= '입력된 패스워드가 일치하지 않습니다.';
+      passwd2_msg.classList.add('span_warning');    // class 적용
+      passwd.focus();  // 첫번째 패스워드로 focus 설정
 
       return false;  // 회원 가입 진행 중지
     }
@@ -145,16 +145,16 @@
     <div class="form-group">
       <label>패스워드*:</label>
       <div class="input-group">
-        <input type='gpassword' class="form-control form-control-sm" name='gpassword' id='gpassword' value='' required="required" placeholder="패스워드">
+        <input type='passwd' class="form-control form-control-sm" name='passwd' id='passwd' value='' required="required" placeholder="패스워드">
       </div>
     </div>   
 
     <div class="form-group">
       <label>패스워드 확인*:</label>
       <div class="input-group">
-        <input type='gpassword' class="form-control form-control-sm" name='gpassword2' id='gpassword2' value='' required="required" placeholder="패스워드 확인">
+        <input type='passwd2' class="form-control form-control-sm" name='passwd2' id='passwd2' value='' required="required" placeholder="패스워드 확인">
       </div>
-      <span id='gpassword2_msg'></span>
+      <span id='passwd_msg'></span>
     </div>   
     
     <div class="form-group">

@@ -75,7 +75,7 @@
           </li>   
           <li class='li_none'>
             <button type='button' 
-                         onclick="location.href='/member/list.do'"
+                         onclick="location.href='/guest/list.do'"
                          class="btn btn-primary btn-sm">회원 목록</button>
           </li>                                                                     
         </c:when>    
