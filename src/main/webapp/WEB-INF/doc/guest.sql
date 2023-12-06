@@ -4,11 +4,12 @@
 DROP TABLE GUEST;
 
 CREATE TABLE GUEST(
-        guestno NUMERIC(10) NOT NULL,
+        guestno NUMBER(10) NOT NULL,
 		guestID VARCHAR(30) UNIQUE,
 		gpassword VARCHAR(60),
 		gname VARCHAR(40),
 		gemail VARCHAR(100),
+        grade NUMBER(2) NOT NULL,
         PRIMARY KEY(guestno)
 );
 
@@ -18,6 +19,7 @@ COMMENT ON COLUMN GUEST.guestID is '아이디';
 COMMENT ON COLUMN GUEST.gpassword is '비밀번호';
 COMMENT ON COLUMN GUEST.gname is '이름';
 COMMENT ON COLUMN GUEST.gemail is '이메일';
+COMMENT ON COLUMN GUEST.grade is '등급';
 
 DROP SEQUENCE GUEST_SEQ;
 
@@ -46,28 +48,28 @@ WHERE guestID='kd123';
 
 2) 등록
 -- 회원 관리용 계정, Q/A 용 계정
-INSERT INTO GUEST(guestno, guestID, gpassword, gname, gemail)
-VALUES (guest_seq.nextval, 'kdqna', '1234', '질문답변용', 'kd@naver.com');
+INSERT INTO GUEST(guestno, guestID, gpassword, gname, gemail, grade)
+VALUES (guest_seq.nextval, 'kdqna', '1234', '질문답변용', 'kd@naver.com', 1);
 
 -- 개인 회원 테스트 계정
-INSERT INTO GUEST(guestno, guestID, gpassword, gname, gemail)
-VALUES (guest_seq.nextval, 'kd123', '1234', '민철', 'kd@gmail.com');
+INSERT INTO GUEST(guestno, guestID, gpassword, gname, gemail, grade)
+VALUES (guest_seq.nextval, 'kd123', '1234', '민철', 'kd@gmail.com', 1);
 
 COMMIT;
 
 -- 목록 
 
-SELECT guestno, guestID, gpassword, gname, gemail
+SELECT guestno, guestID, gpassword, gname, gemail, grade
 FROM guest
 ORDER BY guestID ASC;
 2. 조회
  
 1) 정보 조회
-SELECT guestno, guestID, gpassword, gname, gemail
+SELECT guestno, guestID, gpassword, gname, gemail, grade
 FROM guest
 WHERE guestno = 1;
 
-SELECT guestno, guestID, gpassword, gname, gemail
+SELECT guestno, guestID, gpassword, gname, gemail, grade
 FROM guest
 WHERE guestID = 'kd@gmail.com';
 
@@ -93,3 +95,5 @@ WHERE guestID='kd123' AND gpassword='1234';
 
 COMMIT;
 
+ALTER TABLE guest
+MODIFY grade NULL;

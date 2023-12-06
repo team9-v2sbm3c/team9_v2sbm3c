@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
   window.onload = function() {
-    document.querySelector('#id').addEventListener('keypress', (event) => {
+    document.querySelector('#guestID').addEventListener('keypress', (event) => {
       if(event.key === 'Enter') {
         document.getElementById('btn_checkID').focus();
       }
@@ -38,7 +38,7 @@
 
   // jQuery ajax 요청
   function checkID() {
-    let id = document.getElementById('id');
+    let id = document.getElementById('guestID');
     let id_msg = document.getElementById('id_msg');
 
     if (id.value.trim().length == 0) {
@@ -50,7 +50,7 @@
     } else {  // when ID is entered
       id_msg.classList.remove('span_warning'); // class 삭제
 
-      let url = './checkID.do?id=' + id.value;
+      let url = './checkID.do?guestID=' + id.value;
 
       fetch(url, {
           method: 'GET'
@@ -72,7 +72,7 @@
       });      
 
       // 처리중 출력
-      id_msg.innerHTML="<img src='/member/images/ani04.gif' style='width: 5%;'>"; // static 기준
+      id_msg.innerHTML="<img src='/guest/images/ani04.gif' style='width: 5%;'>"; // static 기준
     }
   }
 
@@ -89,14 +89,14 @@
     }
 
     // 패스워드를 정상적으로 2번 입력했는지 확인
-    let passwd = document.getElementById('passwd');
-    let passwd2 = document.getElementById('passwd2');
-    let passwd2_msg = document.getElementById('passwd2_msg');
+    let gpassword = document.getElementById('passwd');
+    let gpassword2 = document.getElementById('passwd2');
+    let gpassword2_msg = document.getElementById('passwd2_msg');
 
-    if (passwd.value != passwd2.value) {
-      passwd2_msg.innerHTML= '입력된 패스워드가 일치하지 않습니다.';
-      passwd2_msg.classList.add('span_warning');    // class 적용
-      passwd.focus();  // 첫번째 패스워드로 focus 설정
+    if (gpassword.value != gpassword2.value) {
+      gpassword2_msg.innerHTML= '입력된 패스워드가 일치하지 않습니다.';
+      gpassword2_msg.classList.add('span_warning');    // class 적용
+      gpassword.focus();  // 첫번째 패스워드로 focus 설정
 
       return false;  // 회원 가입 진행 중지
     }
@@ -136,7 +136,7 @@
     <div class="form-group">
       <label>아이디*:</label>
        <div class="input-group">
-        <input type='text' class="form-control form-control-sm" name='id' id='id' value='' required="required" placeholder="아이디" autofocus="autofocus">
+        <input type='text' class="form-control form-control-sm" name='guestID' id='guestID' value='' required="required" placeholder="아이디" autofocus="autofocus">
         <button type='button' id="btn_checkID" onclick="checkID()" class="btn btn-primary btn-sm">중복확인</button>
        </div>
       <span id='id_msg'></span>
@@ -145,16 +145,16 @@
     <div class="form-group">
       <label>패스워드*:</label>
       <div class="input-group">
-        <input type='password' class="form-control form-control-sm" name='passwd' id='passwd' value='' required="required" placeholder="패스워드">
+        <input type='gpassword' class="form-control form-control-sm" name='gpassword' id='gpassword' value='' required="required" placeholder="패스워드">
       </div>
     </div>   
 
     <div class="form-group">
       <label>패스워드 확인*:</label>
       <div class="input-group">
-        <input type='password' class="form-control form-control-sm" name='passwd2' id='passwd2' value='' required="required" placeholder="패스워드 확인">
+        <input type='gpassword' class="form-control form-control-sm" name='gpassword2' id='gpassword2' value='' required="required" placeholder="패스워드 확인">
       </div>
-      <span id='passwd2_msg'></span>
+      <span id='gpassword2_msg'></span>
     </div>   
     
     <div class="form-group">

@@ -16,6 +16,7 @@ public class GuestVO {
   private String gpassword= "";
   private String gname = "";
   private String gemail= "";
+  private int grade;
   public int getGuestno() {
     return guestno;
   }
@@ -46,11 +47,18 @@ public class GuestVO {
   public void setGemail(String gemail) {
     this.gemail = gemail;
   }
-  
+  public int getGrade() {
+    return grade;
+  }
+  public void setGrade(int grade) {
+    this.grade = grade;
+  }
   @Override
   public String toString() {
     return "GuestVO [guestno=" + guestno + ", guestID=" + guestID + ", gpassword=" + gpassword + ", gname=" + gname
-        + ", gemail=" + gemail + "]";
+        + ", gemail=" + gemail + ", grade=" + grade + "]";
   }
   
+  
+
 }

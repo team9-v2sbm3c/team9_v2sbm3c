@@ -25,5 +25,25 @@ public class GuestProc implements GuestProcInter {
     int cnt = this.guestDAO.create(guestVO);
     return cnt;
   }
-
+  @Override
+  public int update(GuestVO guestVO) {
+    int cnt = this.guestDAO.update(guestVO);
+    return cnt;
+  }
+  
+  @Override
+  public int delete(int guestno) {
+    int cnt = this.guestDAO.delete(guestno);
+    return cnt;
+  }
+  @Override
+  public ArrayList<GuestVO> list() {
+    ArrayList<GuestVO> list = this.guestDAO.list();
+    return list;
+  }
+  @Override
+  public GuestVO read(int guestno) {
+    GuestVO guestVO = this.guestDAO.read(guestno);
+    return guestVO;
+  }
 }

@@ -2,6 +2,9 @@ package dev.mvc.guest;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -71,6 +74,7 @@ public class GuestCont {
     int checkID_cnt = guestProc.checkID(String.valueOf(guestVO.getGuestID()));
     if (checkID_cnt == 0) {
       // System.out.println("id: " + guestVO.getId());
+      guestVO.setGrade(1);
       
       int cnt= guestProc.create(guestVO); // SQL insert
       
@@ -90,9 +94,9 @@ public class GuestCont {
       mav.addObject("cnt", 0);                       // 추가된 레코드 없음.      
     }
 
-    mav.addObject("url", "/member/msg");  // /guest/msg -> /guest/msg.jsp
+    mav.addObject("url", "/guest/msg");  // /guest/msg -> /guest/msg.jsp
     
-    mav.setViewName("redirect:/member/msg.do"); // POST -> GET -> /guest/msg.jsp
+    mav.setViewName("redirect:/guest/msg.do"); // POST -> GET -> /guest/msg.jsp
     
     return mav;
   }
@@ -108,6 +112,55 @@ public class GuestCont {
     mav.setViewName(url); // forward
     
     return mav; // forward
+  }
+  /**
+   * 로그인 폼
+   * @return
+   */
+  // http://localhost:9093/guest/login.do 
+  @RequestMapping(value = "/guest/login.do", 
+                             method = RequestMethod.GET)
+  public ModelAndView login_cookie(HttpServletRequest request) {
+    ModelAndView mav = new ModelAndView();
+    
+    Cookie[] cookies = request.getCookies();
+    Cookie cookie = null;
+  
+    String ck_id = ""; // id 저장
+    String ck_id_save = ""; // id 저장 여부를 체크
+    String ck_passwd = ""; // passwd 저장
+    String ck_passwd_save = ""; // passwd 저장 여부를 체크
+  
+    if (cookies != null) { // 쿠키가 존재한다면
+      for (int i=0; i < cookies.length; i++){
+        cookie = cookies[i]; // 쿠키 객체 추출
+      
+        if (cookie.getName().equals("ck_id")){
+          ck_id = cookie.getValue(); 
+        }else if(cookie.getName().equals("ck_id_save")){
+          ck_id_save = cookie.getValue();  // Y, N
+        }else if (cookie.getName().equals("ck_passwd")){
+          ck_passwd = cookie.getValue();         // 1234
+        }else if(cookie.getName().equals("ck_passwd_save")){
+          ck_passwd_save = cookie.getValue();  // Y, N
+        }
+      }
+    }
+  
+    //    <input type='text' class="form-control" name='id' id='id' 
+    //            value='${ck_id }' required="required" 
+    //            style='width: 30%;' placeholder="아이디" autofocus="autofocus">
+    mav.addObject("ck_id", ck_id);
+  
+    //    <input type='checkbox' name='id_save' value='Y' 
+    //            ${ck_id_save == 'Y' ? "checked='checked'" : "" }> 저장
+    mav.addObject("ck_id_save", ck_id_save);
+  
+    mav.addObject("ck_passwd", ck_passwd);
+    mav.addObject("ck_passwd_save", ck_passwd_save);
+  
+    mav.setViewName("/guest/login"); // /guest/login.jsp
+    return mav;
   }
 
 }
