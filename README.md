@@ -34,9 +34,11 @@
 
 ## 논리적 모델링
 
-![image](https://github.com/Blenbre777/team9_v2sbm3c/assets/42365757/a30d7b72-262d-40fb-ae33-b4b2ae989cb9)
+![image](https://github.com/team9-v2sbm3c/team9_v2sbm3c/assets/42365757/739d85ca-29a8-4c51-8fea-64556745e10c)
+
 
 
 ## 물리적 모델링
 
-![image](https://github.com/Blenbre777/team9_v2sbm3c/assets/42365757/2c2a14f0-faaa-498d-883f-97be640e7eee)
+![image](https://github.com/team9-v2sbm3c/team9_v2sbm3c/assets/42365757/bcfdaec0-791d-41ff-aa40-219e7acd1d2d)
+

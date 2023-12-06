@@ -45,3 +45,6 @@ UPDATE plan SET planID=1 WHERE planID=4;
 
 --Delete
 DELETE FROM plan WHERE planID=1;
+
+--DCL
+commit ; 
