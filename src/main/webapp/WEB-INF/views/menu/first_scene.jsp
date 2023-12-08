@@ -13,13 +13,50 @@
 
 </head>
 <body>
-<div class=first_scene_container>
-	<img src="main/images/maintest.png" alt="main_test_image" class="image">
-	<div class='text-overlay'>
-		<h2>새로운 웹사이트에 오신걸 환영합니다.</h2>
-		<p>새로운 발자취를 남겨보세요.</p>
-	</div>	
-</div>
-    
+	<!-- Carousel -->
+	<div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+		<!-- 차트 -->
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+		</div>
+
+		<!-- 슬라이드 내용 -->
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="main/images/Seoul.png" alt="서울" class="d-block" style="width: 100%; height: 800px; filter: brightness(50%);">
+				<div class="carousel-caption">
+					<h3>서울</h3>
+					<p class="text-light">핫한 10대들의 데이트 장소</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img src="main/images/Jeju-do.png" alt="제주도" class="d-block" style="width: 100%; height: 800px; filter: brightness(50%);">
+				<div class="carousel-caption">
+					<h3>제주도</h3>
+					<p class="text-light">부모님들과 같이 가기 좋은 장소</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img src="main/images/Gyeongsangnam-do.png" alt="부산" class="d-block" style="width: 100%; height: 800px; filter: brightness(50%);">
+				<div class="carousel-caption">
+					<h3>부산</h3>
+					<p class="text-light">친구들과 추억쌓기 좋은 장소</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- 좌 / 우 버튼 -->
+		<button class="carousel-control-prev" type="button"
+			data-bs-target="#demo" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon"></span>
+		</button>
+		<button class="carousel-control-next" type="button"
+			data-bs-target="#demo" data-bs-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</button>
+	</div>
 </body>
 </html>

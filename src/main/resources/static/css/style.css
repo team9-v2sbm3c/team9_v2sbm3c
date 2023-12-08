@@ -478,7 +478,12 @@
     margin-bottom: 5px;
     text-align: center;
   }
-  
+   .carousel-inner > .item > img {
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 400px;
+    } 
   
   
   

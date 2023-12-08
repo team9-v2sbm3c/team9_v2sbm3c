@@ -8,35 +8,42 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
 <title>http://localhost:9093/</title>
 
 <link href="/css/main.css" rel="Stylesheet" type="text/css">
-<!-- /static 기준 -->
+
 
 </head>
 <body>
-	<div class=second_scene_container>
-		<p class='title'>추천 여행지</p>
-		<div class="container">
-			<c:forEach var="plan" items="${list}" varStatus="loop">
-				<c:if test="${loop.index < 3}">
-					<div class="item">
-						<div class="card">
-							<a href="${plan.planID}">
-								<div class="image-container">
-									<img src="main/images/maintest.png" alt="Card Image">
-									<div class="overlay">
-										<p class="description">${plan.pname}</p>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div>
-				</c:if>
-			</c:forEach>
+	<div class="text-center">
+		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">활동 추천받기</button>
+		
+	</div>
+
+	<!--modal -->
+	<div class="modal" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">추천 시스템은 준비중입니다..</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">준비중입니다.</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger"
+						data-bs-dismiss="modal">Close</button>
+				</div>
+
+			</div>
 		</div>
 	</div>
+
 </body>
 </html>
