@@ -19,7 +19,7 @@
 	<jsp:include page="../menu/top.jsp" flush='false' />
 	<br>
 	<br>
-	<div class='title_line'>카테고리</div>
+	<div class='title_line'>여행지 카테고리</div>
 
 	<aside class="aside_right">
 		<a href="#">등록</a> <span class='menu_divide'>│</span> <a href="javascript:location.reload();">새로고침</a>
@@ -49,7 +49,7 @@
 		<thead>
 			<tr>
 				<th class="th_bs">순서</th>
-				<th class="th_bs">카테고리 이름</th>
+				<th class="th_bs">여행지 이름</th>
 				<th class="th_bs">자료수</th>
 				<th class="th_bs">등록일</th>
 				<th class="th_bs">기타</th>
@@ -64,7 +64,10 @@
 					<td class="td_bs"><a href="../activity/list_all.do?planID=${planVO.planID }" style="display: block;">${planVO.pname }</a></td>
 					<td class="td_bs">${planVO.planCnt }</td>
 					<td class="td_bs">${planVO.pdate.substring(0,10) }</td>
-					<td class="td_bs"><a href="./delete.do?planID=${planID }" title="삭제">삭제</a></td>
+					<td class="td_bs">
+						<a href="./update.do?planID=${planID }" title="수정">수정</a>
+						<a href="./delete.do?planID=${planID }" title="삭제">삭제</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>

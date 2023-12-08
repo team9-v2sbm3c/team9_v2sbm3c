@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
-<title>http://localhost:9091/</title>
-<link rel="shortcut icon" href="/images/star.png" />
+<title>http://localhost:9093/</title>
+
 <%-- /static 기준 --%>
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 <!-- /static 기준 -->
@@ -25,7 +25,7 @@
 	<jsp:include page="../menu/top.jsp" flush='false' />
 	<br>
 	<br>
-	<div class='title_line'>카테고리</div>
+	<div class='title_line'>여행지 카테고리</div>
 
 	<aside class="aside_right">
 		<a href="#">등록</a> <span class='menu_divide'>│</span> <a
@@ -106,8 +106,9 @@
 					<td class="td_bs"><a href="#" style="display: block;">${planVO.pname }</a></td>
 					<td class="td_bs">${planVO.planCnt }</td>
 					<td class="td_bs">${planVO.pdate.substring(0,10) }</td>
-					<td class="td_bs"><a href="./delete.do?planID=${planID }"
-						title="삭제">삭제</a></td>
+					<td class="td_bs">
+						<a href="./update.do?planID=${planID }" title="수정">수정</a>
+						<a href="./delete.do?planID=${planID }" title="삭제">삭제</a>
 				</tr>
 			</c:forEach>
 		</tbody>

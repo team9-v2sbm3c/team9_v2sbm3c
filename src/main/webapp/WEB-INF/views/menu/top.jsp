@@ -16,6 +16,7 @@
         <a href="/">메인</a>
         <nav>
             <ul>
+            	<li><a href="../plan/list_all.do">여행지 테스트</a></li>
                 <li><a href="../owner/login.do">관리자</a></li>
                 <li><a href="../guest/login.do">로그인</a></li>
                 <li><a href="#"></a></li>	

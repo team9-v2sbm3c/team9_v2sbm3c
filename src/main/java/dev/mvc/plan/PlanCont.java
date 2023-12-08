@@ -28,18 +28,6 @@ public class PlanCont {
 	}
 	
 	/**
-	 * 여행지 카테고리 폼 
-	 * @return
-	 */
-	@RequestMapping(value="/plan/create.do" , method = RequestMethod.GET)
-	public ModelAndView create_plan() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/plan/create");
-		
-		return mav;
-	}
-	
-	/**
 	 * 여행지 카테고리 데이터 처리  
 	 * @param planVO
 	 * @return
@@ -113,22 +101,14 @@ public class PlanCont {
 	  public ModelAndView update_plan(HttpSession session, int planID) { 
 	    ModelAndView mav = new ModelAndView();
 	    
-	    /*
-	     * 관리자만 이용 가능하도록 수정 해야함 
-	    if() {
-	    	mav.setViewName("#");
-	    	
-	    	PlanVO planVO = this.planProc.read_plan(planID);
-	    	mav.addObject("planVO", planVO);
-	    	
-	    	ArrayList<PlanVO> list = this.planProc.list_all_plan();
-	    	mav.addObject("list",list);
-	    }else {
-	    	mav.setViewName("#");
-	    }
-	    */
+	    mav.setViewName("/plan/update");   
 	    
-	        
+	    PlanVO planVO = this.planProc.read_plan(planID);
+	    mav.addObject("planVO", planVO);
+	    
+	    ArrayList<PlanVO> list = this.planProc.list_all_plan();
+	    mav.addObject("list",list);
+	    
 	    return mav;
 	  }
 	
