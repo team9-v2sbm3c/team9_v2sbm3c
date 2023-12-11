@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div class="text-center">
-		<a href="http://localhost:8000/recommend_system/recommend_form?memberno=12" class="btn btn-primary">활동 추천받기</a>
+		<a href="http://localhost:8000/recommend_system/recommend_form?guestno=1" class="btn btn-primary">활동 추천받기</a>
 		
 	</div>
 

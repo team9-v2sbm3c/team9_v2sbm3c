@@ -61,7 +61,7 @@
 
 				<tr>
 					<td class="td_bs">${planVO.planID }</td>
-					<td class="td_bs"><a href="../activity/list_all.do?planID=${planVO.planID }" style="display: block;">${planVO.pname }</a></td>
+					<td class="td_bs">${planVO.pname }</a></td>
 					<td class="td_bs">${planVO.planCnt }</td>
 					<td class="td_bs">${planVO.pdate.substring(0,10) }</td>
 					<td class="td_bs">

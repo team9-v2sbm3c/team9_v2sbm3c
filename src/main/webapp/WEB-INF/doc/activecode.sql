@@ -1,6 +1,8 @@
 /**********************************/
 /* Table Name: 활동종류 */
 /**********************************/
+drop table activity;
+
 CREATE TABLE activecode(
 		activecodeno                  		NUMBER(10)		 NOT NULL,
 		aname                         		VARCHAR2(50)		 NOT NULL
