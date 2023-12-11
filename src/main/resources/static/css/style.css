@@ -478,12 +478,19 @@
     margin-bottom: 5px;
     text-align: center;
   }
+  
+  /* carousel */ 
    .carousel-inner > .item > img {
       top: 0;
       left: 0;
       min-width: 100%;
       min-height: 400px;
     } 
-  
-  
-  
+   .c-item{
+   	height:480px;
+   }
+   .c-img{
+   	height:100%;
+   	object-fit:cover;
+   	filter:birghtness(0.6);
+   }
