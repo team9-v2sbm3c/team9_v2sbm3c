@@ -10,7 +10,7 @@ public interface OwnerDAOInter {
   
   /**
    * 회원 정보
-   * @param String
+   * @param id
    * @return
    */
   public OwnerVO read_by_id(String id);

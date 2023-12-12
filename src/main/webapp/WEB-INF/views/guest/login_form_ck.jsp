@@ -19,7 +19,7 @@
 
     document.getElementById('btn_loadDefault').addEventListener('click', () => {
       document.getElementById('id').value = '';
-      document.getElementById('gpassword').value = '';
+      document.getElementById('passwd').value = '';
     });
   }
     

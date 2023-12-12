@@ -1,12 +1,14 @@
 /**********************************/
 /* Table Name: Owner */
 /**********************************/
+DROP TABLE OWNER;
+
 CREATE TABLE OWNER(
 		ownerno                       		NUMBER(10)		 NOT NULL,
-		ownerID                       		VARCHAR2(20)		 NOT NULL,
-		opassword                     		VARCHAR2(15)		 NOT NULL,
-		oname                         		VARCHAR2(25)		 NOT NULL,
-		rdate                          		DATE		 NOT NULL,
+		id                       		VARCHAR2(20)		 NOT NULL UNIQUE,
+		passwd                     		VARCHAR2(15)		 NOT NULL,
+		mname                         		VARCHAR2(25)		 NOT NULL,
+		mdate                          		DATE		 NOT NULL,
 		grade                         		NUMBER(5)		 NOT NULL,
         PRIMARY KEY(ownerno)
 );
@@ -14,10 +16,10 @@ CREATE TABLE OWNER(
 
 COMMENT ON TABLE Owner is '관리자';
 COMMENT ON COLUMN Owner.ownerno is '관리자번호';
-COMMENT ON COLUMN Owner.ownerID is '관리자아이디';
-COMMENT ON COLUMN Owner.opassword is '비밀번호';
-COMMENT ON COLUMN Owner.oname is '이름';
-COMMENT ON COLUMN Owner.rdate is '가입일';
+COMMENT ON COLUMN Owner.id is '관리자아이디';
+COMMENT ON COLUMN Owner.passwd is '비밀번호';
+COMMENT ON COLUMN Owner.mname is '이름';
+COMMENT ON COLUMN Owner.mdate is '가입일';
 COMMENT ON COLUMN Owner.grade is '등급';
 
 DROP SEQUENCE OWNER_SEQ;
@@ -29,15 +31,18 @@ CREATE SEQUENCE OWNER_SEQ
   CACHE 2                   -- 2번은 메모리에서만 계산
   NOCYCLE;                  -- 다시 1부터 생성되는 것을 방지
 
-INSERT INTO owner(ownerno, ownerID, opassword, oname, rdate, grade)
+INSERT INTO owner(ownerno, id, passwd, mname, mdate, grade)
 VALUES(owner_seq.nextval, 'owner', '1234', '관리자1', sysdate, 1);
 
 commit;
 
-SELECT ownerno, ownerID, opassword, oname, rdate, grade 
+SELECT ownerno, id, passwd, mname, mdate, grade
 FROM owner
 WHERE ownerno=1;
 
 SELECT COUNT(*) as cnt
 FROM owner
-WHERE ownerID='owner' AND opassword='1234'; 
+WHERE id='owner' AND passwd='1234'; 
+
+-- DELETE
+DELETE FROM owner WHERE ownerno=4;
