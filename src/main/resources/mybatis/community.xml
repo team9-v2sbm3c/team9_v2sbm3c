@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.mvc.community.CommunityDAOInter">	
+	<!-- 생성 -->
+	<insert id="create_community" parameterType="dev.mvc.community.CommunityVO" >
+    	INSERT INTO community (communityID, activecodeno, guestno, planID, title, content , mainImage, mainImagePreview, cimage, size1, map, youtube, cdate, replycnt) 
+    	VALUES (community_seq.nextval, #{activecodeno}, #{guestno}, #{planID}, #{title}, #{content} , #{mainImage}, #{mainImagePreview}, #{cimage}, #{size1}, #{map}, #{youtube}, sysdate, 11);
+	</insert>
+  	
+  	
+</mapper>

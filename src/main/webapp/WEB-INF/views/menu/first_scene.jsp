@@ -9,6 +9,9 @@
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" /> 
 <title>http://localhost:9093/</title>
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
 <link href="/css/style.css" rel="Stylesheet" type="text/css"> <!-- /static 기준 -->
 
 </head>
@@ -19,28 +22,31 @@
 		<!-- 차트 -->
 		<div class="carousel-indicators">
 			<button type="button" data-bs-target="#carouselSldier" data-bs-slide-to="0" class="active"></button>
-			<button type="button" data-bs-target="#carouselSldier" data-bs-slide-to="1"></button>
-			<button type="button" data-bs-target="#carouselSldier" data-bs-slide-to="2"></button>
+			<button type="button" data-bs-target="#carouselSldier" data-bs-slide-to="1" ></button>
+			<button type="button" data-bs-target="#carouselSldier" data-bs-slide-to="2" ></button>
 		</div>
 
 		<!-- 슬라이드 내용 -->
 		<div class="carousel-inner">
 			<div class="carousel-item active c-item">
-				<img src="main/images/Seoul.png" alt="서울" class="d-block w-100 c-img">
+				<img src="main/images/Seoul.png" alt="서울"
+					class="d-block w-100 c-img">
 				<div class="carousel-caption">
 					<h3>서울</h3>
 					<p class="text-light">핫한 10대들의 데이트 장소</p>
 				</div>
 			</div>
 			<div class="carousel-item c-item">
-				<img src="main/images/Jeju-do.png" alt="제주도" class="d-block w-100 c-img">
+				<img src="main/images/Jeju-do.png" alt="제주도"
+					class="d-block w-100 c-img">
 				<div class="carousel-caption">
 					<h3>제주도</h3>
 					<p class="text-light">부모님들과 같이 가기 좋은 장소</p>
 				</div>
 			</div>
 			<div class="carousel-item c-item">
-				<img src="main/images/Gyeongsangnam-do.png" alt="부산" class="d-block w-100 c-img">
+				<img src="main/images/Gyeongsangnam-do.png" alt="부산"
+					class="d-block w-100 c-img">
 				<div class="carousel-caption">
 					<h3>부산</h3>
 					<p class="text-light">친구들과 추억쌓기 좋은 장소</p>
@@ -58,5 +64,6 @@
 			<span class="carousel-control-next-icon"></span>
 		</button>
 	</div>
+	
 </body>
 </html>

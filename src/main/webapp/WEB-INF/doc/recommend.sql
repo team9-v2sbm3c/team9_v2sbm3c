@@ -40,6 +40,8 @@ commit;
 --Read
 SELECT recommendID, guestno , activecodeno , seq , rdate FROM recommend ORDER BY rdate ASC;
 
+SELECT recommendID, guestno , activecodeno , seq , rdate FROM recommend WHERE guestno = 1;
+
 SELECT r.recommendID, r.guestno, r.activecodeno, r.seq, r.rdate, g.gname
 FROM recommend r
 INNER JOIN GUEST g ON r.guestno = g.guestno
