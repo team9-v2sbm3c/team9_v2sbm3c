@@ -11,17 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import dev.mvc.activity.ActivityProcInter;
 
 @Controller
 public class PlanCont {
 	@Autowired
 	@Qualifier("dev.mvc.plan.PlanProc")
 	private PlanProcInter planProc;
-	
-	@Autowired
-	@Qualifier("dev.mvc.activity.ActivityProc")
-	private ActivityProcInter activityProc;
 	
 	public PlanCont() {
 		System.out.println("여행지(Plan) Cont 실행");
@@ -151,9 +146,6 @@ public class PlanCont {
 	    
 	    ArrayList<PlanVO> list = this.planProc.list_all_plan();
     	mav.addObject("list",list);
-	    
-    	int count_by_planID = this.activityProc.count_by_planID(planID);
-    	mav.addObject("count_by_planID", count_by_planID);
 	     
 	    return mav;
 	  }
@@ -167,8 +159,6 @@ public class PlanCont {
 	@RequestMapping(value="/plan/delete.do" , method = RequestMethod.POST)
 	public ModelAndView delete_plan_proc(int planID) {
 		ModelAndView mav = new ModelAndView();
-		
-		this.activityProc.delete_by_planID(planID);
 		
 		int cnt = this.planProc.delete_plan(planID);
 		

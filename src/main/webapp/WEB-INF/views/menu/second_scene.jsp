@@ -16,9 +16,8 @@
 
 </head>
 <body>
-	
 	<div class="text-center">
-		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">활동 추천받기</button>
+		<a href="http://localhost:8000/recommend_system/recommend_form?guestno=1" class="btn btn-primary">활동 추천받기</a>
 		
 	</div>
 

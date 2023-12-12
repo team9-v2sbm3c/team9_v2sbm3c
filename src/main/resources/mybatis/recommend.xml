@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.mvc.recommend.RecommendDAOInter">	
+	<!-- 유저 관심사 조회-->
+	<select id="list_all_recommend" resultType="dev.mvc.recommend.RecommendVO" >
+    	SELECT r.recommendID, r.guestno, r.activecodeno, r.seq, r.rdate, g.gname
+		FROM recommend r
+		INNER JOIN GUEST g ON r.guestno = g.guestno
+		ORDER BY r.rdate ASC
+	</select>
+	
+	<!-- 유저 한명 조회 -->
+  	<select id="read_recommend" resultType="dev.mvc.recommend.RecommendVO" parameterType="int" >
+    	SELECT recommendID, guestno , activecodeno , seq , rdate FROM recommend WHERE guestno = #{guestno}
+	</select>
+	
+	<!-- 삭제 -->
+	<delete id="delete_recommend" parameterType="int">
+    	DELETE FROM recommend WHERE guestno=#{guestno}
+  	</delete>
+	
+	
+</mapper>
