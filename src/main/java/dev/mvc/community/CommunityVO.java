@@ -134,4 +134,29 @@ public class CommunityVO {
 	public void setFile1MF(MultipartFile file1mf) {
 	      file1MF = file1mf;
 	}
+	public String getSize1_label() {
+		return size1_label;
+	}
+	public void setSize1_label(String size1_label) {
+		this.size1_label = size1_label;
+	}
+	public int getStart_num() {
+		return start_num;
+	}
+	public void setStart_num(int start_num) {
+		this.start_num = start_num;
+	}
+	public int getEnd_num() {
+		return end_num;
+	}
+	public void setEnd_num(int end_num) {
+		this.end_num = end_num;
+	}
+	public int getNow_page() {
+		return now_page;
+	}
+	public void setNow_page(int now_page) {
+		this.now_page = now_page;
+	}
+	
 }

@@ -19,47 +19,21 @@
 <body>
 <c:import url="../menu/top.jsp" />
 	<div class='title_line'>${planVO.pname }> 글 등록</div>
-	<aside class="aside_right">
-		<a href="./create.do?planID=${planVO.planID }">등록</a> <span
-			class='menu_divide'>│</span> <a href="javascript:location.reload();">새로고침</a>
-		<span class='menu_divide'>│</span> <a
-			href="./list_by_planID_search_paging.do?planID=${planVO.planID }">기본
-			목록형</a> <span class='menu_divide'>│</span> <a
-			href="./list_by_planID_grid.do?planID=${planVO.planID }">갤러리형</a>
-	</aside>
-
-	<div style="text-align: right; clear: both;">
-		<form name='frm' id='frm' method='get'
-			action='./list_by_planID_search_paging.do'>
-			<input type='hidden' name='planID' value='${planVO.planID }'>
-			
-		</form>
-	</div>
-
-	<div class='menu_line'></div>
-
-	<form name='frm' method='post' action='./create.do'
-		enctype="multipart/form-data">
+	<form name='frm' method='post' action='./create.do' enctype="multipart/form-data">
 		<input type="hidden" name="planID" value="${param.planID }">
 
 		<div>
-			<label>제목</label> <input type='text' name='title' value='올 겨울 시원하게 날려버리자~'
-				required="required" autofocus="autofocus" class="form-control"
-				style='width: 100%;'>
+			<label>제목</label> <input type='text' name='title' value='올 겨울 시원하게 날려버리자~' required="required" autofocus="autofocus" class="form-control" style='width: 100%;'>
 		</div>
 		<div>
 			<label>내용</label>
-			<textarea name='content' required="required" class="form-control"
-				rows="12" style='width: 100%;'>시원한 일상을 날려버리고 싶다 </textarea>
+			<textarea name='content' required="required" class="form-control" rows="12" style='width: 100%;'>시원한 일상을 날려버리고 싶다 </textarea>
 		</div>
 		<div>
-			<label>검색어</label> <input type='text' name='word'
-				value='스포츠 , 스키 , 눈 ' required="required"
-				class="form-control" style='width: 100%;'>
+			<label>검색어</label> <input type='text' name='word' value='스포츠 , 스키 , 눈 ' required="required" class="form-control" style='width: 100%;'>
 		</div>
 		<div>
-			<label>이미지</label> <input type='file' class="form-control"
-				name='file1MF' id='file1MF' value='' placeholder="파일 선택">
+			<label>이미지</label> <input type='file' class="form-control" name='file1MF' id='file1MF' value='' placeholder="파일 선택">
 		</div>
 		<div>
 			<label>패스워드</label> <input type='password' name='passwd' value='1234'

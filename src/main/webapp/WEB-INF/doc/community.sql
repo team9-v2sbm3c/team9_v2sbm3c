@@ -68,6 +68,10 @@ FROM community
 WHERE planID = 1;
 
 --seach
+SELECT communityID, guestno, planID, title, content, cnt, replycnt, rdate, file1, file1saved, thumb1, size1
+FROM community
+ORDER BY communityID DESC;
+
 SELECT COUNT(*)
 FROM community
 WHERE planID=1;

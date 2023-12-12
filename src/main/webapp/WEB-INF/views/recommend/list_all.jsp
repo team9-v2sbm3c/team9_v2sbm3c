@@ -17,8 +17,6 @@
 </head>
 <body>
 	<jsp:include page="../menu/top.jsp" flush='false' />
-	<br>
-	<br>
 	<div class='title_line'>유저 관심사</div>
 
 	<aside class="aside_right">

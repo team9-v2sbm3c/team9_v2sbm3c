@@ -59,7 +59,7 @@
               </li>
             </c:otherwise>
           </c:choose>
-          <li class="nav-item"><a class="nav-link" href="../plan/list_all.do">여행지 테스트</a></li>
+          <li class="nav-item"><a class="nav-link" href="../community/list_all.do">게시판</a></li>
           <li class="nav-item"><a class="nav-link" href="../recommend/list_all.do">추천지 테스트</a></li>
         </ul>
         <form class="d-flex"> <!-- 추후 검색 기능으로 업그레이드 예정 -->

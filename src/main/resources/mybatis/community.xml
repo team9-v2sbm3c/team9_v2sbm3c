@@ -8,5 +8,8 @@
     	VALUES (community_seq.nextval, #{activecodeno}, #{guestno}, #{planID}, #{title}, #{content} , #{mainImage}, #{mainImagePreview}, #{cimage}, #{size1}, #{map}, #{youtube}, sysdate, 11);
 	</insert>
   	
-  	
+  	<select id="list_all_community" resultType="dev.mvc.community.CommunityVO">
+  		SELECT * FROM community
+		ORDER BY cdate DESC
+  	</select>
 </mapper>
