@@ -6,7 +6,6 @@
 <title>http://localhost:9093/</title>
 </head>
 <body>
-<<<<<<< HEAD
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Logo</a>
