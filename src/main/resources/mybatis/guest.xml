@@ -3,15 +3,67 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dev.mvc.guest.GuestDAOInter">	
   <select id="checkID" resultType="int" parameterType="String">
-    SELECT COUNT(guestID) as cnt
+    SELECT COUNT(id) as cnt
     FROM guest
-    WHERE guestID=#{guestID}
+    WHERE id=#{id} OR id IS NULL
   </select>
   
 	<!-- 조회 -->
 	<insert id="create" parameterType="dev.mvc.guest.GuestVO" >
-    INSERT INTO GUEST(guestno, guestID, gpassword, gname, gemail, grade)
-    VALUES (guest_seq.nextval, #{guestID}, #{gpassword}, #{gname}, #{gemail}, #{grade})
+    INSERT INTO GUEST(guestno, id, passwd, gname, gemail, gdate, grade)
+    VALUES (guest_seq.nextval, #{id}, #{passwd}, #{gname}, #{gemail}, sysdate, #{grade})
 	</insert>
   
+    <select id="list" resultType="dev.mvc.guest.GuestVO">
+    SELECT guestno, id, passwd, gname, gemail, gdate ,grade
+    FROM guest
+    ORDER BY grade ASC, id ASC
+  </select>
+  
+  <!-- customerno로 회원 정보 조회 -->
+  <select id="read" resultType="dev.mvc.guest.GuestVO" parameterType="int">
+    SELECT guestno, id, passwd, gname, gemail, gdate ,grade
+    FROM guest
+    WHERE guestno = #{guestno}
+  </select>  
+
+  <!-- id(이메일)로 회원 정보 조회 -->
+  <select id="readById" resultType="dev.mvc.guest.GuestVO" parameterType="String">
+    SELECT guestno, id, passwd, gname, gemail, gdate ,grade
+    FROM guest
+    WHERE id = #{id}
+  </select>  
+      
+  <update id="update" parameterType="dev.mvc.guest.GuestVO">
+    UPDATE guest 
+    SET id=#{id}, gname=#{gname}, gemail=#{gemail}, grade=#{grade}
+    WHERE guestno=#{guestno}
+  </update>
+  
+  <!-- update와 delete는 모두 처리된 레코드 갯수를 리턴한다. -->
+  <delete id="delete" parameterType="int">
+    DELETE FROM guest
+    WHERE guestno=#{guestno}
+  </delete>
+  
+    <!-- 로그인 -->
+  <select id="login" resultType="int" parameterType="HashMap">
+    SELECT COUNT(guestno) as cnt
+    FROM guest
+    WHERE id=#{id} AND passwd=#{passwd}
+  </select>
+  
+  <!--  현재 패스워드 검사 -->
+  <select id="passwd_check" parameterType="HashMap" resultType="int">
+    SELECT COUNT(guestno) as cnt
+    FROM guest
+    WHERE guestno=#{guestno} AND passwd=#{passwd}
+  </select>
+  
+  <!-- 패스워드 변경 -->
+  <update id="passwd_update" parameterType="HashMap">
+    UPDATE guest
+    SET passwd=#{passwd}
+    WHERE guestno=#{guestno}
+  </update>
 </mapper>

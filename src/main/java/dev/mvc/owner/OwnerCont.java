@@ -89,14 +89,14 @@ public class OwnerCont {
    
     int cnt = ownerProc.login(ownerVO);
     if (cnt == 1) { // 로그인 성공시 회원 정보 조회
-      OwnerVO ownerVO_read = ownerProc.read_by_id(ownerVO.getOwnerid()); // DBMS에서 id를 이용한 회원 조회
+      OwnerVO ownerVO_read = ownerProc.read_by_id(ownerVO.getId()); // DBMS에서 id를 이용한 회원 조회
       session.setAttribute("ownerno", ownerVO_read.getOwnerno()); // 서버의 메모리에 기록
-      session.setAttribute("owner_ownerId", ownerVO_read.getOwnerid());
-      session.setAttribute("owner_oname", ownerVO_read.getOname());
+      session.setAttribute("owner_id", ownerVO_read.getId());
+      session.setAttribute("owner_mname", ownerVO_read.getMname());
       session.setAttribute("owner_grade", ownerVO_read.getGrade());
    
-      String id = ownerVO.getOwnerid();                  // 폼에 입력된 id
-      String passwd = ownerVO.getOpassword();  // 폼에 입력된 passwd 
+      String id = ownerVO.getId();                  // 폼에 입력된 id
+      String passwd = ownerVO.getPasswd();  // 폼에 입력된 passwd 
       
       // -------------------------------------------------------------------
       // id 관련 쿠기 저장
@@ -114,10 +114,10 @@ public class OwnerCont {
       }
       
       // id를 저장할지 선택하는 CheckBox 체크 여부
-      Cookie ck_admin_id_save = new Cookie("ck_admin_id_save", id_save);
-      ck_admin_id_save.setPath("/");
-      ck_admin_id_save.setMaxAge(60 * 60 * 24 * 30); // 30 day
-      response.addCookie(ck_admin_id_save);
+      Cookie ck_owner_id_save = new Cookie("ck_owner_id_save", id_save);
+      ck_owner_id_save.setPath("/");
+      ck_owner_id_save.setMaxAge(60 * 60 * 24 * 30); // 30 day
+      response.addCookie(ck_owner_id_save);
       // -------------------------------------------------------------------
   
       // -------------------------------------------------------------------
