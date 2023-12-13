@@ -11,9 +11,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import dev.mvc.community.CommunityProcInter;
+import dev.mvc.owner.OwnerProcInter;
+
 
 @Controller
 public class PlanCont {
+	
+	@Autowired
+	@Qualifier("dev.mvc.owner.OwnerProc")
+	private OwnerProcInter ownerProc;
+
+//	오류 발생	 
+//	@Autowired
+//	@Qualifier("dev.mvc.community.CommnuityProc")
+//	private CommunityProcInter communityProc;
+	
 	@Autowired
 	@Qualifier("dev.mvc.plan.PlanProc")
 	private PlanProcInter planProc;
@@ -51,22 +64,17 @@ public class PlanCont {
 	 * @return
 	 */
 	@RequestMapping(value="/plan/list_all.do", method = RequestMethod.GET)
-	  public ModelAndView list_all_plan() {
+	  public ModelAndView list_all_plan(HttpSession session) {
 	    ModelAndView mav = new ModelAndView();
-	    
-	    /*
-	     * 관리자만 이용 가능하도록 수정 해야함.
-	    if() {
+	     
+	    if(this.ownerProc.isOwner(session)==true) {
 	    	mav.setViewName("/plan/list_all");
 	    	
 	    	ArrayList<PlanVO> list = this.planProc.list_all_plan();
 	    	mav.addObject("list",list);
 	    }else {
-	    	mav.setViewName("#");
+	    	mav.setViewName("/owner/login_need");
 	    }
-	    */
-	    ArrayList<PlanVO> list = this.planProc.list_all_plan();
-    	mav.addObject("list",list);
 	    return mav;
 	  }
 	
@@ -96,14 +104,17 @@ public class PlanCont {
 	  public ModelAndView update_plan(HttpSession session, int planID) { 
 	    ModelAndView mav = new ModelAndView();
 	    
-	    mav.setViewName("/plan/update");   
-	    
-	    PlanVO planVO = this.planProc.read_plan(planID);
-	    mav.addObject("planVO", planVO);
-	    
-	    ArrayList<PlanVO> list = this.planProc.list_all_plan();
-	    mav.addObject("list",list);
-	    
+	    if(this.ownerProc.isOwner(session)==true) {
+	    	mav.setViewName("/plan/update");   
+		    
+		    PlanVO planVO = this.planProc.read_plan(planID);
+		    mav.addObject("planVO", planVO);
+		    
+		    ArrayList<PlanVO> list = this.planProc.list_all_plan();
+		    mav.addObject("list",list);
+	    }else {
+	    	mav.setViewName("/owner/login_need");
+	    }
 	    return mav;
 	  }
 	
@@ -137,15 +148,23 @@ public class PlanCont {
 	 * @return
 	 */
 	@RequestMapping(value="/plan/delete.do", method = RequestMethod.GET)
-	  public ModelAndView delete_plan(int planID) { 
+	  public ModelAndView delete_plan(HttpSession session,int planID) { 
 	    ModelAndView mav = new ModelAndView();
-	    mav.setViewName("/plan/delete");
 	    
-	    PlanVO planVO = this.planProc.read_plan(planID);
-	    mav.addObject("planVO",planVO);
+	    if(this.ownerProc.isOwner(session)==true) {
+	    	mav.setViewName("/plan/delete");
+		    
+		    PlanVO planVO = this.planProc.read_plan(planID);
+		    mav.addObject("planVO",planVO);
+		    
+		    ArrayList<PlanVO> list = this.planProc.list_all_plan();
+	    	mav.addObject("list",list);
+	    	
+	    	//해당 여행지 레코드 개수 리턴하는 코드 추후 추가 예정 
+	    }else {
+	    	mav.setViewName("/owner/login_need");
+	    }
 	    
-	    ArrayList<PlanVO> list = this.planProc.list_all_plan();
-    	mav.addObject("list",list);
 	     
 	    return mav;
 	  }
@@ -157,18 +176,20 @@ public class PlanCont {
 	 * @return
 	 */
 	@RequestMapping(value="/plan/delete.do" , method = RequestMethod.POST)
-	public ModelAndView delete_plan_proc(int planID) {
+	public ModelAndView delete_plan_proc(HttpSession session,int planID) {
 		ModelAndView mav = new ModelAndView();
+		//ArrayList<CommunityVO> list =this.communityProc.list_by_planID(planID);
 		
-		int cnt = this.planProc.delete_plan(planID);
-		
-		if(cnt ==1) {
-			mav.setViewName("redirect:/plan/list_all.do");
-		}
-		mav.addObject("cnt", cnt);
-		
-		
-		
+		if(this.ownerProc.isOwner(session)==true) {
+			int cnt = this.planProc.delete_plan(planID);
+				
+			if(cnt ==1) {
+				mav.setViewName("redirect:/plan/list_all.do");
+			}
+			mav.addObject("cnt", cnt);
+		 }else {
+			 mav.setViewName("/owner/login_need");
+		 }						
 		return mav;
 	}
 }
