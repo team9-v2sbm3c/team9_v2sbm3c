@@ -17,8 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import dev.mvc.community.CommunityVO;
 import dev.mvc.plan.PlanProcInter;
 import dev.mvc.plan.PlanVO;
-import dev.mvc.tools.Tool;
-import dev.mvc.tools.Upload;
+import dev.mvc.tool.Tool;
+import dev.mvc.tool.Upload;
 
 @Controller
 public class CommunityCont {
@@ -128,9 +128,9 @@ public class CommunityCont {
 			}
 			mav.addObject("cnt", cnt); // request.setAttribute("cnt", cnt)
 
-			// System.out.println("--> planno: " + communityVO.getPlanID());
+			// System.out.println("--> planID: " + communityVO.getPlanID());
 			// redirect시에 hidden tag로 보낸것들이 전달이 안됨으로 request에 다시 저장
-			mav.addObject("planno", communityVO.getPlanID()); // redirect parameter 적용
+			mav.addObject("planID", communityVO.getPlanID()); // redirect parameter 적용
 
 			mav.addObject("url", "/community/msg"); // msg.jsp, redirect parameter 적용
 			mav.setViewName("redirect:/community/msg.do"); // Post -> Get - param...
@@ -172,8 +172,11 @@ public class CommunityCont {
 	        communityVO.setTitle(title);
 	        communityVO.setContent(content);  
 	      }
-	      
-	      return mav;
+	    mav.addObject("list", list);
+	    
+	    
+	    
+	    return mav;
 	}
 	
 	/**
@@ -207,7 +210,7 @@ public class CommunityCont {
 	    mav.addObject("planVO", planVO);
 	  
 	    HashMap<String, Object> hashMap = new HashMap<String, Object>();
-	    hashMap.put("planno", communityVO.getPlanID());
+	    hashMap.put("planID", communityVO.getPlanID());
 	   
 	    
 	    int search_count = this.communityProc.search_count(hashMap);  // 검색된 레코드 갯수 ->  전체 페이지 규모 파악
@@ -216,18 +219,18 @@ public class CommunityCont {
 	    /*
 	     * SPAN태그를 이용한 박스 모델의 지원, 1 페이지부터 시작 현재 페이지: 11 / 22 [이전] 11 12 13 14 15 16 17
 	     * 18 19 20 [다음]
-	     * @param planno 카테고리번호
+	     * @param planID 카테고리번호
 	     * @param now_page 현재 페이지
 	     * @param word 검색어
 	     * @param list_file 목록 파일명
 	     * @return 페이징용으로 생성된 HTML/CSS tag 문자열
 	     */
-	    String paging = communityProc.pagingBox(communityVO.getPlanID(), communityVO.getNow_page(), "list_by_planno.do", search_count);
+	    String paging = communityProc.pagingBox(communityVO.getPlanID(), communityVO.getNow_page(), "list_by_planID.do", search_count);
 	    mav.addObject("paging", paging);
 	  
 	    // mav.addObject("now_page", now_page);
 	    
-	    mav.setViewName("/community/list_by_planno");  // /community/list_by_planno.jsp
+	    mav.setViewName("/community/list_by_planID");  // /community/list_by_planID.jsp
 	  
 	    return mav;
 	  }
@@ -238,7 +241,7 @@ public class CommunityCont {
 	 * @return
 	 */
 	 @RequestMapping(value="/community/read.do", method = RequestMethod.GET)
-	  public ModelAndView read(int communityID) { // int planno = (int)request.getParameter("planno");
+	  public ModelAndView read_community(int communityID) { // int planID = (int)request.getParameter("planID");
 	    ModelAndView mav = new ModelAndView();
 	    mav.setViewName("/community/read"); // /WEB-INF/views/community/read.jsp
 	    

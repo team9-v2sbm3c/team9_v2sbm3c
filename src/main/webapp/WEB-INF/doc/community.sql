@@ -54,23 +54,23 @@ CREATE SEQUENCE COMMUNITY_SEQ
 
 --Create
 INSERT INTO community 
-VALUES (COMMUNITY_SEQ.nextval, 1, 1, 1, 'Sample content', 'image.jpg', 'preview_image.jpg', 'community_image.jpg', 500, 'Sample map', 'https://www.youtube.com/sample', TO_DATE('2023-01-01', 'YYYY-MM-DD'), 10);
-INSERT INTO community 
-VALUES (COMMUNITY_SEQ.nextval, 1, 1, 1, 'Another content', 'image2.jpg', 'preview_image2.jpg', 'community_image2.jpg', 600, 'Another map', 'https://www.youtube.com/another', TO_DATE('2023-01-02', 'YYYY-MM-DD'), 15);
-INSERT INTO community 
-VALUES (COMMUNITY_SEQ.nextval, 1, 1, 1, 'Yet another content', 'image3.jpg', 'preview_image3.jpg', 'community_image3.jpg', 700, 'Yet another map', 'https://www.youtube.com/yetanother', TO_DATE('2023-01-03', 'YYYY-MM-DD'), 20);
-INSERT INTO community 
-VALUES (COMMUNITY_SEQ.nextval, 1, 1, 1, 'Fourth content', 'image4.jpg', 'preview_image4.jpg', 'community_image4.jpg', 800, 'Fourth map', 'https://www.youtube.com/fourth', TO_DATE('2023-01-04', 'YYYY-MM-DD'), 25);
+VALUES (community_seq.nextval, 1, 2, 1, 'Sample Title 1', 'Sample Content 1', 'image1.jpg', 'preview_image1.jpg', 'community_image1.jpg', 500, 'Sample Map 1', 'https://www.youtube.com/sample1', TO_DATE('2023-01-01', 'YYYY-MM-DD'), 5);
 
+-- 두 번째 데이터
+INSERT INTO community 
+VALUES (community_seq.nextval, 2, 1, 2, 'Sample Title 2', 'Sample Content 2', 'image2.jpg', 'preview_image2.jpg', 'community_image2.jpg', 600, 'Sample Map 2', 'https://www.youtube.com/sample2', TO_DATE('2023-01-02', 'YYYY-MM-DD'), 8);
+
+-- 세 번째 데이터
+INSERT INTO community 
+VALUES (community_seq.nextval, 3, 1, 3, 'Sample Title 4', 'Sample Content 4', 'image3.jpg', 'preview_image3.jpg', 'community_image3.jpg', 700, 'Sample Map 3', 'https://www.youtube.com/sample3', TO_DATE('2023-01-03', 'YYYY-MM-DD'), 10);
 --Read
 SELECT communityID, guestno, content, mainImage, cdate
 FROM community
 WHERE planID = 1;
 
 --seach
-SELECT communityID, guestno, planID, title, content, cnt, replycnt, rdate, file1, file1saved, thumb1, size1
-FROM community
-ORDER BY communityID DESC;
+SELECT * FROM community
+ORDER BY cdate DESC;
 
 SELECT COUNT(*)
 FROM community
@@ -88,4 +88,20 @@ WHERE planID = 3 AND LOWER(content) LIKE '%스키%';
 --Delete
 DELETE FROM community
 WHERE communityID = 2;
+
+--DCL
+commit;
+
+--paging
+SELECT communityID, guestno, activecodeno , planID, title, content, mainImage, mainImagePreview, cimage, size1, map, youtube, cdate, replycnt
+FROM (
+    SELECT communityID, guestno, activecodeno , planID, title, content, mainImage, mainImagePreview, cimage, size1, map, youtube, cdate, replycnt, rownum as r
+    FROM (
+        SELECT communityID, guestno, activecodeno , planID, title, content, mainImage, mainImagePreview, cimage, size1, map, youtube, cdate, replycnt
+        FROM community
+        ORDER BY communityID DESC
+    )
+)
+WHERE r >= 1 AND r <= 3;
+
 
