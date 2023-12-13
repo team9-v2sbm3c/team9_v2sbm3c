@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.owner.OwnerProcInter;
+import dev.mvc.login.LoginProc;
+import dev.mvc.login.LoginProcInter;
 
 import org.json.JSONObject;
 
@@ -30,6 +32,9 @@ public class GuestCont {
   private OwnerProcInter ownerProc;@Autowired
   @Qualifier("dev.mvc.guest.GuestProc")
   private GuestProcInter guestProc;
+  @Autowired
+  @Qualifier("dev.mvc.login.LoginProc")
+  private LoginProcInter loginProc;
 
   public GuestCont() {
     System.out.println("사용자(Guest) Cont 실행");
@@ -414,6 +419,7 @@ public class GuestCont {
      lmap.put("guestno", (int)guestVO.getGuestno());  // map에 login의 매개변수인 guestno와 ip추가
      lmap.put("ip", ip);
      
+     loginProc.login_cookie_proc(lmap);
      
      // -------------------------------------------------------------------
      // id 관련 쿠기 저장
