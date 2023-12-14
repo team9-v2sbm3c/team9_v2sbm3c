@@ -15,35 +15,41 @@
 </head>
 <body>
 	<div class="container mt-3">
-		<div class="row">
-			<div class="col-sm">
-				<div class="card img-fluid rounded-4">
-					<img class="card-img-top rounded-4" src="main/images/Seoul.png"
-						alt="Card image" style="width: 100%">
-					<div class="card-img-overlay">
-						<h4 class="text-white">서울</h4>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm">
-				<div class="card img-fluid rounded-4">
-					<img class="card-img-top rounded-4" src="main/images/Seoul.png"
-						alt="Card image" style="width: 100%">
-					<div class="card-img-overlay">
-						<h4 class="text-white">서울</h4>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm">
-				<div class="card img-fluid rounded-4">
-					<img class="card-img-top rounded-4" src="main/images/Seoul.png"
-						alt="Card image" style="width: 100%">
-					<div class="card-img-overlay">
-						<h4 class="text-white">서울</h4>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="row">
+    	<c:forEach var="planID" items="${list}">
+	
+		</c:forEach>
+        <div class="col-sm">
+            <a href="/community/list_all.do">
+                <div class="card img-fluid rounded-4">
+                    <img class="card-img-top rounded-4" src="main/images/Seoul.png" alt="Card image" style="width: 100%">
+                    <div class="card-img-overlay">
+                        <h4 class="text-white">서울</h4>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm">
+            <a href="/community/list_all.do">
+                <div class="card img-fluid rounded-4">
+                    <img class="card-img-top rounded-4" src="main/images/Seoul.png" alt="Card image" style="width: 100%">
+                    <div class="card-img-overlay">
+                        <h4 class="text-white">서울</h4>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm">
+            <a href="/">
+                <div class="card img-fluid rounded-4">
+                    <img class="card-img-top rounded-4" src="main/images/Seoul.png" alt="Card image" style="width: 100%">
+                    <div class="card-img-overlay">
+                        <h4 class="text-white">서울</h4>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -61,7 +61,7 @@
               </li>
             </c:otherwise>
           </c:choose>
-          <li class="nav-item"><a class="nav-link" href="../community/list_all.do">게시판</a></li>
+          <li class="nav-item"><a class="nav-link" href="/community/list_all.do">게시판</a></li>
         </ul>
         <form class="d-flex"> <!-- 추후 검색 기능으로 업그레이드 예정 -->
           <input class="form-control me-2" type="text" placeholder="여행지 검색">

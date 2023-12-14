@@ -80,7 +80,14 @@ public interface CommunityProcInter {
 	   */
 	  public int delete_community(int communityID);
 	  
-	  
+	  /**
+	   * 여행지 페이징 
+	   * @param planID
+	   * @param now_page
+	   * @param list_file
+	   * @param search_count
+	   * @return
+	   */
 	  public String pagingBox(int planID, int now_page, String list_file, int search_count);
 	  
 	  /**

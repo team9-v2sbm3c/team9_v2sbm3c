@@ -8,17 +8,37 @@
     	VALUES (community_seq.nextval, #{activecodeno}, #{guestno}, #{planID}, #{title}, #{content} , #{mainImage}, #{mainImagePreview}, #{cimage}, #{size1}, #{map}, #{youtube}, sysdate, 11);
 	</insert>
   	
+  	<!-- 검색 갯수 -->
+  	<select id="search_count" resultType="int" parameterType="dev.mvc.community.CommunityVO">
+  		SELECT COUNT(*) as cnt
+  		FROM community
+  	</select>
+  	
   	<!-- 모두 조회 -->
   	<select id="list_all_community" resultType="dev.mvc.community.CommunityVO">
   		SELECT * FROM community
 		ORDER BY cdate DESC
   	</select>
   	
+  	<!-- 글 조회 -->
   	<select id="read_community" resultType="dev.mvc.community.CommunityVO" parameterType="int">
   		SELECT communityID, activecodeno, guestno, planID, title, content , mainImage, mainImagePreview, cimage, size1, map, youtube, cdate, replycnt
   		FROM community
   		WHERE communityID = #{communityID}
   	</select>
+  	
+  <!-- 특정 여행지에 속한 레코드 갯수를 리턴 -->
+  <select id="count_by_planID" resultType="int" parameterType="int">
+    SELECT COUNT(*) as cnt
+	FROM community
+	WHERE planID=#{planID}
+  </select>
+  
+  <!-- 특정 여행지에 속한 모든 레코드 삭제-->
+  <select id="delete_by_planID" parameterType="int">
+    DELETE FROM community
+	WHERE planID=#{planID}
+  </select>
   	
 
 </mapper>

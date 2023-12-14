@@ -58,7 +58,6 @@
 		<tbody>
 			<c:forEach var="planVO" items="${list }" varStatus="info">
 				<c:set var="planID" value="${planVO.planID }" />
-
 				<tr>
 					<td class="td_bs">${planVO.planID }</td>
 					<td class="td_bs">${planVO.pname }</a></td>

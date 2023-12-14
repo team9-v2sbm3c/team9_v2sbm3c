@@ -33,9 +33,9 @@
     <%-- 관리자로 로그인해야 메뉴가 출력됨 --%>
     <c:if test="${sessionScope.admin_id != null }">
       <%--
-      http://localhost:9091/community/create.do?planID=1
-      http://localhost:9091/community/create.do?planID=2
-      http://localhost:9091/community/create.do?planID=3
+      http://localhost:9093/community/create.do?planID=1
+      http://localhost:9093/community/create.do?planID=2
+      http://localhost:9093/community/create.do?planID=3
       --%>
       <a href="./create.do?planID=${planID }">등록</a>
       <span class='menu_divide' >│</span>

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.community.CommunityProcInter;
+import dev.mvc.community.CommunityVO;
 import dev.mvc.owner.OwnerProcInter;
+import dev.mvc.tool.Tool;
 
 
 @Controller
@@ -22,10 +24,9 @@ public class PlanCont {
 	@Qualifier("dev.mvc.owner.OwnerProc")
 	private OwnerProcInter ownerProc;
 
-//	오류 발생	 
-//	@Autowired
-//	@Qualifier("dev.mvc.community.CommnuityProc")
-//	private CommunityProcInter communityProc;
+	@Autowired
+	@Qualifier("dev.mvc.community.CommunityProc")
+	private CommunityProcInter communityProc;
 	
 	@Autowired
 	@Qualifier("dev.mvc.plan.PlanProc")
@@ -160,7 +161,8 @@ public class PlanCont {
 		    ArrayList<PlanVO> list = this.planProc.list_all_plan();
 	    	mav.addObject("list",list);
 	    	
-	    	//해당 여행지 레코드 개수 리턴하는 코드 추후 추가 예정 
+	    	int count_by_planID = this.communityProc.count_by_planID(planID);
+	    	mav.addObject("count_by_planID", count_by_planID);
 	    }else {
 	    	mav.setViewName("/owner/login_need");
 	    }
@@ -181,6 +183,10 @@ public class PlanCont {
 		//ArrayList<CommunityVO> list =this.communityProc.list_by_planID(planID);
 		
 		if(this.ownerProc.isOwner(session)==true) {
+			ArrayList<CommunityVO> list = this.communityProc.list_by_planID(planID);
+			
+			
+			this.communityProc.delete_by_planID(planID);
 			int cnt = this.planProc.delete_plan(planID);
 				
 			if(cnt ==1) {
