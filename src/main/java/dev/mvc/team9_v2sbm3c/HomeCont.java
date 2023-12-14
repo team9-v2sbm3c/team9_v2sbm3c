@@ -20,15 +20,10 @@ public class HomeCont {
   }
   
   // http://localhost:9093
-  @RequestMapping(value= {"", "/", "/index.do", "/index.resort"}, method=RequestMethod.GET)
+  @RequestMapping(value= {"", "/", "/index.do"}, method=RequestMethod.GET)
   public ModelAndView home() {
-    System.out.println("home");
-    
     ModelAndView mav = new ModelAndView();
-    mav.setViewName("/index"); // /WEB-INF/views/index.jsp
-    // spring.mvc.view.prefix=/WEB-INF/views/
-    // spring.mvc.view.suffix=.jsp
-        
+    mav.setViewName("/index"); 
     return mav;
   }
 

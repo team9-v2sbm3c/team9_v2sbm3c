@@ -12,19 +12,5 @@ import dev.mvc.plan.PlanVO;
 
 @SpringBootTest
 class Team9V2sbm3cApplicationTests {
-	@Autowired
-	private PlanDAOInter planProc;
 
-	@Qualifier
-	
-	
-	@Test
-	void contextLoads() {
-	}
-	
-	@Test
-	public void testRead_all() {
-		ArrayList<PlanVO> list = this.planProc.list_all_plan();
-		System.out.println(list);
-	}
 }
