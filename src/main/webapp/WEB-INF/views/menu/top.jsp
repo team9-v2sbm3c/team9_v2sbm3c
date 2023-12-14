@@ -55,13 +55,13 @@
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href='/guest/list.do'>회원 목록</a>
                   <a class="dropdown-item" href='/plan/list_all.do'>여행지 목록</a>
+                  <a class="dropdown-item" href='/community/list_all.do'>게시판 관리</a>
                   <a class="dropdown-item" href='/recommend/list_all.do'>사용자 추천지 목록</a>
                   <a class="dropdown-item" href='/owner/logout.do'>관리자 ${sessionScope.owner_id } 로그아웃</a>
                 </div>
               </li>
             </c:otherwise>
           </c:choose>
-          <li class="nav-item"><a class="nav-link" href="/community/list_all.do">게시판</a></li>
         </ul>
         <form class="d-flex"> <!-- 추후 검색 기능으로 업그레이드 예정 -->
           <input class="form-control me-2" type="text" placeholder="여행지 검색">

@@ -21,7 +21,16 @@
   <div class='title_line'>전체 글 목록</div>
   
   <aside class="aside_right">
+    <%-- 관리자로 로그인해야 메뉴가 출력됨 --%>
+    <c:if test="${sessionScope.admin_id != null }">
+      <a href="./create.do?planID=${planVO.planID }">등록</a>
+      <span class='menu_divide' >│</span>
+    </c:if>
     <a href="javascript:location.reload();">새로고침</a>
+    <span class='menu_divide' >│</span>    
+    <a href="./list_by_planID.do?planID=${param.planID }&now_page=${param.now_page}">목록형</a>    
+    <span class='menu_divide' >│</span>
+    <a href="./list_by_planID_grid.do?planID=${param.planID }&now_page=${param.now_page}">갤러리형</a>    
   </aside>
   <div class="menu_line"></div> 
   

@@ -1,44 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.mvc.community.CommunityDAOInter">	
+<mapper namespace="dev.mvc.community.CommunityDAOInter">
 	<!-- 생성 -->
-	<insert id="create_community" parameterType="dev.mvc.community.CommunityVO" >
-    	INSERT INTO community (communityID, activecodeno, guestno, planID, title, content , mainImage, mainImagePreview, cimage, size1, map, youtube, cdate, replycnt) 
-    	VALUES (community_seq.nextval, #{activecodeno}, #{guestno}, #{planID}, #{title}, #{content} , #{mainImage}, #{mainImagePreview}, #{cimage}, #{size1}, #{map}, #{youtube}, sysdate, 11);
+	<insert id="create_community"
+		parameterType="dev.mvc.community.CommunityVO">
+		INSERT INTO community (communityID, activecodeno, guestno, planID, title,
+		content , mainImage, mainImagePreview, cimage, size1, map, youtube,
+		cdate, replycnt)
+		VALUES (community_seq.nextval, #{activecodeno}, #{guestno}, #{planID},
+		#{title}, #{content} , #{mainImage}, #{mainImagePreview}, #{cimage},
+		#{size1}, #{map}, #{youtube}, sysdate, 11);
 	</insert>
-  	
-  	<!-- 검색 갯수 -->
-  	<select id="search_count" resultType="int" parameterType="dev.mvc.community.CommunityVO">
-  		SELECT COUNT(*) as cnt
-  		FROM community
-  	</select>
-  	
-  	<!-- 모두 조회 -->
-  	<select id="list_all_community" resultType="dev.mvc.community.CommunityVO">
-  		SELECT * FROM community
+
+	<!-- 검색 갯수 -->
+	<select id="search_count" resultType="int"
+		parameterType="dev.mvc.community.CommunityVO">
+		SELECT COUNT(*) as cnt
+		FROM community
+	</select>
+
+	<!-- 모든 여행지 조회 -->
+	<select id="list_all_community"
+		resultType="dev.mvc.community.CommunityVO">
+		SELECT * FROM community
 		ORDER BY cdate DESC
-  	</select>
-  	
-  	<!-- 글 조회 -->
-  	<select id="read_community" resultType="dev.mvc.community.CommunityVO" parameterType="int">
-  		SELECT communityID, activecodeno, guestno, planID, title, content , mainImage, mainImagePreview, cimage, size1, map, youtube, cdate, replycnt
-  		FROM community
-  		WHERE communityID = #{communityID}
-  	</select>
-  	
-  <!-- 특정 여행지에 속한 레코드 갯수를 리턴 -->
-  <select id="count_by_planID" resultType="int" parameterType="int">
-    SELECT COUNT(*) as cnt
-	FROM community
-	WHERE planID=#{planID}
-  </select>
-  
-  <!-- 특정 여행지에 속한 모든 레코드 삭제-->
-  <select id="delete_by_planID" parameterType="int">
-    DELETE FROM community
-	WHERE planID=#{planID}
-  </select>
-  	
+	</select>
+
+	<!-- 특정 여행지 조회 -->
+	<select id="list_by_planID"
+		resultType="dev.mvc.community.CommunityVO" parameterType="int">
+		SELECT *
+		FROM community
+		WHERE planID = #{planID}
+		ORDER BY communityID DESC
+	</select>
+
+	<!-- 글 조회 -->
+	<select id="read_community"
+		resultType="dev.mvc.community.CommunityVO" parameterType="int">
+		SELECT communityID, activecodeno, guestno, planID, title, content ,
+		mainImage, mainImagePreview, cimage, size1, map, youtube, cdate,
+		replycnt
+		FROM community
+		WHERE communityID = #{communityID}
+	</select>
+
+	<!-- map 등록, 수정, 삭제 -->
+	<update id="map" parameterType="HashMap">
+		UPDATE community SET map=#{map} WHERE communityID=#{communityID}
+	</update>
+
+	<!-- Youtube 등록, 수정, 삭제 -->
+	<update id="youtube" parameterType="HashMap">
+		UPDATE community SET youtube=#{youtube} WHERE communityID=#{communityID}
+	</update>
+
+	<!-- 카테고리별 검색 + 페이징 목록 -->
+	<select id="list_by_planID_search_paging"
+		resultType="dev.mvc.community.CommunityVO"
+		parameterType="dev.mvc.community.CommunityVO">
+		SELECT communityID, activecodeno, guestno, planID, title, content ,
+		mainImage, mainImagePreview, cimage, size1, map, youtube, cdate,
+		replycnt, r
+		FROM (
+		SELECT communityID, activecodeno, guestno, planID, title, content ,
+		mainImage, mainImagePreview, cimage, size1, map, youtube, cdate,
+		replycnt, rownum as r
+		FROM (
+		SELECT communityID, activecodeno, guestno, planID, title, content ,
+		mainImage, mainImagePreview, cimage, size1, map, youtube, cdate,
+		replycnt
+		FROM community
+		<choose>
+			<when test="word == null or word == ''"> <!-- 검색하지 않는 경우 -->
+				WHERE planID=#{planID}
+			</when>
+			<otherwise>
+				WHERE planID=#{planID} AND (UPPER(title) LIKE '%' || UPPER(#{word}) ||
+				'%'
+				OR UPPER(content) LIKE '%' || UPPER(#{word}) || '%'
+				OR UPPER(word) LIKE '%' || UPPER(#{word}) || '%')
+			</otherwise>
+		</choose>
+		ORDER BY communityID DESC
+		)
+		)
+		WHERE <![CDATA[ r >= #{start_num} AND r <= #{end_num} ]]>
+
+		<!-- 1 page: WHERE r >= 1 AND r <= 10; 2 page: WHERE r >= 11 AND r <= 20; 
+			3 page: WHERE r >= 21 AND r <= 30; -->
+	</select>
+
+	<!-- 글 수정 -->
+	<update id="update_text"
+		parameterType="dev.mvc.community.CommunityVO">
+		UPDATE community
+		SET title=#{title}, content=#{content}
+		WHERE communityID = #{communityID}
+	</update>
+	
+	<!-- 글 삭제 -->
+	<delete id="delete_community" parameterType="int">
+		DELETE FROM community
+		WHERE communityID = #{communityID}
+	</delete>
+
+	<!-- 특정 여행지에 속한 레코드 갯수를 리턴 -->
+	<select id="count_by_planID" resultType="int"
+		parameterType="int">
+		SELECT COUNT(*) as cnt
+		FROM community
+		WHERE planID=#{planID}
+	</select>
+
+	<!-- 특정 여행지에 속한 모든 레코드 삭제 -->
+	<select id="delete_by_planID" parameterType="int">
+		DELETE FROM community
+		WHERE planID=#{planID}
+	</select>
+
 
 </mapper>
