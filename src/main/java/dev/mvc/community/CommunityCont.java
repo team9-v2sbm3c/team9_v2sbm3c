@@ -128,8 +128,8 @@ public class CommunityCont {
 				// ------------------------------------------------------------------------------
 
 				// Call By Reference: 메모리 공유, Hashcode 전달
-				int guestno = (int) session.getAttribute("guestno"); // adminno FK
-				communityVO.setGuestno(guestno);
+				//int guestno = (int) session.getAttribute("guestno"); // adminno FK
+				communityVO.setGuestno(1);
 
 				int cnt = this.communityProc.create_community(communityVO);
 

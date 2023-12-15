@@ -20,14 +20,11 @@
 
   <div class='title_line'>
     ${planVO.pname }
-    <c:if test="${param.word.length() > 0 }">
-      > 「${param.word }」 검색 ${search_count } 건
-    </c:if> 
   </div>
   
   <aside class="aside_right">
-    <%-- 관리자로 로그인해야 메뉴가 출력됨 --%>
-    <c:if test="${sessionScope.admin_id != null }">
+    <%-- 로그인해야 메뉴가 출력됨 --%>
+    <c:if test="${sessionScope.admin_id == null }">
       <a href="./create.do?planID=${planVO.planID }">등록</a>
       <span class='menu_divide' >│</span>
     </c:if>
@@ -56,17 +53,17 @@
     <tbody>
         <c:forEach var="communityVO" items="${list }" varStatus="info">
           <c:set var="communityID" value="${communityVO.communityID }" />
-          <c:set var="cimage" value="${communityVO.cimage }" />
+          <c:set var="thumb1" value="${communityVO.mainImagePreview }" />
     
           <tr onclick="location.href='./read.do?communityID=${communityID}&now_page=${param.now_page == null ? 1 : param.now_page }&planID=${param.planID }'" style="cursor: pointer;">
             <td>
               <c:choose>
                 <c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}"> <%-- 이미지인지 검사 --%>
                   <%-- registry.addResourceHandler("/community/storage/**").addResourceLocations("file:///" +  Contents.getUploadDir()); --%>
-                  <img src="/community/storage/${cimage }" style="width: 120px; height: 90px;">
+                  <img src="/community/storage/${thumb1 }" style="width: 120px; height: 90px;">
                 </c:when>
                 <c:otherwise> <!-- 이미지가 없는 경우 기본 이미지 출력: /static/community/images/none1.png -->
-                  <img src="/community/images/none1.png" style="width: 120px; height: 90px;">
+                  <img src="/community/images/test.png" style="width: 120px; height: 90px;">
                 </c:otherwise>
               </c:choose>
             </td>

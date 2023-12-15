@@ -5,8 +5,8 @@
 <c:set var="name" value="${planVO.pname }" />
 <c:set var="planID" value="${communityVO.planID }" />
 <c:set var="communityID" value="${communityVO.communityID }" />
-<c:set var="thumb1" value="${communityVO.mainImage }" />
-<c:set var="file1saved" value="${communityVO.mainImagePreview }" />
+<c:set var="thumb1" value="${communityVO.mainImagePreview }" />
+<c:set var="file1saved" value="${communityVO.mainImage }" />
 <c:set var="title" value="${communityVO.title }" />
 <c:set var="content" value="${communityVO.content }" />
 <c:set var="rdate" value="${communityVO.cdate }" />

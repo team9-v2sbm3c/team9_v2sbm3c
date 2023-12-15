@@ -182,7 +182,7 @@ public class PlanCont {
 	@RequestMapping(value="/plan/delete.do" , method = RequestMethod.POST)
 	public ModelAndView delete_plan_proc(HttpSession session,int planID) {
 		ModelAndView mav = new ModelAndView();
-		//ArrayList<CommunityVO> list =this.communityProc.list_by_planID(planID);
+		
 		
 		if(this.ownerProc.isOwner(session)==true) {
 			ArrayList<CommunityVO> list = this.communityProc.list_by_planID(planID);
