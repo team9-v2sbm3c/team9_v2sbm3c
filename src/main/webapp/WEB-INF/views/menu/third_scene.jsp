@@ -16,39 +16,20 @@
 <body>
 	<div class="container mt-3">
     <div class="row">
-    	<c:forEach var="planID" items="${list}">
-	
+    	<c:forEach var="planVO" items="${third_sc}">
+			<c:set var="planID" value="${planVO.planID }" />
+			<c:set var="name" value="${planVO.pname }" />
+			<div class="col-sm">
+            <a href="/community/list_by_planID.do?planID=${planVO.planID }">
+                <div class="card img-fluid rounded-4">
+                    <img class="card-img-top rounded-4" src="main/images/Seoul.png" alt="Card image" style="width: 100%">
+                    <div class="card-img-overlay">
+                        <h4 class="text-white">${name }</h4>
+                    </div>
+                </div>
+            </a>
+        </div>
 		</c:forEach>
-        <div class="col-sm">
-            <a href="/community/list_all.do">
-                <div class="card img-fluid rounded-4">
-                    <img class="card-img-top rounded-4" src="main/images/Seoul.png" alt="Card image" style="width: 100%">
-                    <div class="card-img-overlay">
-                        <h4 class="text-white">서울</h4>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-sm">
-            <a href="/community/list_all.do">
-                <div class="card img-fluid rounded-4">
-                    <img class="card-img-top rounded-4" src="main/images/Seoul.png" alt="Card image" style="width: 100%">
-                    <div class="card-img-overlay">
-                        <h4 class="text-white">서울</h4>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-sm">
-            <a href="/">
-                <div class="card img-fluid rounded-4">
-                    <img class="card-img-top rounded-4" src="main/images/Seoul.png" alt="Card image" style="width: 100%">
-                    <div class="card-img-overlay">
-                        <h4 class="text-white">서울</h4>
-                    </div>
-                </div>
-            </a>
-        </div>
     </div>
 </div>
 </body>

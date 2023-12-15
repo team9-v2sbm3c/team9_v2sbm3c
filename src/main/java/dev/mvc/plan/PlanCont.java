@@ -1,5 +1,6 @@
 package dev.mvc.plan;
 
+import java.awt.BufferCapabilities.FlipContents;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import dev.mvc.community.Community;
 import dev.mvc.community.CommunityProcInter;
 import dev.mvc.community.CommunityVO;
 import dev.mvc.owner.OwnerProcInter;
@@ -185,8 +187,17 @@ public class PlanCont {
 		if(this.ownerProc.isOwner(session)==true) {
 			ArrayList<CommunityVO> list = this.communityProc.list_by_planID(planID);
 			
+			for(CommunityVO communityVO : list) {
+				String file1saved = communityVO.getMainImage();
+				String thumb1 = communityVO.getCimage();
+				
+				String uploadDir = Community.getUploadDir();
+			    Tool.deleteFile(uploadDir, file1saved);  // 실제 저장된 파일삭제
+			    Tool.deleteFile(uploadDir, thumb1);     // preview 이미지 삭제
+			}
 			
 			this.communityProc.delete_by_planID(planID);
+			
 			int cnt = this.planProc.delete_plan(planID);
 				
 			if(cnt ==1) {

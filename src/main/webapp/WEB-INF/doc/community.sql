@@ -83,6 +83,11 @@ SELECT COUNT(*)
 FROM community
 WHERE planID = 3 AND LOWER(content) LIKE '%스키%';
 
+SELECT *
+FROM community
+WHERE planID = 1
+ORDER BY communityID DESC;
+
 --Update
 
 --Delete

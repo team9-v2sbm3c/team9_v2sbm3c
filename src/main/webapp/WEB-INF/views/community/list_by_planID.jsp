@@ -16,7 +16,7 @@
   
 </head>
 <body>
-<c:import url="/menu/top.do" />
+<c:import url="../menu/top.jsp" />
 
   <div class='title_line'>
     ${planVO.pname }
@@ -56,14 +56,14 @@
     <tbody>
         <c:forEach var="communityVO" items="${list }" varStatus="info">
           <c:set var="communityID" value="${communityVO.communityID }" />
-          <c:set var="thumb1" value="${communityVO.thumb1 }" />
+          <c:set var="cimage" value="${communityVO.cimage }" />
     
           <tr onclick="location.href='./read.do?communityID=${communityID}&now_page=${param.now_page == null ? 1 : param.now_page }&planID=${param.planID }'" style="cursor: pointer;">
             <td>
               <c:choose>
                 <c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}"> <%-- 이미지인지 검사 --%>
                   <%-- registry.addResourceHandler("/community/storage/**").addResourceLocations("file:///" +  Contents.getUploadDir()); --%>
-                  <img src="/community/storage/${thumb1 }" style="width: 120px; height: 90px;">
+                  <img src="/community/storage/${cimage }" style="width: 120px; height: 90px;">
                 </c:when>
                 <c:otherwise> <!-- 이미지가 없는 경우 기본 이미지 출력: /static/community/images/none1.png -->
                   <img src="/community/images/none1.png" style="width: 120px; height: 90px;">
@@ -80,7 +80,7 @@
                   ${communityVO.content }
                 </c:otherwise>
               </c:choose>
-              (${communityVO.rdate.substring(0, 16) })
+              (${communityVO.cdate.substring(0, 16) })
             </td>
             <td class="td_bs">
               <a href="/community/map.do?planID=${planID }&communityID=${communityID}&now_page=${param.now_page}" title="지도 설정"><img src="/community/images/map.png" class="icon"></a>
