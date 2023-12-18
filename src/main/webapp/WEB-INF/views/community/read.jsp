@@ -9,7 +9,7 @@
 <c:set var="file1saved" value="${communityVO.mainImage }" />
 <c:set var="title" value="${communityVO.title }" />
 <c:set var="content" value="${communityVO.content }" />
-<c:set var="rdate" value="${communityVO.cdate }" />
+<c:set var="cdate" value="${communityVO.cdate }" />
 <c:set var="youtube" value="${communityVO.youtube }" />
 <c:set var="map" value="${communityVO.map }" />
 <c:set var="size1_label" value="${communityVO.size1_label }" />
@@ -62,20 +62,21 @@
     <ul>
       <li class="li_none">
         <DIV style="width: 100%; word-break: break-all;">
+        <span style="font-size: 1.5em; font-weight: bold;">${title }</span>
+          <span style="font-size: 1em;"> ${cdate }</span><br>
           <c:choose>
             <c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
               <%-- /static/community/storage/ --%>
-              <img src="/community/storage/${file1saved }" style='width: 50%; float: left; margin-top: 0.5%; margin-right: 1%;'> 
+              <img src="/community/storage/${file1saved }" style='width: 50%; display:left; margin-top: 0.5%; margin-right: 1%;'> 
             </c:when>
             <c:otherwise> <!-- 기본 이미지 출력 -->
               <img src="/community/images/none1.png" style='width: 50%; float: left; margin-top: 0.5%; margin-right: 1%;'> 
             </c:otherwise>
           </c:choose>
-
-          <span style="font-size: 1.5em; font-weight: bold;">${title }</span>
-          <span style="font-size: 1em;"> ${cdate }</span><br>
-          ${content }
+			
+          
         </DIV>
+        ${content }
       </li>
       
       <c:if test="${youtube.trim().length() > 0 }">
@@ -93,13 +94,6 @@
           </DIV>
         </li>
       </c:if>
-      
-      <li class="li_none" style="clear: both;">
-        <DIV style='text-decoration: none;'>
-          <br>
-          검색어(키워드): ${word }
-        </DIV>
-      </li>
 
       <li class="li_none">
         <div>

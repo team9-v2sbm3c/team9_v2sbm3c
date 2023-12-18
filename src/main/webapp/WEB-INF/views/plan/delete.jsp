@@ -112,10 +112,7 @@
 				</tr>
 			</c:forEach>
 		</tbody>
-
 	</table>
-
-
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 </body>

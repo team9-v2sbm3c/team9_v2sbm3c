@@ -80,7 +80,7 @@
               (${communityVO.cdate.substring(0, 16) })
             </td>
             <td class="td_bs">
-              <a href="/community/map.do?planID=${planID }&communityID=${communityID}&now_page=${param.now_page}" title="지도 설정"><img src="/community/images/map.png" class="icon"></a>
+              <a href="/community/map.do?planID=${param.planID }&communityID=${communityID}&now_page=${param.now_page}" title="지도 설정"><img src="/community/images/map.png" class="icon"></a>
               <a href="/community/youtube.do?planID=${planID }&communityID=${communityID}&now_page=${param.now_page}" title="Youtube 설정"><img src="/community/images/youtube.png" class="icon"></a>
               <a href="/community/delete.do?planID=${planID }&communityID=${communityID}&now_page=${param.now_page}" title="삭제"><img src="/community/images/delete.png" class="icon"></a>
             </td>

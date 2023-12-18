@@ -10,7 +10,7 @@
 		cdate, replycnt)
 		VALUES (community_seq.nextval, #{activecodeno}, #{guestno}, #{planID},
 		#{title}, #{content} , #{mainImage}, #{mainImagePreview}, #{cimage},
-		#{size1}, #{map}, #{youtube}, sysdate, 11)
+		#{size1}, 1, 1, sysdate, 11)
 	</insert>
 
 	<!-- 검색 갯수 -->

@@ -75,6 +75,7 @@ public class PlanCont {
 	    	
 	    	ArrayList<PlanVO> list = this.planProc.list_all_plan();
 	    	mav.addObject("list",list);
+	    	
 	    }else {
 	    	mav.setViewName("/owner/login_need");
 	    }
@@ -196,7 +197,7 @@ public class PlanCont {
 			    Tool.deleteFile(uploadDir, thumb1);     // preview 이미지 삭제
 			}
 			
-			this.communityProc.delete_by_planID(planID);
+//			this.communityProc.delete_by_planID(planID);
 			
 			int cnt = this.planProc.delete_plan(planID);
 				

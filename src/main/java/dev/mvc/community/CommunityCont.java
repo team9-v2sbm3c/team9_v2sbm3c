@@ -15,11 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.plan.PlanVO;
-import dev.mvc.community.CommunityVO;
-import dev.mvc.community.CommunityVO;
 import dev.mvc.owner.OwnerProcInter;
 import dev.mvc.plan.PlanProcInter;
-import dev.mvc.plan.PlanVO;
 import dev.mvc.tool.Tool;
 import dev.mvc.tool.Upload;
 
@@ -70,6 +67,8 @@ public class CommunityCont {
 
 		PlanVO planVO = this.planProc.read_plan(planID);
 		mav.addObject("planVO", planVO);
+		
+		
 
 		mav.setViewName("/community/create");
 
@@ -158,6 +157,7 @@ public class CommunityCont {
 			} else {
 				mav.addObject("cnt", "0"); // 업로드 할 수 없는 파일
 				mav.addObject("code", "check_upload_file_fail"); // 업로드 할 수 없는 파일
+				mav.addObject("planID",communityVO.getPlanID());
 				mav.addObject("url", "/community/msg"); // msg.jsp, redirect parameter 적용
 				mav.setViewName("redirect:/community/msg.do"); // Post -> Get - param...
 			}
@@ -378,4 +378,88 @@ public class CommunityCont {
 
 		return mav;
 	}
+	
+	/**
+	 * MAP 폼 
+	 * @param communityID
+	 * @return
+	 */
+	@RequestMapping(value="/community/map.do", method=RequestMethod.GET )
+	  public ModelAndView map(int communityID) {
+	    ModelAndView mav = new ModelAndView();
+
+	    CommunityVO communityVO = this.communityProc.read_community(communityID); // map 정보 읽어 오기
+	    mav.addObject("communityVO", communityVO); // request.setAttribute("communityVO", communityVO);
+
+	    PlanVO planVO = this.planProc.read_plan(communityVO.getPlanID()); // 그룹 정보 읽기
+	    mav.addObject("planVO", planVO); 
+
+	    mav.setViewName("/community/map"); // /WEB-INF/views/community/map.jsp
+	        
+	    return mav;
+	  }
+	
+	/**
+	 * MAP 처리
+	 * @param communityID
+	 * @return
+	 */
+	@RequestMapping(value="/community/map.do", method=RequestMethod.POST )
+	  public ModelAndView map_proc(int communityID,String map) {
+		ModelAndView mav = new ModelAndView();
+	    
+	    HashMap<String, Object> hashMap = new HashMap<String, Object>();
+	    hashMap.put("communityID", communityID);
+	    hashMap.put("map", map);
+	    
+	    this.communityProc.map(hashMap);
+	    
+	    mav.setViewName("redirect:/community/read.do?communityID=" + communityID); 
+	    // /webapp/WEB-INF/views/community/read.jsp
+	    
+	    return mav;
+	  }
+	
+	/**
+	 * YOUTUBE 폼
+	 * @param communityID
+	 * @return
+	 */
+	@RequestMapping(value="/community/youtube.do", method=RequestMethod.GET )
+	  public ModelAndView youtube(int communityID) {
+	    ModelAndView mav = new ModelAndView();
+
+	    CommunityVO communityVO = this.communityProc.read_community(communityID); // map 정보 읽어 오기
+	    mav.addObject("communityVO", communityVO); // request.setAttribute("communityVO", communityVO);
+
+	    PlanVO planVO = this.planProc.read_plan(communityVO.getPlanID()); // 그룹 정보 읽기
+	    mav.addObject("planVO", planVO); 
+
+	    mav.setViewName("/community/youtube"); // /WEB-INF/views/community/map.jsp
+	        
+	    return mav;
+	  }
+	
+	
+	/**
+	 * YOUTUBE 처리
+	 * @param communityID
+	 * @param youtube
+	 * @return
+	 */
+	@RequestMapping(value="/community/youtube.do", method=RequestMethod.POST )
+	  public ModelAndView youtube_proc(int communityID,String youtube) {
+		ModelAndView mav = new ModelAndView();
+	    
+	    HashMap<String, Object> hashMap = new HashMap<String, Object>();
+	    hashMap.put("communityID", communityID);
+	    hashMap.put("youtube", youtube);
+	    
+	    this.communityProc.youtube(hashMap);
+	    
+	    mav.setViewName("redirect:/community/read.do?communityID=" + communityID); 
+	    // /webapp/WEB-INF/views/community/read.jsp
+	    
+	    return mav;
+	  }
 }

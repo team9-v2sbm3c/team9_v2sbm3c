@@ -14,8 +14,8 @@ CREATE TABLE community(
 		mainImagePreview              		VARCHAR2(500)		 NULL ,
 		cimage                        		VARCHAR2(200)		 NULL ,
 		size1                         		NUMBER(10)		 NULL ,
-		map                           		VARCHAR2(500)		 NULL ,
-		youtube                       		VARCHAR2(500)		 NULL ,
+		map                           		VARCHAR2(1000)		 NULL ,
+		youtube                       		VARCHAR2(1000)		 NULL ,
 		cdate                         		DATE		 NULL ,
 		replycnt                      		NUMBER(7)		 NULL 
 );
@@ -42,6 +42,11 @@ ALTER TABLE community ADD CONSTRAINT IDX_community_FK0 FOREIGN KEY (guestno) REF
 ALTER TABLE community ADD CONSTRAINT IDX_community_FK1 FOREIGN KEY (activecodeno) REFERENCES activecode (activecodeno);
 ALTER TABLE community ADD CONSTRAINT IDX_community_FK2 FOREIGN KEY (planID) REFERENCES plan (planID);
 
+ALTER TABLE community
+MODIFY map VARCHAR2(1000);
+
+ALTER TABLE community
+MODIFY youtube VARCHAR2(1000);
 
 DROP SEQUENCE COMMUNITY_SEQ;
 
