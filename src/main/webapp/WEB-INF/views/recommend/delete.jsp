@@ -69,7 +69,7 @@
 			<c:forEach var="recommendVO" items="${list}" varStatus="info">
 				<c:set var="guestno" value="${recommendVO.guestno }" />
 				<tr>
-					<td class="td_bs">${recommendVO.guestno}</td>
+					<td class="td_bs">${{recommendVO.gname}}</td>
 					<td class="td_bs"><c:choose>
 							<c:when test="${recommendVO.activecodeno eq 0}">문화체험</c:when>
 							<c:when test="${recommendVO.activecodeno eq 1}">자연감상</c:when>

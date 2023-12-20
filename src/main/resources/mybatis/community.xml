@@ -4,13 +4,13 @@
 <mapper namespace="dev.mvc.community.CommunityDAOInter">
 	<!-- 생성 -->
 	<insert id="create_community"
-		parameterType="dev.mvc.community.CommunityVO">
-		INSERT INTO community (communityID, activecodeno, guestno, planID, title,
-		content , mainImage, mainImagePreview, cimage, size1, map, youtube,
-		cdate, replycnt)
-		VALUES (community_seq.nextval, #{activecodeno}, #{guestno}, #{planID},
-		#{title}, #{content} , #{mainImage}, #{mainImagePreview}, #{cimage},
-		#{size1}, 1, 1, sysdate, 11)
+	parameterType="dev.mvc.community.CommunityVO">
+	INSERT INTO community (communityID, activecodeno, guestno, planID, title,
+	content , mainImage, mainImagePreview, cimage, size1, map, youtube,
+	cdate, replycnt)
+	VALUES (community_seq.nextval, #{activecodeno}, #{guestno}, #{planID},
+	#{title}, #{content} , #{mainImage}, #{mainImagePreview}, #{cimage},
+	#{size1}, '', '', sysdate, 0)
 	</insert>
 
 	<!-- 검색 갯수 -->
@@ -58,39 +58,29 @@
 
 	<!-- 카테고리별 검색 + 페이징 목록 -->
 	<select id="list_by_planID_search_paging"
-		resultType="dev.mvc.community.CommunityVO"
-		parameterType="dev.mvc.community.CommunityVO">
-		SELECT communityID, activecodeno, guestno, planID, title, content ,
-		mainImage, mainImagePreview, cimage, size1, map, youtube, cdate,
-		replycnt, r
-		FROM (
-		SELECT communityID, activecodeno, guestno, planID, title, content ,
-		mainImage, mainImagePreview, cimage, size1, map, youtube, cdate,
-		replycnt, rownum as r
-		FROM (
-		SELECT communityID, activecodeno, guestno, planID, title, content ,
-		mainImage, mainImagePreview, cimage, size1, map, youtube, cdate,
-		replycnt
-		FROM community
-		<choose>
-			<when test="word == null or word == ''"> <!-- 검색하지 않는 경우 -->
-				WHERE planID=#{planID}
-			</when>
-			<otherwise>
-				WHERE planID=#{planID} AND (UPPER(title) LIKE '%' || UPPER(#{word}) ||
-				'%'
-				OR UPPER(content) LIKE '%' || UPPER(#{word}) || '%'
-				OR UPPER(word) LIKE '%' || UPPER(#{word}) || '%')
-			</otherwise>
-		</choose>
-		ORDER BY communityID DESC
-		)
-		)
-		WHERE <![CDATA[ r >= #{start_num} AND r <= #{end_num} ]]>
+	resultType="dev.mvc.community.CommunityVO"
+	parameterType="dev.mvc.community.CommunityVO">
+	SELECT communityID, activecodeno, guestno, planID, title, content ,
+	mainImage, mainImagePreview, cimage, size1, map, youtube, cdate,
+	replycnt, r
+	FROM (
+	SELECT communityID, activecodeno, guestno, planID, title, content ,
+	mainImage, mainImagePreview, cimage, size1, map, youtube, cdate,
+	replycnt, rownum as r
+	FROM (
+	SELECT communityID, activecodeno, guestno, planID, title, content ,
+	mainImage, mainImagePreview, cimage, size1, map, youtube, cdate,
+	replycnt
+	FROM community
+	WHERE planID=#{planID}
+	ORDER BY communityID DESC
+	)
+	)
+	WHERE <![CDATA[ r >= #{start_num} AND r <= #{end_num} ]]>
 
-		<!-- 1 page: WHERE r >= 1 AND r <= 10; 2 page: WHERE r >= 11 AND r <= 20; 
-			3 page: WHERE r >= 21 AND r <= 30; -->
-	</select>
+	<!-- 1 page: WHERE r >= 1 AND r <= 10; 2 page: WHERE r >= 11 AND r <= 20; 
+		3 page: WHERE r >= 21 AND r <= 30; -->
+</select>
 
 	<!-- 글 수정 -->
 	<update id="update_text"

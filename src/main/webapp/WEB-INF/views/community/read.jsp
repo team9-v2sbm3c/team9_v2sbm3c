@@ -105,6 +105,8 @@
       </li>   
     </ul>
   </fieldset>
+  
+  <jsp:include page="../comments/comments.jsp" flush='false' /> 
  
 <jsp:include page="../menu/bottom.jsp" flush='false' /> 
 </body>

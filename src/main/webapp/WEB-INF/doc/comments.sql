@@ -5,16 +5,16 @@ CREATE TABLE comments(
 		commentsID                    		NUMBER(10)		 NOT NULL,
 		communityID                   		NUMBER(10)		 NULL ,
 		guestno                       		NUMBER(10)		 NULL ,
-		comment                       		VARCHAR2(200)		 NULL ,
-		cdate                         		DATE		 NULL 
+		comments                       		VARCHAR2(500)		 NULL ,
+		comments_date                         		DATE		 NULL 
 );
 
 COMMENT ON TABLE comments is '댓글';
 COMMENT ON COLUMN comments.commentsID is '댓글 번호';
 COMMENT ON COLUMN comments.communityID is '게시글번호';
 COMMENT ON COLUMN comments.guestno is '사용자번호';
-COMMENT ON COLUMN comments.comment is '댓글';
-COMMENT ON COLUMN comments.cdate is '댓글 등록일';
+COMMENT ON COLUMN comments.comments is '댓글';
+COMMENT ON COLUMN comments.comments_date is '댓글 등록일';
 
 
 ALTER TABLE comments ADD CONSTRAINT IDX_comments_PK PRIMARY KEY (commentsID);
@@ -33,19 +33,29 @@ CREATE SEQUENCE comments_seq
   
 --Create
 1) 사용자가 쓴 댓글 
-INSERT INTO comments(commentsID, communityID, guestno, comments,cdate) VALUES(comments_seq.nextval, 1,1,'재미있었당~',sysdate);
+INSERT INTO comments(commentsID, communityID, guestno, comments,comments_date) VALUES(comments_seq.nextval, 1,1,'재미있었당~',sysdate);
+INSERT INTO comments(commentsID, communityID, guestno, comments,comments_date) VALUES(comments_seq.nextval, 11,1,'이것은 AJAX 여~',sysdate);
 
 --Read
 1) 사용자가 쓴 댓글 확인 
-SELECT communityID,comments FROM comments WHERE guestno=1;
+SELECT communityID,commentsID,comments,comments_date FROM comments WHERE guestno=1;
 
 --Update
 1) 사용자가 쓴 댓글 수정 
-Update comments SET comments='' WHERE commentsID=1;
+Update comments SET comments='힝구리퐁퐁' WHERE commentsID=1;
 
 --DELETE
 1)사용자가 쓴 댓글 삭제 
-DELETE FROM contents WHERE commentsID=1;
+DELETE FROM comments WHERE commentsID=1;
 
+2)community 에 해당하는 댓글 수 확인 및 삭제
+SELECT COUNT(*) as cnt
+FROM comments
+WHERE communityID=1;
+
+3)회원에 해당하는 댓글 수 확인 및 삭제 
+SELECT COUNT(*) as cnt
+FROM comments
+WHERE guestno=1;
 --DLC
 commit ;

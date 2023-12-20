@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "dev.mvc.comments.CommentDAOInter">
+  <insert id="create" parameterType="dev.mvc.comments.CommentsVO">
+  	INSERT INTO comments(commentsID, communityID, guestno, comments, comments_date) 
+  	VALUES(comments_seq.nextval, #{communityID},#{guestno},#{comments},sysdate)
+	</insert>
+  
+  <select id="list_comments" resultType="dev.mvc.comments.CommentsVO">
+    SELECT commentsID, communityID, guestno, comments,comments_date
+    FROM comments
+    ORDER BY commentsID DESC
+  </select>
+  
+  <select id="list_by_communityID" resultType="dev.mvc.comments.CommentsVO" parameterType="int">
+    SELECT * FROM comments WHERE communityID = #{communityID}
+</select>
+
+<!-- 
+  <select id="list_by_communityID" resultType="dev.mvc.comments.CommentsVO" parameterType="int">
+    SELECT commentsID, communityID, guestno, comments,comments_date
+    FROM comments
+    WHERE communityID=#{communityID}
+    ORDER BY commentsID DESC
+  </select>
+ -->
+	<!--  
+  <select id="list_by_contentsno_join" resultType="dev.mvc.reply.ReplyMemberVO" parameterType="int">
+    SELECT m.id,
+               r.replyno, r.contentsno, r.memberno, r.content, r.passwd, r.rdate
+    FROM member m,  reply r
+    WHERE (m.memberno = r.memberno) AND r.contentsno=#{contentsno}
+    ORDER BY r.replyno DESC
+  </select>
+  -->
+  <!-- <select id="checkPasswd" parameterType="HashMap" resultType="int"> -->
+  <!-- <select id="checkPasswd" parameterType="ReplyVO" resultType="int"> -->
+  
+  <delete id="delete" parameterType="int">
+    DELETE FROM comments
+    WHERE commentsID=#{commentsID}
+  </delete>
+    
+</mapper> 

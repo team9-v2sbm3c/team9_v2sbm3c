@@ -20,9 +20,7 @@
 
   <div class='title_line'>
     ${planVO.pname }
-    <c:if test="${param.word.length() > 0 }">
-      > 「${param.word }」 검색 ${search_count } 건
-    </c:if> 
+    
   </div>
   
   <aside class="aside_right">
@@ -38,26 +36,6 @@
     <a href="./list_by_planID_grid.do?planID=${param.planID }&now_page=${param.now_page}">갤러리형</a>    
   </aside>
   
-  <div style="text-align: right; clear: both;">  
-    <form name='frm' id='frm' method='get' action='./list_by_planID.do'>
-      <input type='hidden' name='planID' value='${param.planID }'>  <%-- 게시판의 구분 --%>
-      
-      <c:choose>
-        <c:when test="${param.word != '' }"> <%-- 검색하는 경우는 검색어를 출력 --%>
-          <input type='text' name='word' id='word' value='${param.word }'>
-        </c:when>
-        <c:otherwise> <%-- 검색하지 않는 경우 --%>
-          <input type='text' name='word' id='word' value=''>
-        </c:otherwise>
-      </c:choose>
-      <button type='submit' class='btn btn-secondary btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;">검색</button>
-      <c:if test="${param.word.length() > 0 }"> <%-- 검색 상태하면 '검색 취소' 버튼을 출력 --%>
-        <button type='button' class='btn btn-secondary btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;"
-                    onclick="location.href='./list_by_planID.do?planID=${param.planID}&word='">검색 취소</button>  
-      </c:if>    
-    </form>
-  </div>
-    
   <div class="menu_line"></div> 
   
   <div style='width: 100%;'> <%-- 갤러리 Layout 시작 --%>

@@ -42,11 +42,13 @@ ALTER TABLE community ADD CONSTRAINT IDX_community_FK0 FOREIGN KEY (guestno) REF
 ALTER TABLE community ADD CONSTRAINT IDX_community_FK1 FOREIGN KEY (activecodeno) REFERENCES activecode (activecodeno);
 ALTER TABLE community ADD CONSTRAINT IDX_community_FK2 FOREIGN KEY (planID) REFERENCES plan (planID);
 
+-- map 컬럼에 대한 기본값 설정
 ALTER TABLE community
-MODIFY map VARCHAR2(1000);
+MODIFY (map VARCHAR2(1000));
 
+-- youtube 컬럼에 대한 기본값 설정
 ALTER TABLE community
-MODIFY youtube VARCHAR2(1000);
+MODIFY (youtube VARCHAR2(1000));
 
 DROP SEQUENCE COMMUNITY_SEQ;
 
@@ -113,5 +115,23 @@ FROM (
     )
 )
 WHERE r >= 1 AND r <= 3;
+
+SELECT communityID, activecodeno, guestno, planID, title, content ,
+	mainImage, mainImagePreview, cimage, size1, map, youtube, cdate,
+	replycnt, r
+	FROM (
+	SELECT communityID, activecodeno, guestno, planID, title, content ,
+	mainImage, mainImagePreview, cimage, size1, map, youtube, cdate,
+	replycnt, rownum as r
+	FROM (
+	SELECT communityID, activecodeno, guestno, planID, title, content ,
+	mainImage, mainImagePreview, cimage, size1, map, youtube, cdate,
+	replycnt
+	FROM community
+	WHERE planID=1
+	ORDER BY communityID DESC
+	)
+	)
+	WHERE r >= 1 AND r <= 3;
 
 
