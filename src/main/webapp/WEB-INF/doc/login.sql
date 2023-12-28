@@ -9,7 +9,7 @@ CREATE TABLE glogin(
 );
 
 COMMENT ON TABLE glogin is '로그인 내역';
-COMMENT ON COLUMN glogin.loginno is '로그인 번호';
+COMMENT ON COLUMN glogin.gloginno is '로그인 번호';
 COMMENT ON COLUMN glogin.guestno is '사용자 번호';
 COMMENT ON COLUMN glogin.ip is '접속 ip';
 COMMENT ON COLUMN glogin.logindate is '로그인 날짜';

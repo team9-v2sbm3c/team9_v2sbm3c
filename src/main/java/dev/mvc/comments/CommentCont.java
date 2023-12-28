@@ -36,9 +36,7 @@ public class CommentCont {
 
 		JSONObject obj = new JSONObject();
 		obj.put("cnt", cnt);
-
 		return obj.toString(); // {"cnt":1}
-
 	}
 
 	@RequestMapping(value = "/comments/list.do", method = RequestMethod.GET)

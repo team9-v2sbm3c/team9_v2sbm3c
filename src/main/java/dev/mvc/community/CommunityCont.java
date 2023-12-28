@@ -510,8 +510,8 @@ public class CommunityCont {
 	    // 삭제할 파일 정보를 읽어옴.
 	    CommunityVO communityVO_read = communityProc.read_community(communityVO.getCommunityID());
 	        
-	    String file1saved = communityVO.getMainImagePreview();
-	    String thumb1 = communityVO.getCimage();
+	    String file1saved = communityVO_read.getMainImagePreview();
+	    String thumb1 = communityVO_read.getCimage();
 	    
 	    String uploadDir = Community.getUploadDir();
 	    Tool.deleteFile(uploadDir, file1saved);  // 실제 저장된 파일삭제
@@ -528,21 +528,21 @@ public class CommunityCont {
 	    // 마지막 페이지의 마지막 10번째 레코드를 삭제후
 	    // 하나의 페이지가 3개의 레코드로 구성되는 경우 현재 9개의 레코드가 남아 있으면
 	    // 페이지수를 4 -> 3으로 감소 시켜야함, 마지막 페이지의 마지막 레코드 삭제시 나머지는 0 발생
-	    int now_page = communityVO.getNow_page();
-	    
-	    HashMap<String, Object> hashMap = new HashMap<String, Object>();
-	    hashMap.put("planID", communityVO.getPlanID());
-	    
-	    if (communityProc.search_count(hashMap) % Community.RECORD_PER_PAGE == 0) {
-	      now_page = now_page - 1; // 삭제시 DBMS는 바로 적용되나 크롬은 새로고침등의 필요로 단계가 작동 해야함.
-	      if (now_page < 1) {
-	        now_page = 1; // 시작 페이지
-	      }
-	    }
+//	    int now_page = communityVO.getNow_page();
+//	    
+//	    HashMap<String, Object> hashMap = new HashMap<String, Object>();
+//	    hashMap.put("planID", communityVO.getPlanID());
+//	    
+//	    if (communityProc.search_count(hashMap) % Community.RECORD_PER_PAGE == 0) {
+//	      now_page = now_page - 1; // 삭제시 DBMS는 바로 적용되나 크롬은 새로고침등의 필요로 단계가 작동 해야함.
+//	      if (now_page < 1) {
+//	        now_page = 1; // 시작 페이지
+//	      }
+//	    }
 	    // -------------------------------------------------------------------------------------
 
 	    mav.addObject("planID", communityVO.getPlanID());
-	    mav.addObject("now_page", now_page);
+//	    mav.addObject("now_page", now_page);
 	    mav.setViewName("redirect:/community/list_by_planID.do"); 
 	    
 	    return mav;

@@ -34,7 +34,7 @@
             <textarea class="form-control" id="content" name="content" rows="3" placeholder="댓글을 입력하세요"></textarea>
         </div>
         <!-- 수정: onclick 시 createComment 함수에 필요한 인자 전달 -->
-        <button type="button" class="btn btn-primary" onclick="createComment(event)">댓글 작성</button>
+        <button id="commentButton" type="button" class="btn btn-primary">댓글 작성</button>
     </form>
 
     <!-- 댓글 목록 표시 영역 -->
@@ -43,30 +43,32 @@
 
 	<script>
 	// 댓글 생성 함수
-	function createComment(event) {
-        var content = document.getElementById("content").value;
-        var communityID = 12; // 예시로 고정값 사용, 필요에 따라 동적으로 설정할 수 있음
-        var now_page = 1; // 예시로 고정값 사용, 필요에 따라 동적으로 설정할 수 있음
-        var planID = 1; // 예시로 고정값 사용, 필요에 따라 동적으로 설정할 수 있음
+	document.getElementById("commentButton").addEventListener("click", createComment);
+
+    function createComment(event) {
+        //console.log("createComment 함수가 호출되었습니다.");
+        var content = $("#content").val();
+        //console.log(content);
+        //console.log(${communityVO.communityID});
+        //console.log(${communityVO.planID});
 
         // 수정: AJAX 호출 시 필요한 데이터 전달
         $.ajax({
             type: "POST",
             url: "/comments/create.do",
             data: {
-                content: content,
-                communityID: ${communityVO.communityID},
-                planID: ${communityVO.planID}
+            	comments: content,
+                communityID:${communityVO.communityID},
+                planID: ${communityVO.planID},
+                guestno: 1
             },
             success: function (response) {
                 var result = JSON.parse(response);
                 if (result.cnt === 1) {
-                    // 댓글 생성 성공
-                    // 추가로 필요한 작업 수행
-                    loadCommentsByCommunityID(communityID); // 댓글 목록 다시 불러오기
+                	//console.log("댓글 생성 성공");
+                	loadCommentsByCommunityID(${communityVO.communityID}); 
                 } else {
-                    // 댓글 생성 실패
-                    // 처리 로직 추가
+                	//console.error("댓글 생성 실패");
                 }
             },
             error: function () {
@@ -74,6 +76,7 @@
             }
         });
     }
+	
 
 	// 댓글 목록 불러오기 함수
 	function loadCommentsByCommunityID(communityID) {
@@ -86,6 +89,7 @@
 	        },
 	        success: function (response) {
 	            var result = JSON.parse(response);
+	            console.log("댓글 불러오기 성공");
 	            console.log(result);
 	            // 댓글 목록을 result.list로 받아서 처리
 	            // 예: 화면에 댓글 목록 표시
@@ -134,7 +138,7 @@
 
 	// 초기 페이지 로드 시 댓글 목록 불러오기
 	$(document).ready(function () {
-	    var communityID = 1; // 원하는 커뮤니티 ID로 변경
+	    var communityID = ${communityVO.communityID}; 
 	    loadCommentsByCommunityID(communityID);
 	});
 

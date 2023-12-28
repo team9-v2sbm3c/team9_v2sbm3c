@@ -99,7 +99,7 @@ ORDER BY communityID DESC;
 
 --Delete
 DELETE FROM community
-WHERE communityID = 2;
+WHERE communityID = 1;
 
 --DCL
 commit;
