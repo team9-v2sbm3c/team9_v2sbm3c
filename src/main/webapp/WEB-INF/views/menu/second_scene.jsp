@@ -19,33 +19,11 @@
 
 </head>
 <body>
-	<div class="text-center">
-		<a href="http://localhost:8000/recommend_system/recommend_form?guestno=1" class="btn btn-primary">활동 추천받기</a>
-		
-	</div>
 
-	<!--modal -->
-	<div class="modal" id="myModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">추천 시스템은 준비중입니다..</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-				</div>
-
-				<!-- Modal body -->
-				<div class="modal-body">준비중입니다.</div>
-
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">Close</button>
-				</div>
-
-			</div>
-		</div>
+	<div class="button-container">
+		<span class="btn-message">새로운 여행, 새로운 기억. 세상을 탐험하며 쌓아가는 순간들</span>
+		<span class="btn-message">여행지를 추천받아보세요. 🌍</span>
+		 <a href="http://localhost:8000/recommend_system/recommend_form?guestno=1" class="btn btn-primary">추천받기</a>
 	</div>
 
 </body>

@@ -1,5 +1,10 @@
   /* ver 2.2 2023_1023 */
   /* 모든 태그에 적용 */
+  @font-face {
+  font-family: 'NanumPen';
+  src: url('/font/nanum_garam.ttf') format('truetype');
+  /* 다른 형식의 폰트 파일이 있다면 추가하세요. */
+}
   *{
      font-family: Malgun Gothic; 
      font-size: 16px; 
@@ -478,11 +483,69 @@
     margin-bottom: 5px;
     text-align: center;
   }
+
+/*메인 이미지 css*/
    .c-item{
    	height:480px;
    }
    .c-img{
    	height:100%;
    	object-fit:cover;
-   	filter:birghtness(0.6);
+   	filter: brightness(0.5); 
    }
+
+.carousel-caption h3,
+.carousel-caption p {
+  text-align: left;
+}
+
+.carousel-caption h3 {
+  font-size: 5em;
+  color: #FFD700; 
+  margin-bottom: 10px;
+}
+
+.carousel-caption p {
+  font-size: 2em;
+  color: #FFFFFF; 
+}
+
+.carousel-caption .tag {
+  font-size: 1em; 
+}
+
+
+.button-container {
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 100px;
+    }
+
+/* 추천 버튼 css*/
+.btn-primary,
+.btn-primary:link,
+.btn-primary:visited,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  font-size: 1.8em;
+  padding: 10px 20px;
+  background-color: #3498db; /* Change to the desired background color */
+  border: none;
+  border-radius: 5px;
+  color: #FFFFFF;
+  display: inline-block;
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.btn-primary:hover {
+  background-color: #2980b9; /* Change to a slightly darker color on hover, if desired */
+}
+
+    .btn-message {
+      font-family: 'NanumPen', sans-serif;
+      font-size: 4em;
+      color: #000000;
+      display: block;
+      margin-top: 20px;
+    }

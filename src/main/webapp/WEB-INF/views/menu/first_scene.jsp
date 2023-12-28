@@ -18,14 +18,6 @@
 <body>
 	<!-- Carousel -->
 	<div id="carouselSldier" class="carousel slide" data-bs-ride="carousel">
-
-		<!-- 차트 -->
-		<div class="carousel-indicators">
-			<button type="button" data-bs-target="#carouselSldier" data-bs-slide-to="0" class="active"></button>
-			<button type="button" data-bs-target="#carouselSldier" data-bs-slide-to="1" ></button>
-			<button type="button" data-bs-target="#carouselSldier" data-bs-slide-to="2" ></button>
-		</div>
-
 		<!-- 슬라이드 내용 -->
 		<div class="carousel-inner">
 			<div class="carousel-item active c-item">
@@ -33,7 +25,8 @@
 					class="d-block w-100 c-img">
 				<div class="carousel-caption">
 					<h3>서울</h3>
-					<p class="text-light">핫한 10대들의 데이트 장소</p>
+					<p class='tag'>#20대 #커플 #데이트</p>
+					<p> 20대 커플들의 데이트 장소</p>
 				</div>
 			</div>
 			<div class="carousel-item c-item">
@@ -41,7 +34,8 @@
 					class="d-block w-100 c-img">
 				<div class="carousel-caption">
 					<h3>제주도</h3>
-					<p class="text-light">부모님들과 같이 가기 좋은 장소</p>
+					<p class='tag'>#힐링 #가족</p>
+					<p>부모님들과 같이 가기 좋은 장소</p>
 				</div>
 			</div>
 			<div class="carousel-item c-item">
@@ -49,7 +43,8 @@
 					class="d-block w-100 c-img">
 				<div class="carousel-caption">
 					<h3>부산</h3>
-					<p class="text-light">친구들과 추억쌓기 좋은 장소</p>
+					<p class='tag'>#우정 #10대</p>
+					<p>친구들과 추억쌓기 좋은 장소</p>
 				</div>
 			</div>
 		</div>
