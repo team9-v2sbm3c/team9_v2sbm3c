@@ -105,4 +105,17 @@ public class CommentCont {
 
 		return obj.toString();
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/comments/delete.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String deleteComment(int commentsID) {
+	    int cnt = commentsProc.delete(commentsID);
+
+	    JSONObject obj = new JSONObject();
+	    obj.put("cnt", cnt);
+
+	    return obj.toString();
+	}
+	
 }

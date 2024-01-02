@@ -41,6 +41,9 @@ INSERT INTO comments(commentsID, communityID, guestno, comments,comments_date) V
 1) 사용자가 쓴 댓글 확인 
 SELECT communityID,commentsID,comments,comments_date FROM comments WHERE guestno=1;
 
+SELECT c.commentsID, c.communityID, c.guestno, c.comments, c.comments_date, g.gname
+FROM comments c
+JOIN GUEST g ON c.guestno = g.guestno;
 --Update
 1) 사용자가 쓴 댓글 수정 
 Update comments SET comments='힝구리퐁퐁' WHERE commentsID=1;
