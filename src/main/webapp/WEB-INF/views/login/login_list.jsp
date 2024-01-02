@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="/images/star.png" /> <%-- /static 기준 --%>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 <body>
@@ -42,6 +42,9 @@
             </c:forEach>
         </tbody>
     </table>
+     <div class="bottom_menu">
+      <button type="button" onclick="history.back()" class="btn btn-primary btn-sm">홈</button>
+    </div>   
     
     <jsp:include page="../menu/bottom.jsp" flush='false' /> 
 </body>

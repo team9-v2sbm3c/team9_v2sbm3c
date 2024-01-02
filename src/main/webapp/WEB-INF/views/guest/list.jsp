@@ -12,13 +12,16 @@
 <link rel="shortcut icon" href="/images/star.png" /> <%-- /static 기준 --%>
 <link href="/css/style.css" rel="Stylesheet" type="text/css"> <!-- /static 기준 -->
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
 <script type="text/javascript">
 
 </script>
 </head> 
  
 <body>
-<c:import url="/menu/top.do" />
+<jsp:include page="../menu/top.jsp" flush='false' />
  
   <DIV class='title_line'>회원(관리자 전용)</DIV>
 
