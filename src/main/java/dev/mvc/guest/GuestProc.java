@@ -110,4 +110,16 @@ public class GuestProc implements GuestProcInter {
     int cnt = this.guestDAO.login(map);
     return cnt;
   }
+  
+  @Override
+  public GuestVO id_find(HashMap<String, Object> map) {
+    GuestVO guestVO = this.guestDAO.id_find(map);
+    return guestVO;
+  }
+  
+  @Override
+  public int user_withdrawal(int guestno) {
+    int cnt = this.guestDAO.user_withdrawal(guestno);
+    return cnt;
+  }
 }

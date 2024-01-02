@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import dev.mvc.owner.OwnerProcInter;
 import dev.mvc.login.LoginProc;
 import dev.mvc.login.LoginProcInter;
+import dev.mvc.mail.MailTool;
 
 import org.json.JSONObject;
 
@@ -195,7 +197,7 @@ public class GuestCont {
   * localhost:9093/guest/read.do?guestno=1
   * 회원 조회
   * 관리자, 회원 본인만 가능
-  * @param customerno
+  * @param guestno
   * @return
   */
  @RequestMapping(value="/guest/read.do", method=RequestMethod.GET)
@@ -238,7 +240,7 @@ public class GuestCont {
  public ModelAndView update(GuestVO guestVO){
    ModelAndView mav = new ModelAndView();
    
-   // System.out.println("id: " + customerVO.getId());
+   // System.out.println("id: " + guestVO.getId());
    
    int cnt= this.guestProc.update(guestVO);
    
@@ -270,6 +272,7 @@ public class GuestCont {
    
    GuestVO guestVO = this.guestProc.read(guestno); // 삭제할 레코드를 사용자에게 출력하기위해 읽음.
    mav.addObject("guestVO", guestVO);
+   
    mav.setViewName("/guest/delete"); // /guest/delete.jsp
    
    return mav; // forward
@@ -283,21 +286,22 @@ public class GuestCont {
  @RequestMapping(value="/guest/delete.do", method=RequestMethod.POST)
  public ModelAndView delete_proc(int guestno){
    ModelAndView mav = new ModelAndView();
+
+   // 자식 테이블 레코드 삭제에 성공한 경우에만 부모 테이블 레코드 삭제 수행 로직
+
+   GuestVO guestVO = this.guestProc.read(guestno);
+   System.out.println("-> guestVO: " + guestVO);
    
-   // System.out.println("id: " + guestVO.getId());
-   // 삭제된 정보를 msg.jsp에 출력하기 위해, 삭제전에 회원 정보를 읽음.
-   GuestVO guestVO = this.guestProc.read(guestno); 
-   
-   int cnt= this.guestProc.delete(guestno);
+   int cnt = this.guestProc.delete(guestno);
+   System.out.println("-> cnt: " + cnt); 
 
    if (cnt == 1) {
-     mav.addObject("code", "delete_success");
-     mav.addObject("cname", guestVO.getGname());  // 홍길동님(user4) 회원 정보를 삭제했습니다.
-     mav.addObject("id", guestVO.getId());
+       mav.addObject("code", "delete_success");
+       mav.addObject("gname", guestVO.getGname());
+       mav.addObject("id", guestVO.getId());
    } else {
-     mav.addObject("code", "delete_fail");
+      mav.addObject("code", "delete_fail");
    }
-
    mav.addObject("cnt", cnt); // request.setAttribute("cnt", cnt)
    mav.addObject("url", "/guest/msg");  // /guest/msg -> /guest/msg.jsp
    
@@ -563,4 +567,90 @@ public class GuestCont {
    
    return mav;
  }
+ /**
+  * 아이디 찾기 폼
+  */
+ @RequestMapping(value="/guest/id_find.do", method=RequestMethod.GET )
+ public ModelAndView id_find() {
+   ModelAndView mav = new ModelAndView();
+   mav.setViewName("/guest/id_find"); // /WEB-INF/views/guest/id_find.jsp
+  
+   return mav; // forward
+ }
+ 
+//http://localhost:9093/guest/user_withdrawal.do
+ /**
+  * 회원 탈퇴
+  * @param guestno 회원 번호
+  */
+ @RequestMapping(value="/guest/user_withdrawal.do", method=RequestMethod.POST)
+ public ModelAndView user_withdrawal(HttpSession session){
+   ModelAndView mav = new ModelAndView();
+   
+   int guestno = (int)session.getAttribute("guestno"); // 현재 로그인한 회원의 정보만 패스워드 변경 가능
+   //int guestno = 3; // 테스트
+   
+   int cnt = this.guestProc.user_withdrawal(guestno);
+   
+   if (cnt == 1) {
+     mav.addObject("code", "passwd_update_success"); // 탈퇴 성공
+   } else {
+     mav.addObject("code", "passwd_update_fail");       // 탈퇴 실패
+   }
+
+
+   mav.addObject("cnt", cnt); // 패스워드 일치 여부
+   mav.addObject("url", "/guest/msg");  // /guest/msg -> /guest/msg.jsp
+   
+   mav.setViewName("redirect:/guest/msg.do");
+   
+   return mav;
+ }
+ 
+ 
+//http://localhost:9093/guest/id_find.do
+/**
+ * 아이디 찾기
+ * 
+ * @return
+ */
+@RequestMapping(value = "/guest/id_find.do", method = RequestMethod.POST)
+public ModelAndView id_find(String gname, String gemail) {
+  ModelAndView mav = new ModelAndView();
+  mav.setViewName("/guest/id_find"); // /WEB-INF/views/guest/create.jsp
+  
+  HashMap<String, Object> map = new HashMap<String, Object>();
+  map.put("gname", gname);
+  
+  GuestVO guestVO = this.guestProc.id_find(map);
+    if(guestVO == null) {
+      mav.addObject("code", "no_guest");
+      
+      mav.addObject("url", "/guest/msg");
+      mav.setViewName("redirect:/guest/msg.do");
+    } else {
+      String id = guestVO.getId();
+      mav.addObject("id", id);
+      
+      MailTool mailTool = new MailTool();
+      String from = "jin200112kr@gmail.com"; // 관리자 메일 주소
+      String title = "여행 아이디";
+      String content = gname + "님의 등록된 아이디는 [" + id + "] 입니다.";
+      int cnt = mailTool.send(gemail, from, title, content); // 메일 전송
+      
+      if(cnt == 1) {
+        mav.addObject("code", "mail_success");
+      } else {
+        mav.addObject("code", "mail_fail");
+      }
+      mav.addObject("cnt", cnt);
+    }
+    
+    mav.addObject("url", "/guest/msg");
+    mav.setViewName("redirect:/guest/msg.do");
+    
+    return mav; // forward
+  }
+
+ 
 }

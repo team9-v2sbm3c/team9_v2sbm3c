@@ -66,4 +66,18 @@
     SET passwd=#{passwd}
     WHERE guestno=#{guestno}
   </update>
+  
+  <!-- 아이디 찾기 -->
+  <update id="id_find" parameterType="HashMap">
+    SELECT guestno, id, passwd, gname, gemail, gdate, grade
+    FROM guest
+    WHERE gname = #{gname}
+  </update>
+  
+    <!-- 회원 탈퇴 -->
+  <update id="user_withdrawal" parameterType="int">
+    UPDATE guest 
+    SET grade=99
+    WHERE guestno=#{guestno}
+  </update>
 </mapper>

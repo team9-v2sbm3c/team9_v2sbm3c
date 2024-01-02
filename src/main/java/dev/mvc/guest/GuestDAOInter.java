@@ -80,4 +80,16 @@ public interface GuestDAOInter {
    * 로그인 처리
    */
   public int login(HashMap<String, Object> map);
+  /**
+   * 회원 정보 찾기
+   * @param gname
+   * @return
+   */
+  public GuestVO id_find(HashMap<String, Object> map);
+  /**
+   * 회원 탈퇴
+   * @param guestno
+   * @return
+   */
+  public int user_withdrawal(int guestno);
 }

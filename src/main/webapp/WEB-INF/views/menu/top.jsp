@@ -35,7 +35,7 @@
 										변경</a>
 									<a class="dropdown-item" href="/guest/read.do">회원 정보 수정</a>
 									<a class="dropdown-item" href="/login/login_list.do">로그인 내역</a>
-									<a class="dropdown-item" href="#">회원 탈퇴</a>
+									<a class="dropdown-item" href="/guest/user_withdrawal.do">회원 탈퇴</a>
 								</c:otherwise>
 							</c:choose>
 						</div></li>

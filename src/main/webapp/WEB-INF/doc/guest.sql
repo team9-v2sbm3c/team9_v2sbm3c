@@ -88,7 +88,7 @@ DELETE FROM guest;
  
 2) 특정 회원 삭제
 DELETE FROM guest
-WHERE guestno=5;
+WHERE guestno=1;
 
 5.로그인
 SELECT COUNT(*) as cnt
@@ -117,3 +117,28 @@ MODIFY grade NULL;
 
 ALTER TABLE guest
 MODIFY passwd NOT NULL;
+
+7. 로그인
+SELECT COUNT(guestno) as cnt
+FROM guest
+WHERE id='kd@gmail.com' AND passwd='1234';
+ cnt
+ ---
+   0
+
+-- 탈퇴회원의 경우 로그인 불가
+SELECT COUNT(guestno) as cnt
+FROM guest
+WHERE id='kd@gmail.com' AND passwd='1234' AND GRADE!=99;
+
+
+-- grade가 99일 시 탈퇴
+8. 회원탈퇴 기능
+UPDATE guest 
+SET grade=99
+WHERE guestno=1;
+
+9. 등급 변경
+UPDATE guest 
+SET grade=99
+WHERE guestno=1;
