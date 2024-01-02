@@ -43,7 +43,8 @@
         </tbody>
     </table>
      <div class="bottom_menu">
-      <button type="button" onclick="history.back()" class="btn btn-primary btn-sm">홈</button>
+      <button type="button" onclick="location.href='/'" class="btn btn-primary btn-sm">홈</button>
+      <button type="button" onclick="history.back()" class="btn btn-primary btn-sm">뒤로</button>
     </div>   
     
     <jsp:include page="../menu/bottom.jsp" flush='false' /> 
