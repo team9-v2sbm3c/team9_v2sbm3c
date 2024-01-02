@@ -5,7 +5,7 @@ CREATE TABLE comments(
 		commentsID                    		NUMBER(10)		 NOT NULL,
 		communityID                   		NUMBER(10)		 NULL ,
 		guestno                       		NUMBER(10)		 NULL ,
-		comments                       		VARCHAR2(500)		 NULL ,
+		comments                            VARCHAR2(500) DEFAULT ' ' NULL,
 		comments_date                         		DATE		 NULL 
 );
 
@@ -20,7 +20,6 @@ COMMENT ON COLUMN comments.comments_date is '댓글 등록일';
 ALTER TABLE comments ADD CONSTRAINT IDX_comments_PK PRIMARY KEY (commentsID);
 ALTER TABLE comments ADD CONSTRAINT IDX_comments_FK0 FOREIGN KEY (guestno) REFERENCES Guest (guestno);
 ALTER TABLE comments ADD CONSTRAINT IDX_comments_FK1 FOREIGN KEY (communityID) REFERENCES community (communityID);
-
 
 DROP SEQUENCE comments_seq;
 
@@ -57,5 +56,8 @@ WHERE communityID=1;
 SELECT COUNT(*) as cnt
 FROM comments
 WHERE guestno=1;
+
+4)NULL 삭제
+DELETE FROM comments WHERE comments is null;
 --DLC
 commit ;

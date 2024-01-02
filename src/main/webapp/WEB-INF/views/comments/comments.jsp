@@ -30,9 +30,9 @@
     <h2>댓글</h2>
     <form id="commentForm">
         <div class="form-group">
-            <label for="content">댓글 내용:</label>
-            <textarea class="form-control" id="content" name="content" rows="3" placeholder="댓글을 입력하세요"></textarea>
-        </div>
+    <label for="content">댓글 내용:</label>
+    <textarea class="form-control" id="content" name="content" rows="3" placeholder="댓글을 입력하세요"></textarea>
+</div>
         <!-- 수정: onclick 시 createComment 함수에 필요한 인자 전달 -->
         <button id="commentButton" type="button" class="btn btn-primary">댓글 작성</button>
     </form>
@@ -48,7 +48,8 @@
     function createComment(event) {
         //console.log("createComment 함수가 호출되었습니다.");
         var content = $("#content").val();
-        //console.log(content);
+        
+        console.log(content);
         //console.log(${communityVO.communityID});
         //console.log(${communityVO.planID});
 

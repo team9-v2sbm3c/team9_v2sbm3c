@@ -71,8 +71,6 @@ public class CommunityCont {
 
 		PlanVO planVO = this.planProc.read_plan(planID);
 		mav.addObject("planVO", planVO);
-		
-		
 
 		mav.setViewName("/community/create");
 
@@ -131,9 +129,8 @@ public class CommunityCont {
 				// ------------------------------------------------------------------------------
 
 				// Call By Reference: 메모리 공유, Hashcode 전달
-				//int guestno = (int) session.getAttribute("guestno"); // adminno FK
-				communityVO.setGuestno(1);
-
+				int ownerno = (int) session.getAttribute("ownerno"); // ownerno FK
+				communityVO.setGuestno(ownerno);
 				int cnt = this.communityProc.create_community(communityVO);
 
 				// ------------------------------------------------------------------------------

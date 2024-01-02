@@ -522,12 +522,12 @@
     }
 
 /* 추천 버튼 css*/
-.btn-primary,
-.btn-primary:link,
-.btn-primary:visited,
-.btn-primary:hover,
-.btn-primary:active,
-.btn-primary:focus {
+.btn-primary.recommend,
+.btn-primary.recommend:link,
+.btn-primary.recommend:visited,
+.btn-primary.recommend:hover,
+.btn-primary.recommend:active,
+.btn-primary.recommend:focus {
   font-size: 1.8em;
   padding: 10px 20px;
   background-color: #3498db; /* Change to the desired background color */
@@ -538,7 +538,7 @@
   text-decoration: none; /* Remove underline from the link */
 }
 
-.btn-primary:hover {
+.btn-primary.recommend:hover {
   background-color: #2980b9; /* Change to a slightly darker color on hover, if desired */
 }
 
