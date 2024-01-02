@@ -7,6 +7,8 @@
 	content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
 <title>http://localhost:9093/</title>
 </head>
+
+
 <body>
 	<nav class="navbar navbar-expand-sm navbar-light bg-light">
 		<div class="container-fluid">

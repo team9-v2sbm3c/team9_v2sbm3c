@@ -150,7 +150,7 @@
 
 
 <body>
-<c:import url="/menu/top.do" />
+<jsp:include page="../menu/top.jsp" flush='false' />
 
   <DIV class='title_line'>회원 가입(*: 필수)</DIV>
 

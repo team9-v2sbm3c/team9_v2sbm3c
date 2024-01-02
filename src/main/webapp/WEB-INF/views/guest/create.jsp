@@ -9,6 +9,8 @@
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, width=device-width" /> 
 <title>Resort world</title>
 
+
+
 <script type="text/javascript">
   window.onload = function() {
     document.querySelector('#id').addEventListener('keypress', (event) => {
@@ -136,7 +138,7 @@
 </head> 
 
 <body>
-<c:import url="/menu/top.do" />
+<jsp:include page="../menu/top.jsp" flush='false' />
 
   <DIV class='title_line'>회원 가입(*: 필수)</DIV>
 

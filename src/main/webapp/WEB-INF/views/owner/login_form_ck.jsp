@@ -16,7 +16,7 @@
 </head> 
  
 <body>
-<c:import url="/menu/top.do" />
+<jsp:include page="../menu/top.jsp" flush='false' />
  
   <DIV class='title_line'>관리자 로그인</DIV>
 
