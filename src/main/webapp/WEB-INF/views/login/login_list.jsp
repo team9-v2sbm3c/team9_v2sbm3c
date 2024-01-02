@@ -10,9 +10,13 @@
     <title>http://localhost:9093/login/login_list.do</title>
     <link href="/css/style.css" rel="Stylesheet" type="text/css"> <!-- /static 기준 -->
     <link rel="shortcut icon" href="/images/star.png" /> <%-- /static 기준 --%>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
-    <c:import url="/menu/top.do" />
+    <jsp:include page="../menu/top.jsp" flush='false' />
 
     <table class="table table-hover">
         <colgroup>
