@@ -16,7 +16,7 @@
 
 </head>
 <body>
-	<!-- Carousel -->
+	<!-- 슬라이드 -->
 	<div id="carouselSldier" class="carousel slide" data-bs-ride="carousel">
 		<!-- 슬라이드 내용 -->
 		<div class="carousel-inner">

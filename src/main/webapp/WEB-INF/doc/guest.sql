@@ -1,7 +1,7 @@
 /**********************************/
 /* Table Name: Guest */
 /**********************************/
-DROP TABLE GUEST;
+DROP TABLE GUEST CASCADE CONSTRAINTS;
 
 CREATE TABLE GUEST(
         guestno NUMBER(10) NOT NULL,

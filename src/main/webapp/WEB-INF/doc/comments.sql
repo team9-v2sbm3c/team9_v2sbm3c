@@ -1,6 +1,8 @@
 /**********************************/
 /* Table Name: 댓글 */
 /**********************************/
+drop table comments;
+
 CREATE TABLE comments(
 		commentsID                    		NUMBER(10)		 NOT NULL,
 		communityID                   		NUMBER(10)		 NULL ,

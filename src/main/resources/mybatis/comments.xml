@@ -10,7 +10,7 @@
   <select id="list_comments" resultType="dev.mvc.comments.CommentsVO">
     SELECT commentsID, communityID, guestno, comments,comments_date
     FROM comments
-    ORDER BY commentsID DESC
+    ORDER BY commentsID ASC
   </select>
   
   <select id="list_by_communityID" resultType="dev.mvc.comments.CommentsVO" parameterType="int">
@@ -25,15 +25,13 @@
     ORDER BY commentsID DESC
   </select>
  -->
-	<!--  
-  <select id="list_by_contentsno_join" resultType="dev.mvc.reply.ReplyMemberVO" parameterType="int">
-    SELECT m.id,
-               r.replyno, r.contentsno, r.memberno, r.content, r.passwd, r.rdate
-    FROM member m,  reply r
-    WHERE (m.memberno = r.memberno) AND r.contentsno=#{contentsno}
-    ORDER BY r.replyno DESC
+	
+  <select id="list_by_communityID_join" resultType="dev.mvc.comments.CommentsGuestVO" parameterType="int">
+    SELECT g.gname,c.commentsID, c.communityID, c.guestno, c.comments, c.comments_date
+	FROM comments c
+	JOIN GUEST g ON c.guestno = g.guestno
   </select>
-  -->
+  
   <!-- <select id="checkPasswd" parameterType="HashMap" resultType="int"> -->
   <!-- <select id="checkPasswd" parameterType="ReplyVO" resultType="int"> -->
   

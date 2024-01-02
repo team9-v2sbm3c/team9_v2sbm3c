@@ -19,7 +19,6 @@
 
 </head>
 <body>
-
 	<div class="button-container">
 		<span class="btn-message">새로운 여행, 새로운 기억. 세상을 탐험하며 쌓아가는 순간들</span>
 		<span class="btn-message">여행지를 추천받아보세요. 🌍</span>

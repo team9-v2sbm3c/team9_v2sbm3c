@@ -9,6 +9,7 @@ public class CommentsVO {
 	private int guestno; // guestno
 	/** 내용 */
 	private String comments; // comments
+	
 	/** 등록일 */
 	private String comments_date; // comments_date
 	
@@ -42,7 +43,4 @@ public class CommentsVO {
 	public void setComments_date(String comments_date) {
 		this.comments_date = comments_date;
 	}
-	
-	
-	
 }

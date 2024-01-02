@@ -18,6 +18,8 @@ import dev.mvc.plan.PlanVO;
 import dev.mvc.plan.PlanVO;
 import dev.mvc.community.Community;
 import dev.mvc.community.CommunityVO;
+import dev.mvc.guest.GuestProc;
+import dev.mvc.guest.GuestProcInter;
 import dev.mvc.community.CommunityVO;
 import dev.mvc.owner.OwnerProcInter;
 import dev.mvc.plan.PlanProcInter;
@@ -38,6 +40,10 @@ public class CommunityCont {
 	@Autowired
 	@Qualifier("dev.mvc.owner.OwnerProc")
 	private OwnerProcInter ownerProc;
+	
+	@Autowired
+	@Qualifier("dev.mvc.guest.GuestProc")
+	private GuestProcInter gueProc;
 
 	public CommunityCont() {
 		System.out.println("커뮤니티(community) Cont 실행");
@@ -87,7 +93,7 @@ public class CommunityCont {
 	public ModelAndView create(HttpServletRequest request, HttpSession session, CommunityVO communityVO) {
 		ModelAndView mav = new ModelAndView();
 
-		if (ownerProc.isOwner(session)) {
+		if (ownerProc.isOwner(session)||gueProc.isGuest(session)) {
 			// ------------------------------------------------------------------------------
 			// 파일 전송 코드 시작
 			// ------------------------------------------------------------------------------
@@ -129,8 +135,8 @@ public class CommunityCont {
 				// ------------------------------------------------------------------------------
 
 				// Call By Reference: 메모리 공유, Hashcode 전달
-				int ownerno = (int) session.getAttribute("ownerno"); // ownerno FK
-				communityVO.setGuestno(ownerno);
+				int guestno = (int) session.getAttribute("guestno"); // ownerno FK
+				communityVO.setGuestno(guestno);
 				int cnt = this.communityProc.create_community(communityVO);
 
 				// ------------------------------------------------------------------------------

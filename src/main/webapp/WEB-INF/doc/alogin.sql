@@ -24,3 +24,4 @@ CREATE SEQUENCE login_SEQ
   NOCYCLE;                  -- 다시 1부터 생성되는 것을 방지
 
 
+

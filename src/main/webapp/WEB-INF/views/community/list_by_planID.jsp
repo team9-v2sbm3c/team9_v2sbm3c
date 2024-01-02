@@ -24,10 +24,10 @@
   
   <aside class="aside_right">
     <%-- 로그인해야 메뉴가 출력됨 --%>
-    <c:if test="${sessionScope.admin_id == null }">
-      <a href="./create.do?planID=${planVO.planID }">등록</a>
-      <span class='menu_divide' >│</span>
-    </c:if>
+    <c:if test="${sessionScope.id != null or sessionScope.owner_id != null}">
+    	<a href="./create.do?planID=${planVO.planID}">등록</a>
+    	<span class='menu_divide'>│</span>
+	</c:if>
     <a href="javascript:location.reload();">새로고침</a>
     <span class='menu_divide' >│</span>    
     <a href="./list_by_planID.do?planID=${param.planID }&now_page=${param.now_page == null ? 1 : param.now_page }">목록형</a>    
