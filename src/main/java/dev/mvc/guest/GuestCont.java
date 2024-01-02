@@ -608,7 +608,7 @@ public class GuestCont {
  }
  
  
-//http://localhost:9093/guest/id_find.do
+//http://localhost:9093/guest/id_find.do 아직 제작중
 /**
  * 아이디 찾기
  * 
