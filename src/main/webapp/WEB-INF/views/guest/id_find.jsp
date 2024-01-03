@@ -11,6 +11,9 @@
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
 <script type="text/javascript">
 
   window.onload = function() {
@@ -21,7 +24,7 @@
       }
     });
 
-    document.querySelector('#email').addEventListener('keypress', (event) => {
+    document.querySelector('#gemail').addEventListener('keypress', (event) => {
     // document.getElementById('passwd').addEventListener('keypress', (event) => {
       if(event.key === 'Enter') {
         document.getElementById('btn_send').focus();
@@ -60,7 +63,7 @@
 </script>
 </head>
 <body>
-<c:import url="/menu/top.do" />
+<jsp:include page="../menu/top.jsp" flush='false' />
 
  <div class='title_line'>아이디 찾기</div>
   

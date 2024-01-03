@@ -567,15 +567,18 @@ public class GuestCont {
    
    return mav;
  }
+
  /**
-  * 아이디 찾기 폼
+  * 회원 탈퇴 폼
+  * @param guestno
+  * @return
   */
- @RequestMapping(value="/guest/id_find.do", method=RequestMethod.GET )
- public ModelAndView id_find() {
+ @RequestMapping(value="/guest/user_withdrawal.do", method=RequestMethod.GET)
+ public ModelAndView user_withdrawal(){
    ModelAndView mav = new ModelAndView();
-   mav.setViewName("/guest/id_find"); // /WEB-INF/views/guest/id_find.jsp
-  
-   return mav; // forward
+   mav.setViewName("/guest/user_withdrawal"); // user_withdrawal.jsp
+   
+   return mav;
  }
  
 //http://localhost:9093/guest/user_withdrawal.do
@@ -605,6 +608,17 @@ public class GuestCont {
    mav.setViewName("redirect:/guest/msg.do");
    
    return mav;
+ }
+ 
+ /**
+  * 아이디 찾기 폼
+  */
+ @RequestMapping(value="/guest/id_find.do", method=RequestMethod.GET )
+ public ModelAndView id_find() {
+   ModelAndView mav = new ModelAndView();
+   mav.setViewName("/guest/id_find"); // /WEB-INF/views/guest/id_find.jsp
+  
+   return mav; // forward
  }
  
  

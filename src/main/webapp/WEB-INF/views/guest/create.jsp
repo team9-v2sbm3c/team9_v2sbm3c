@@ -9,6 +9,8 @@
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, width=device-width" /> 
 <title>Resort world</title>
 
+<script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -155,8 +157,9 @@
   <div style="width: 50%; margin: 0px auto ">
   <form name='frm' id='frm' method='POST' action='./create.do' class="">
   
-    <div class="form-group">
-      <label>아이디*:</label>
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label style="margin-right: 15px;">
+     <label> 아이디*:</label>
        <div class="input-group">
         <input type='text' class="form-control form-control-sm" name='id' id='id' value='' required="required" placeholder="아이디" autofocus="autofocus">
         <button type='button' id="btn_checkID" onclick="checkID()" class="btn btn-primary btn-sm">중복확인</button>
@@ -164,14 +167,16 @@
       <span id='id_msg'></span>
     </div>   
                 
-    <div class="form-group">
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label style="margin-right: 15px;">
       <label>패스워드*:</label>
       <div class="input-group">
         <input type='password' class="form-control form-control-sm" name='passwd' id='passwd' value='' required="required" placeholder="패스워드">
       </div>
     </div>   
 
-    <div class="form-group">
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label style="margin-right: 15px;">
       <label>패스워드 확인*:</label>
       <div class="input-group">
         <input type='password' class="form-control form-control-sm" name='passwd2' id='passwd2' value='' required="required" placeholder="패스워드 확인">
@@ -179,7 +184,8 @@
       <span id='passwd2_msg'></span>
     </div>   
     
-    <div class="form-group">
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label style="margin-right: 15px;">
       <label>성명*:</label>
       <div class="input-group">
         <input type='text' class="form-control form-control-sm" name='gname' id='gname' value='' required="required" placeholder="성명">
@@ -187,7 +193,8 @@
       <span id='gname_msg'></span>
     </div>   
 
-    <div class="form-group">
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label style="margin-right: 15px;">
       <label>이메일*:</label>
       <div class="input-group">
         <input type='text' class="form-control form-control-sm" name='gemail' id='gemail' value='' required="required" placeholder="이메일">
