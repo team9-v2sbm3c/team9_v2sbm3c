@@ -13,9 +13,6 @@
 <title>http://localhost:9093</title>
 
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 
 </head>
@@ -24,6 +21,5 @@
 	<c:import url="./menu/first_scene.jsp"/>
 	<c:import url="./menu/second_scene.jsp"/>
 	<c:import url="./menu/third_scene.jsp"/> 
-	<c:import url="./menu/bottom.jsp" />
 </body>
 </html>

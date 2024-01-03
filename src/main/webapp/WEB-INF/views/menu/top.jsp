@@ -3,8 +3,17 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Popper.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 <title>http://localhost:9093/</title>
 </head>
 
@@ -52,23 +61,21 @@
 						</c:choose></li>
 					<c:choose>
 						<c:when test="${sessionScope.owner_id == null }">
-							<li class="nav-item"><a class="nav-link top_menu_link"
-								href="/owner/login.do">관리자 로그인</a></li>
+							<li class="nav-item"><a class="nav-link top_menu_link" href="/owner/login.do">관리자 로그인</a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="nav-item dropdown"><a
-								class="nav-link top_menu_link dropdown-toggle"
-								data-bs-toggle="dropdown" href="#">관리자</a>
+							<li class="nav-item dropdown"><a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#">관리자</a>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href='/guest/list.do'>회원 목록</a> <a
-										class="dropdown-item" href='/plan/list_all.do'>여행지 목록</a> <a
-										class="dropdown-item" href='/community/list_all.do'>게시판 관리</a>
-									<a class="dropdown-item" href='/recommend/list_all.do'>사용자
-										추천지 목록</a> <a class="dropdown-item" href='/owner/logout.do'>관리자
-										${sessionScope.owner_id } 로그아웃</a>
-								</div></li>
+									<a class="dropdown-item" href='/guest/list.do'>회원 목록</a> 
+									<a class="dropdown-item" href='/plan/list_all.do'>여행지 목록</a> 
+									<a class="dropdown-item" href='/community/list_all.do'>게시판 관리</a>
+									<a class="dropdown-item" href='/recommend/list_all.do'>사용자 추천지 목록</a> 
+									<a class="dropdown-item" href='/owner/logout.do'>관리자 ${sessionScope.owner_id } 로그아웃</a>
+								</div>
+							</li>
 						</c:otherwise>
 					</c:choose>
+					
 				</ul>
 				<form class="d-flex">
 					<!-- 추후 검색 기능으로 업그레이드 예정 -->

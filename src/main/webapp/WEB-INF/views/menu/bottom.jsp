@@ -11,7 +11,7 @@
 
 </head>
 <body>
-	<div class="mt-5 p-4 bg-dark text-white text-center text-white">
+	<div class="footer mt-5 p-4 bg-dark text-white text-center text-white">
 		<p>Copyright © KD Corp. All rights reserved.</p>
 	</div>
 </body>

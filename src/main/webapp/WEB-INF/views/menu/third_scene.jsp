@@ -39,6 +39,7 @@
             </c:forEach>
         </div>
     </div>
+    <c:import url="./menu/bottom.jsp" />
 </body>
 
 

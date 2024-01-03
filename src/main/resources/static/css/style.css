@@ -657,3 +657,12 @@
     color: #000040;
     background-color: #80ff00;
   }
+  .footer {
+    width: 100%;
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: relative; /* relative로 설정 */
+    bottom: 0; /* 밑으로 떨어지게 함 */
+}
