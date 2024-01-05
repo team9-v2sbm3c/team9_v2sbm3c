@@ -23,7 +23,8 @@
                 <div class="col-sm-4 mb-3">
                     <a href="/community/list_by_planID.do?planID=${planVO.planID}">
                         <div class="card img-fluid rounded-4">
-                            <img class="card-img-top rounded-4" src="main/images/Seoul.png" alt="Card image" style="width: 100%">
+                            <img class="card-img-top rounded-4" src="main/images/image${Math.floor(Math.random() * 8) + 1}.jpg" alt="Card image" style="width: 100%; filter: brightness(70%);">
+                                                        
                             <div class="card-img-overlay">
                                 <h4 class="text-white">${name}</h4>
                             </div>

@@ -1130,7 +1130,7 @@
   </children>
   <dommains/>
   <dialectName>Oracle</dialectName>
-  <logicalMode>false</logicalMode>
+  <logicalMode>true</logicalMode>
   <jarFile></jarFile>
   <jdbcDriver></jdbcDriver>
   <jdbcUrl></jdbcUrl>
