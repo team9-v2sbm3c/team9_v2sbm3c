@@ -40,9 +40,14 @@
     WHERE guestno=#{guestno}
   </update>
   
-  <!-- update와 delete는 모두 처리된 레코드 갯수를 리턴한다. -->
+  <!--<update id="delete" parameterType="int">    
+    UPDATE guest
+    SET grade = 99
+    WHERE guestno=#{guestno}   
+  </update>-->
+  
   <delete id="delete" parameterType="int">
-    DELETE FROM guest
+    DELETE FROM Guest
     WHERE guestno=#{guestno}
   </delete>
   
@@ -75,8 +80,8 @@
   </update>
   
     <!-- 회원 탈퇴 -->
-  <update id="user_withdrawal" parameterType="int">
-    UPDATE guest 
+  <update id="user_withdrawal" parameterType="HashMap">
+    UPDATE guest
     SET grade=99
     WHERE guestno=#{guestno}
   </update>

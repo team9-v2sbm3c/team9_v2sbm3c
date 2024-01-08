@@ -118,8 +118,32 @@ public class GuestProc implements GuestProcInter {
   }
   
   @Override
-  public int user_withdrawal(int guestno) {
-    int cnt = this.guestDAO.user_withdrawal(guestno);
+  public int user_withdrawal(HashMap<String, Object> map) {
+    int cnt = this.guestDAO.user_withdrawal(map);
     return cnt;
   }
+  
+  @Override
+  public int check_withdrawal(String id) {
+    //System.out.println("-> check_unsubscribe");
+    
+    int check_withdrawal;
+    //String id = (String)session.getAttribute("id");
+    System.out.println("-> id: " + id);
+    //System.out.println("-> ck_id: " + ck_id);
+    
+    GuestVO guestVO = this.guestDAO.readById(id);
+    int grade = guestVO.getGrade();
+    
+    System.out.println("-> grade: " + grade);
+    
+    if(grade == 99) { // 탈퇴 회원 로그인 불가
+      check_withdrawal = 0;
+    } else { // 로그인 가능
+      check_withdrawal = 1;
+    }
+    
+    return check_withdrawal;
+  }
+  
 }

@@ -88,8 +88,15 @@ public interface GuestDAOInter {
   public GuestVO id_find(HashMap<String, Object> map);
   /**
    * 회원 탈퇴
-   * @param guestno
+   * @param map
    * @return
    */
-  public int user_withdrawal(int guestno);
+  public int user_withdrawal(HashMap<String, Object> map);
+  /**
+   * 로그인시 탈퇴한 회원인지 확인
+   * 
+   * @param id
+   * @return
+   */
+  public int check_withdrawal(String id);
 }

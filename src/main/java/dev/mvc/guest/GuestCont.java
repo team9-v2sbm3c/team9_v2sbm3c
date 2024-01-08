@@ -409,7 +409,12 @@ public class GuestCont {
    map.put("id", id);
    map.put("passwd", passwd);
   
-   int cnt =guestProc.login(map);
+   int check_withdrawal = guestProc.check_withdrawal(id);
+   
+   if(check_withdrawal == 1) { // grade != 99
+   
+     int cnt =guestProc.login(map);
+     
    if (cnt == 1) { // 로그인 성공
      // System.out.println(id + " 로그인 성공");
      GuestVO guestVO = guestProc.readById(id);
@@ -471,7 +476,13 @@ public class GuestCont {
      mav.setViewName("redirect:/index.do");  
    } else {
      mav.addObject("url", "/guest/login_fail_msg");
-     mav.setViewName("redirect:/guest/msg.do"); 
+     mav.setViewName("redirect:/guest/msg.do");
+   }
+     } else if (check_withdrawal == 0) {
+        mav.addObject("code", "login_fail_grade99_msg"); // 패스워드 변경 성공
+        mav.addObject("url", "/guest/msg"); // /guest/msg -> /guest/msg.jsp
+   
+        mav.setViewName("redirect:/guest/msg.do");
    }
       
    return mav;
@@ -569,46 +580,53 @@ public class GuestCont {
  }
 
  /**
-  * 회원 탈퇴 폼
+  * 회원 탈퇴
   * @param guestno
   * @return
   */
- @RequestMapping(value="/guest/user_withdrawal.do", method=RequestMethod.GET)
- public ModelAndView user_withdrawal(){
+ @RequestMapping(value = "/guest/user_withdrawal.do", method = RequestMethod.GET)
+ public ModelAndView user_withdrawal() {
    ModelAndView mav = new ModelAndView();
-   mav.setViewName("/guest/user_withdrawal"); // user_withdrawal.jsp
-   
+   mav.setViewName("/guest/user_withdrawal"); // passwd_update.jsp
+
    return mav;
  }
- 
-//http://localhost:9093/guest/user_withdrawal.do
+// http://localhost:9093/guest/user_withdrawal.do
  /**
   * 회원 탈퇴
-  * @param guestno 회원 번호
+  * @param HashMap 
   */
- @RequestMapping(value="/guest/user_withdrawal.do", method=RequestMethod.POST)
- public ModelAndView user_withdrawal(HttpSession session){
+ @RequestMapping(value = "/guest/user_withdrawal.do", method = RequestMethod.POST)
+ public ModelAndView user_withdrawal(HttpSession session) {
    ModelAndView mav = new ModelAndView();
    
-   int guestno = (int)session.getAttribute("guestno"); // 현재 로그인한 회원의 정보만 패스워드 변경 가능
-   //int guestno = 3; // 테스트
+   int guestno = (int) session.getAttribute("guestno"); // 현재 로그인한 회원만 탈퇴 가능
+
+   GuestVO guestVO = this.guestProc.read(guestno); // 탈퇴하려는 회원 정보를 읽음
+
+   HashMap<String, Object> map = new HashMap<String, Object>();
+   map.put("guestno", guestno);
    
-   int cnt = this.guestProc.user_withdrawal(guestno);
+   mav.addObject("gname", guestVO.getGname());
+   mav.addObject("id", guestVO.getId());
+
+   int cnt = this.guestProc.user_withdrawal(map);
+    
+   System.out.println("-> cnt: " + cnt);
    
    if (cnt == 1) {
-     mav.addObject("code", "passwd_update_success"); // 탈퇴 성공
+     mav.addObject("code", "grade_99");
    } else {
-     mav.addObject("code", "passwd_update_fail");       // 탈퇴 실패
+     mav.addObject("code", "grade_fail");
    }
 
-
-   mav.addObject("cnt", cnt); // 패스워드 일치 여부
-   mav.addObject("url", "/guest/msg");  // /guest/msg -> /guest/msg.jsp
-   
+   mav.addObject("cnt", cnt); // request.setAttribute("cnt", cnt)
+   mav.addObject("url", "/guest/msg"); // /guest/msg -> /guest/msg.jsp
    mav.setViewName("redirect:/guest/msg.do");
-   
+
    return mav;
  }
+
  
  /**
   * 아이디 찾기 폼
@@ -667,4 +685,5 @@ public ModelAndView id_find(String gname, String gemail) {
   }
 
  
+
 }

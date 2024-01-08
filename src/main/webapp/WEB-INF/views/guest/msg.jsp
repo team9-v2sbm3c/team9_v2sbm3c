@@ -69,7 +69,7 @@
           </li>                                                                      
         </c:when>
         
-        <c:when test="${param.code == 'delete_success'}"> <%-- Java if --%>
+        <c:when test="${param.code == 'user_withdrawal.success'}"> <%-- Java if --%>
           <li class='li_none'>
             <span class="span_success">${param.gname }님(${param.id }) 회원 정보 삭제에 성공했습니다.</span>
           </li>   
@@ -80,7 +80,7 @@
           </li>                                                                     
         </c:when>    
             
-        <c:when test="${code == 'delete_fail'}"> <%-- Java if --%>
+        <c:when test="${code == 'user_withdrawal.fail'}"> <%-- Java if --%>
           <li class='li_none'>
             <span class="span_fail">${param.gname }님(${param.id }) 회원 정보 삭제에 실패했습니다.</span>
           </li>                                                                      
@@ -88,7 +88,7 @@
         
         <c:when test="${param.code == 'passwd_update_success'}"> <%-- Java if --%>
           <li class='li_none'>
-            <span class="span_success">${param.gname }님(${param.id }) 패스워드를 변경했습니다.</span>
+            <span class="span_success">${gname }님(${id }) 패스워드를 변경했습니다.</span>
           </li>   
           <li class='li_none'>
             <button type='button' 
@@ -102,6 +102,24 @@
             <span class="span_fail">${param.gname }님(${param.id }) 패스워드 변경에 실패했습니다.</span>
           </li>                                                                      
         </c:when>  
+        
+          <c:when test="${param.code == 'grade_99'}">
+            <%-- Java if --%>
+            <li class='li_none'><span class="span_success">탈퇴 완료되었습니다.</span></li>
+            <li class='li_none'><br>
+              <button type='button' onclick="location.href='/guest/logout.do'" class="btn btn-outline-warning btn-sm">확인</button></li>
+          </c:when>
+
+          <c:when test="${param.code == 'grade_fail'}">
+            <%-- Java if --%>
+            <li class='li_none'><span class="span_fail">회원 탈퇴에 실패했습니다.</span></li>
+          </c:when>
+          <c:when test="${param.code == 'login_fail_grade99_msg'}">
+            <%-- Java if --%>
+            <li class='li_none'><span class="span_fail">탈퇴된 회원입니다.</span></li>
+            <li class='li_none'><br>
+              <button type='button' onclick="location.href='/guest/login.do'" class="btn btn-outline-warning btn-sm">확인</button></li>
+          </c:when>
         
         <c:otherwise>
           <li class='li_none_left'>

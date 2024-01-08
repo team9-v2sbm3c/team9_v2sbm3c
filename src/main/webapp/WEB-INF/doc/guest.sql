@@ -10,7 +10,7 @@ CREATE TABLE GUEST(
 		gname VARCHAR(40) NOT NULL,
 		gemail VARCHAR(100) NOT NULL,
         gdate date NOT NULL,
-        grade NUMBER(2) NOT NULL,
+        grade NUMBER(2) NOT NULL, -- 등급 
         PRIMARY KEY(guestno)
 );
 
