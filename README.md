@@ -31,16 +31,23 @@
     </tr>
 </table>
 <br>
+## 프로젝트 개발 환경 및 이용 기술
+
+![image](https://github.com/team9-v2sbm3c/team9_v2sbm3c/assets/42365757/46303013-d36e-4b3d-9ef9-b6f94e51dfff)
+
 
 ## 논리적 모델링
 
-![image](https://github.com/team9-v2sbm3c/team9_v2sbm3c/assets/42365757/3451fbca-943a-478d-95cd-6ae6d00505e5)
+![image](https://github.com/team9-v2sbm3c/team9_v2sbm3c/assets/42365757/cf31559e-0383-4745-b590-b4c9aedf271f)
+
 
 
 
 
 ## 물리적 모델링
 
-![image](https://github.com/team9-v2sbm3c/team9_v2sbm3c/assets/42365757/15340ebe-0379-4227-baae-923e67197146)
+![image](https://github.com/team9-v2sbm3c/team9_v2sbm3c/assets/42365757/a2266c3f-5919-43d6-9f3d-74302a8f98ed)
+
+
 
 
